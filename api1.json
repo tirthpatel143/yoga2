@@ -1,0 +1,234 @@
+{
+    "retorno": {
+        "status_processamento": "3",
+        "status": "OK",
+        "pagina": 1,
+        "numero_paginas": 1,
+        "pedidos": [ 
+            {
+                "pedido": {
+                    "id": "755433652",
+                    "numero": "237985",
+                    "numero_ecommerce": "210391",   
+                    "data_pedido": "31/08/2024",
+                    "data_prevista": "",
+                    "nome": "uy987 98789",
+                    "valor": 326,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Cancelado",
+                    "codigo_rastreamento": "",
+                    "url_rastreamento": ""
+                }
+            },
+            {
+                "pedido": {
+                    "id": "755433675",
+                    "numero": "237987",
+                    "numero_ecommerce": "210393",
+                    "data_pedido": "31/08/2024",
+                    "data_prevista": "",
+                    "nome": "uy987 98789",
+                    "valor": 326,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Cancelado",
+                    "codigo_rastreamento": "",
+                    "url_rastreamento": ""
+                }
+            },
+            {
+                "pedido": {
+                    "id": "755529206",
+                    "numero": "240419",
+                    "numero_ecommerce": "212261",
+                    "data_pedido": "09/09/2024",
+                    "data_prevista": "",
+                    "nome": "uy987 98789",
+                    "valor": 326,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Cancelado",
+                    "codigo_rastreamento": "",
+                    "url_rastreamento": ""
+                }
+            },
+            {
+                "pedido": {
+                    "id": "755584455",
+                    "numero": "241282",
+                    "numero_ecommerce": "212738",
+                    "data_pedido": "12/09/2024",
+                    "data_prevista": "",
+                    "nome": "uy987 98789",
+                    "valor": 326,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Cancelado",
+                    "codigo_rastreamento": "",
+                    "url_rastreamento": ""
+                }
+            },
+            {
+                "pedido": {
+                    "id": "755584513",
+                    "numero": "241284",
+                    "numero_ecommerce": "212740",
+                    "data_pedido": "12/09/2024",
+                    "data_prevista": "",
+                    "nome": "uy987 98789",
+                    "valor": 326,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Cancelado",
+                    "codigo_rastreamento": "",
+                    "url_rastreamento": ""
+                }
+            },
+            {
+                "pedido": {
+                    "id": "755598428",
+                    "numero": "241513",
+                    "numero_ecommerce": "212974",
+                    "data_pedido": "13/09/2024",
+                    "data_prevista": "",
+                    "nome": "uy987 98789",
+                    "valor": 326,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Cancelado",
+                    "codigo_rastreamento": "",
+                    "url_rastreamento": ""
+                }
+            },
+            {
+                "pedido": {
+                    "id": "760117519",
+                    "numero": "373152",
+                    "numero_ecommerce": "cart_01KJ59S5HDND8GXQ88MA3WED1W",
+                    "data_pedido": "23/02/2026",
+                    "data_prevista": "",
+                    "nome": "uy987 98789",
+                    "valor": 395,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Em aberto",
+                    "codigo_rastreamento": null,
+                    "url_rastreamento": null
+                }
+            },
+            {
+                "pedido": {
+                    "id": "760117806",
+                    "numero": "373162",
+                    "numero_ecommerce": "cart_01KJ7XS9JN4NP5AE2WK6SQY3FN",
+                    "data_pedido": "24/02/2026",
+                    "data_prevista": "",
+                    "nome": "uy987 98789",
+                    "valor": 73,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Cancelado",
+                    "codigo_rastreamento": null,
+                    "url_rastreamento": null
+                }
+            },
+            {
+                "pedido": {
+                    "id": "760122189",
+                    "numero": "373348",
+                    "numero_ecommerce": "cart_01KJCVRXA6EVP9ZBM7H7W6MQTS",
+                    "data_pedido": "26/02/2026",
+                    "data_prevista": "",
+                    "nome": "Dharmik Patel",
+                    "valor": 169,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Preparando envio",
+                    "codigo_rastreamento": null,
+                    "url_rastreamento": null
+                }
+            },
+            {
+                "pedido": {
+                    "id": "760128502",
+                    "numero": "373735",
+                    "numero_ecommerce": "cart_01KJFPM9WFMGD37BJWR5SQAG36",
+                    "data_pedido": "27/02/2026",
+                    "data_prevista": "",
+                    "nome": "Dharmik Patel",
+                    "valor": 254,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Em aberto",
+                    "codigo_rastreamento": null,
+                    "url_rastreamento": null
+                }
+            },
+            {
+                "pedido": {
+                    "id": "760132498",
+                    "numero": "373906",
+                    "numero_ecommerce": "cart_01KJQ7XVHK0MAQYW2K2XKRMJ1R",
+                    "data_pedido": "02/03/2026",
+                    "data_prevista": "",
+                    "nome": "Dharmik Patel",
+                    "valor": 38,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Preparando envio",
+                    "codigo_rastreamento": null,
+                    "url_rastreamento": ""
+                }
+            },
+            {
+                "pedido": {
+                    "id": "760132505",
+                    "numero": "373907",
+                    "numero_ecommerce": "cart_01KJSAW1HZ3X2KJDKSMPXKBZYJ",
+                    "data_pedido": "03/03/2026",
+                    "data_prevista": "",
+                    "nome": "Dharmik Patel",
+                    "valor": 38,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Preparando envio",
+                    "codigo_rastreamento": null,
+                    "url_rastreamento": ""
+                }
+            },
+            {
+                "pedido": {
+                    "id": "760132842",
+                    "numero": "373931",
+                    "numero_ecommerce": "350000",
+                    "data_pedido": "03/03/2026",
+                    "data_prevista": "",
+                    "nome": "Dharmik Patel",
+                    "valor": 38,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Cancelado",
+                    "codigo_rastreamento": null,
+                    "url_rastreamento": null
+                }
+            },
+            {
+                "pedido": {
+                    "id": "760132851",
+                    "numero": "373932",
+                    "numero_ecommerce": "350001",
+                    "data_pedido": "03/03/2026",
+                    "data_prevista": "",
+                    "nome": "Dharmik Patel",
+                    "valor": 38,
+                    "id_vendedor": "0",
+                    "nome_vendedor": "",
+                    "situacao": "Cancelado",
+                    "codigo_rastreamento": null,
+                    "url_rastreamento": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,2338 @@
+{
+    "orders": [
+        {
+            "id": "order_01JZSTB8TFR36TWH999B2NPB5R",
+            "display_id": 1,
+            "status": "pending",
+            "version": 1,   
+            "summary": {
+                "paid_total": 2.65,
+                "difference_sum": 0,
+                "raw_paid_total": {
+                    "value": "2.65",
+                    "precision": 20
+                },
+                "refunded_total": 0,
+                "accounting_total": 2.65,
+                "credit_line_total": 0,
+                "transaction_total": 2.65,
+                "pending_difference": 0,
+                "raw_difference_sum": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_refunded_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "current_order_total": 2.65,
+                "original_order_total": 2.65,
+                "raw_accounting_total": {
+                    "value": "2.65",
+                    "precision": 20
+                },
+                "raw_credit_line_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_transaction_total": {
+                    "value": "2.65",
+                    "precision": 20
+                },
+                "raw_pending_difference": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_current_order_total": {
+                    "value": "2.65",
+                    "precision": 20
+                },
+                "raw_original_order_total": {
+                    "value": "2.65",
+                    "precision": 20
+                }
+            },
+            "metadata": {
+                "cart_id": "cart_01JZSSF108PB7HP0WKMMA5XVDH",
+                "tiny_erp_errors": false,
+                "tiny_erp_status": "OK",
+                "tiny_erp_order_id": 759301786,
+                "tiny_erp_order_number": "327845"
+            },
+            "created_at": "2025-07-10T09:23:28.210Z",
+            "updated_at": "2025-07-10T09:23:28.210Z",
+            "customer_id": "cus_01JZCGH00YJ1YZ9RSCX4834YRB",
+            "items": [
+                {
+                    "id": "ordli_01JZSTB8TH3YM2RJSHV9NHGGE0",
+                    "title": "Bordô",
+                    "subtitle": "Tapete de yoga Asana - 4.5mm PVC ecológico",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2024/09/Asana-Ameixa.jpg",
+                    "variant_id": "variant_01JZCGGGZ2D6Z7TA2H9FTAR33V",
+                    "product_id": "prod_01JZCGGD573B6KPFMEFNF6PWFM",
+                    "product_title": "Tapete de yoga Asana - 4.5mm PVC ecológico",
+                    "product_description": "Durável e resistente O melhor custo-benefício Perfeito para iniciar a jornada do yoga com você. O Asana é um tapete de yoga clássico com superfície antiderrapante para práticas básicas e suaves. ✓ O mais vendido ✓ Ideal para yoga, pilates e treinos ✓ Com material reforçado, não esfarela ✓ +1000 avaliações e 94% de satisfação máxima 70% de nossos clientes dizem que aumentaram a frequência e disciplina da prática após a compra do seu próprio tapete de Yoga. O Tapete de Yoga Asana é de PVC Ecológico exclusivo da Yogateria, com um processo de produção otimizado e consciente, sem toxinas e metais pesados. Não possui cheiro forte característico do PVC comum. Feito com material durável e resistente, não esfarela. Pode ser usado ao ar livre - na natureza, praia, grama, pedras ou ambientes internos - com ou sem sapatos. É resistente para todas as modalidades de yoga. Além da qualidade do material ser notavelmente superior, quando comparado aos demais Tapetes de PVC encontrados no mercado, o Asana é mais estável pois possui uma tela interna que proporciona mais resistência e firmeza no uso. Os tapetes de PVC precisam de alguns dias para \"maturar \" e ganhar mais aderência. Recomendamos passar um pano úmido e esperar secar antes de usar. Deixar o tapete aberto nos primeiros dias também ajudar a acelerar o processo. Então, não se preocupe se nos primeiros momento você não sentir a aderência completa. Indicado para práticas sem muita umidade, se você sua bastante, recomendamos nossos outros modelos de tapetes de yoga com aderência extrema: Cortiça, Phoenix, Ecopro O PVC Ecológico da Yogateria é um PVC produzido com menos recursos químicos e com alguns componentes reciclados, não contém metais pesados, corantes cancerígenos e produtos químicos tóxicos chamados ftalatos. O nosso PVC Ecológico é uma versão do PVC mais sustentável, livre de toxinas e ftalatos. Para afirmar que o PVC é ecológico, é necessário que o material tenha o certificado que comprove um processo de fabricação mais consciente, livre de toxinas e ftalatos. O nosso PVC é o único ecológico e com certificado Oeko-Tex (TP025 122612) - Indica que o material é livre de produtos químicos nocivos e seguro para uso humano, e testado pela SGS - órgão suíço de inspeção, verificação, teste e certificação. Você encontrará este selo na embalagem do seu tapete de yoga. Não contém: Corantes que liberam uma substância toxica chamada AZO, feito por um processo no qual uma amina aromática é transformada em um componente de diazônio que reage com outro componente como o fenol ou naftol para formar o corante. DOP (Dioctil ftalato), ​​um plastificante usado na produção de plástico flexível de cloreto de polivinila (PVC). É um dos plastificantes mais utilizados no PVC devido ao seu baixo custo. 6P, produtos químicos tóxicos usados ​​para suavizar e aumentar a flexibilidade do plástico e do vinil. Todas essas substâncias são nocivas e costumam ser encontradas em muitos tapetes e equipamentos de yoga. Experimente passar um pano úmido antes da primeira prática e deixe secar bem antes de usar. Lavável na máquina com água fria de até 30° C, sem amaciante e com pouco sabão. Veja aqui as dicas para os primeiros usos, cuidados diários e como limpar o tapete de yoga. Experimente passar um pano úmido antes da primeira prática e deixe secar bem antes de usar. Ter uma bolsa para o tapete também garante sua proteção e a facilidade ao transportá-lo. Com a limpeza e os cuidados certos, é possível estender a vida útil do seu tapete de yoga. Poeira, oleosidade da pele e suor podem penetrar na superfície do tapete e causar mau cheiro ou deixá-lo escorregadio e sujo. Por isso, é fundamental ter alguns cuidados básicos com o tapete depois de cada uso, para prolongar a sua vida útil e mantê-lo higienizado. Experimente também o nosso limpador higienizante de tapete de yoga. Cuide bem de seu tapete e aproveite sua prática!(Leitura de 4 minutos) por Alessandro, CEO da Yogateria Estamos há muito tempo trabalhando neste tapete de yoga. Ele é produzido em nossa fábrica, onde conseguimos oferecer empregos para muitas pessoas. Todos os nossos tapetes de yoga possuem certificação especial - e temos orgulho de sermos os primeiros e únicos no Brasil nesta categoria! Certificação STANDARD 100 pela OEKO-TEX® A OEKO-TEX diz: “O STANDARD 100 da OEKO-TEX® é um dos certificados mais conhecidos do mundo para têxteis testados para substâncias nocivas. Representa a confiança do cliente e alta segurança do produto.” O que significa que você pode colocar um bebê recém-nascido no tapete de yoga com segurança, e é totalmente livre de quaisquer substâncias perigosas (sem metais pesados, etc.), pra sua pele ficar feliz! Já sabemos que é seguro, mas o que é que torna este tapete de yoga tão especial? Sucesso Queremos te passar alguns números… Em todo o mundo, mais de 1000 unidades deste nosso modelo de tapete de yoga são vendidos por dia. Todo dia. Isso é mais de 300 mil tapetes por ano - é muito tapete de yoga! Aqui no Brasil já vendemos para mais de 850 cidades em apenas 18 meses. Wow! Da Europa ao Brasil, este tapete de yoga é puro sucesso. Mas por que? É resistente, tem várias cores, é seguro, tem o melhor custo benefício. Durabilidade Eu sei que ele pode até parecer com qualquer tapete de yoga de pvc convencional, mas a qualidade é inabalável e inquestionável. Dentro do nosso pvc tem uma rede de nylon que torna o tapete muito estável (e isso é muito importante, principalmente para as posturas de pé). Ele tem uma espessura de 4.5 mm e dura muito. Fizemos uma pesquisa comparativa com outros tapetes de yoga, e o Tapete de Yoga Asana dura de 5 a 10 vezes mais, dependendo da sua forma uso. Normalmente, seu tapete de yoga de pvc começa a esfarelar entre 3 a 12 meses, mas o nosso começará a dar alguns sinais (se der) apenas após 5 anos - ou mais. É durável, e também tem uma boa aderência, a melhor que um tapete de pvc pode ter. É claro que se você suar como um atleta olímpico, a aderência pode ser reduzida. Mas quanto mais você usa, mais aderente ele fica. Legal, né? Você sabe o que pode deixar um yogi nervoso? Quando o tapete de yoga não fica totalmente estendido no chão, e fica enrolado nas laterais. Ou quando o tapete fica deslisando pelo chão. Ou quando ele se desintegra todo e suja toda a sua casa. ISSO NÃO VAI ACONTECER COM O TAPETE DE YOGA ASANA. Te garanto. Custo benefício Você pode comprar aquele tapete de yoga por 50 reais (ou menos) e depois de 3 meses já vai jogar no lixo. POR FAVOR PARE COM ISSO. Recebemos esse tipo de mensagem diariamente. Realmente achamos que este é o melhor tapete de yoga custo - benefício disponível no Brasil, e não somos só nós que achamos, mas também os mais de 30 mil clientes que compraram nosso Tapete de Yoga Asana. Você pode usar em qualquer lugar Ele é bem resistente. Você pode praticar no sol, na praia, na natureza, em casa, no estúdio, onde quiser… E ele também é bem leve, com apenas 1,1kg! E se você quiser usar este tapete de yoga para outros exercícios, não tem problema, você pode usar até com sapatos (mas não fala isso pro seu professor de yoga). Tamanho Nós temos um padrão internacional, 183 x 60, que é 10cm maior do que a média dos tapetes encontrado no mercado brasileiro. É o suficiente para quem tem pernas mais longas, e seu shavasana vai te agradecer . Cores brilhantes Já viu as 8 cores? Uma mais linda do que a outra. Cores impossíveis de encontrar no Brasil, como petróleo, ameixa e açafrão… E a cor não desbota e fica novinha por décadas. Prometo! Acredito que já disse quase tudo, mas se ainda tiver alguma dúvida, leia nossa longa lista de avaliações - são mais de 1000 em apenas 18 meses! Isso vai te ajudar a tomar a sua decisão. Aproveite e boa prática! MATERIAL PVC eco TAMANHO 183 x 60 cm PESO 1.1 kg ESPESSURA 4.5 mm USO Interno / externo ADERÊNCIA ☆☆☆ Você é uma agência de comunicação, estúdio de yoga ou revendedor que precisa de mais de 20 tapetes?   Escreva uma mensagem para receber um orçamento: 21 98987 8270 1.1kg, 183x60cm e com 4.5mm Tamanho e peso perfeitos para praticar! Não. O asana além de ser produzido em PVC ecológico de alta qualidade possui uma costura interna em forma de rede que garante mais resistência e durabilidade ao tapete. Pode ser utilizado para yoga ou exercícios físicos mais intensos. Utilizando de forma adequada seu tapete irá durar por muitos anos. Todo tapete de PVC precisa de alguns dias para “maturar” para ganhar mais aderência. Clique aqui para dicas e primeiros cuidados. Como todo tapete de PVC, o Asana pode ter sua aderência reduzida por muita transpiração ou umidade, pois o PVC não absorve o excesso de suor das mãos e pés. Sim! O Asana é um tapete com superfície aderente, elástica e absorvente ao impacto. Oferece conforto para exercícios de yoga, ginástica, pilates ou outras atividades físicas que necessitem de apoio e proteção do corpo ao chão. Sim! O PVC ecológico é um material resistente, durável e fácil de limpar podendo ser utilizado tanto em áreas internas quanto externas, como parques, praia ou gramados por exemplo. Em nosso site você encontra bolsas de tapete com diferentes cores, modelos e tamanhos. Também temos alças de yoga, caso você só precise manter o seu tapete de yoga fechado para transporte. As bolsas e alças não estão inclusas neste produto. O PVC ecológico utiliza menos recursos e tem alguns componentes reciclados em seu processo de fabricação, é livre de toxinas e, além disso, o PVC ecológico da Yogateria é o único do Brasil com certificação Oeko-Tex que indica que a composição do material é livre de produtos químicos nocivos e seguro para uso humano. Sim! você pode utilizar um pano úmido com água pura ou com um pouco de sabão de côco. Para limpezas mais pesadas pode ainda ser lavado na máquina com água fria de até 30° C, sem amaciante e com pouco sabão. Nunca utilize produtos abrasivos ou álcool na limpeza do seu tapete! A longo prazo eles tendem a ressecar o material Para melhor conservação do tapete, sugerimos que a prática seja feita com os pés descalços e limpos.  Também recomendamos a higienização após o final da prática, principalmente em caso de uso em ambientes externos. O nosso Higienizador de Tapete é uma ótima opção para remover partículas de poeira, areia, grama úmida, etc. A limpeza também pode ser feita com um pano úmido. Sim. Temos diversas cores lindas, e podem ser selecionadas nas bolinhas coloridas aqui em cima na página do produto perto da descrição inicial. Além de ser leve, o tapete ocupa pouquíssimo espaço, pois quando enrolado as suas medidas são 60 x 11 cm (comprimento x diâmetro). Temos também a linha de tapetes mais finos e dobráveis para viagem.Não temos uma garantia fixa, pois depende do tipo de uso e cuidados com o tapete, mas caso tenha alguma necessidade especial, basta entrar em contato com o nosso setor de atendimento. Em caso de devolução ou troca por outro produto o prazo é de 30 dias após o recebimento do produto. O produto não deve apresentar marcas de uso ou manchas e deve estar limpo e embalado com plástico ou papel para a coleta da transportadora no mesmo endereço da entrega.",
+                    "product_subtitle": "<p class=\"p1\"><span style=\"color: #c21515;\"><strong>🏆  </strong></span><span style=\"font-size: 12pt;\"><span style=\"background-color: #ccff00; color: #3b3b48;\"><span style=\"color: #c21515;\"><strong> </strong></span><strong><span style=\"color: #000000;\">CAMPEÃO DE VENDAS </span></strong></span><br /></span></p><br /><span style=\"color: #000000;\">O tapete de yoga que não esfarela.<br />Perfeito para começar sua jornada no yoga.</span>",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "asana",
+                    "variant_sku": "ymar",
+                    "variant_barcode": null,
+                    "variant_title": "Bordô",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "165",
+                        "precision": 20
+                    },
+                    "created_at": "2025-07-10T09:23:28.211Z",
+                    "updated_at": "2025-07-10T09:23:28.211Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 165,
+                    "quantity": 1,
+                    "raw_quantity": {
+                        "value": "1",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01JZSTB8TH9CKTKKYKWMETHA49",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01JZSTB8TFR36TWH999B2NPB5R",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "1",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2025-07-10T09:23:28.211Z",
+                        "updated_at": "2025-07-10T09:23:28.211Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01JZSTB8TH3YM2RJSHV9NHGGE0",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 1,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                }
+            ],
+            "customer": {
+                "id": "cus_01JZCGH00YJ1YZ9RSCX4834YRB",
+                "company_name": null,
+                "first_name": null,
+                "last_name": null,
+                "email": "jk@test.com",
+                "phone": null,
+                "has_account": true,
+                "metadata": null,
+                "created_by": null,
+                "created_at": "2025-07-05T05:21:48.317Z",
+                "updated_at": "2025-07-05T05:21:48.317Z",
+                "deleted_at": null
+            },
+            "payment_status": "captured",
+            "fulfillment_status": "not_fulfilled"
+        },
+        {
+            "id": "order_01K0489DVRCWHE8F38YVJJ8ENH",
+            "display_id": 2,
+            "status": "pending",
+            "version": 1,
+            "summary": {
+                "paid_total": 2.65,
+                "difference_sum": 0,
+                "raw_paid_total": {
+                    "value": "2.65",
+                    "precision": 20
+                },
+                "refunded_total": 0,
+                "accounting_total": 2.65,
+                "credit_line_total": 0,
+                "transaction_total": 2.65,
+                "pending_difference": 0,
+                "raw_difference_sum": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_refunded_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "current_order_total": 2.65,
+                "original_order_total": 2.65,
+                "raw_accounting_total": {
+                    "value": "2.65",
+                    "precision": 20
+                },
+                "raw_credit_line_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_transaction_total": {
+                    "value": "2.65",
+                    "precision": 20
+                },
+                "raw_pending_difference": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_current_order_total": {
+                    "value": "2.65",
+                    "precision": 20
+                },
+                "raw_original_order_total": {
+                    "value": "2.65",
+                    "precision": 20
+                }
+            },
+            "metadata": {
+                "cart_id": "cart_01K0483X8QQ4974N20EJ6JFR1A",
+                "tiny_erp_errors": false,
+                "tiny_erp_status": "OK",
+                "tiny_erp_order_id": 759312766,
+                "tiny_erp_order_number": "328467"
+            },
+            "created_at": "2025-07-14T10:39:32.218Z",
+            "updated_at": "2025-07-14T10:39:32.218Z",
+            "customer_id": "cus_01JZCGH00YJ1YZ9RSCX4834YRB",
+            "items": [
+                {
+                    "id": "ordli_01K0489DVSCETFM2GGYAV3QNFW",
+                    "title": "Bordô",
+                    "subtitle": "Tapete de yoga Asana - 4.5mm PVC ecológico",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2024/09/Asana-Ameixa.jpg",
+                    "variant_id": "variant_01JZCGGGZ2D6Z7TA2H9FTAR33V",
+                    "product_id": "prod_01JZCGGD573B6KPFMEFNF6PWFM",
+                    "product_title": "Tapete de yoga Asana - 4.5mm PVC ecológico",
+                    "product_description": "Durável e resistente O melhor custo-benefício Perfeito para iniciar a jornada do yoga com você. O Asana é um tapete de yoga clássico com superfície antiderrapante para práticas básicas e suaves. ✓ O mais vendido ✓ Ideal para yoga, pilates e treinos ✓ Com material reforçado, não esfarela ✓ +1000 avaliações e 94% de satisfação máxima 70% de nossos clientes dizem que aumentaram a frequência e disciplina da prática após a compra do seu próprio tapete de Yoga. O Tapete de Yoga Asana é de PVC Ecológico exclusivo da Yogateria, com um processo de produção otimizado e consciente, sem toxinas e metais pesados. Não possui cheiro forte característico do PVC comum. Feito com material durável e resistente, não esfarela. Pode ser usado ao ar livre - na natureza, praia, grama, pedras ou ambientes internos - com ou sem sapatos. É resistente para todas as modalidades de yoga. Além da qualidade do material ser notavelmente superior, quando comparado aos demais Tapetes de PVC encontrados no mercado, o Asana é mais estável pois possui uma tela interna que proporciona mais resistência e firmeza no uso. Os tapetes de PVC precisam de alguns dias para \"maturar \" e ganhar mais aderência. Recomendamos passar um pano úmido e esperar secar antes de usar. Deixar o tapete aberto nos primeiros dias também ajudar a acelerar o processo. Então, não se preocupe se nos primeiros momento você não sentir a aderência completa. Indicado para práticas sem muita umidade, se você sua bastante, recomendamos nossos outros modelos de tapetes de yoga com aderência extrema: Cortiça, Phoenix, Ecopro O PVC Ecológico da Yogateria é um PVC produzido com menos recursos químicos e com alguns componentes reciclados, não contém metais pesados, corantes cancerígenos e produtos químicos tóxicos chamados ftalatos. O nosso PVC Ecológico é uma versão do PVC mais sustentável, livre de toxinas e ftalatos. Para afirmar que o PVC é ecológico, é necessário que o material tenha o certificado que comprove um processo de fabricação mais consciente, livre de toxinas e ftalatos. O nosso PVC é o único ecológico e com certificado Oeko-Tex (TP025 122612) - Indica que o material é livre de produtos químicos nocivos e seguro para uso humano, e testado pela SGS - órgão suíço de inspeção, verificação, teste e certificação. Você encontrará este selo na embalagem do seu tapete de yoga. Não contém: Corantes que liberam uma substância toxica chamada AZO, feito por um processo no qual uma amina aromática é transformada em um componente de diazônio que reage com outro componente como o fenol ou naftol para formar o corante. DOP (Dioctil ftalato), ​​um plastificante usado na produção de plástico flexível de cloreto de polivinila (PVC). É um dos plastificantes mais utilizados no PVC devido ao seu baixo custo. 6P, produtos químicos tóxicos usados ​​para suavizar e aumentar a flexibilidade do plástico e do vinil. Todas essas substâncias são nocivas e costumam ser encontradas em muitos tapetes e equipamentos de yoga. Experimente passar um pano úmido antes da primeira prática e deixe secar bem antes de usar. Lavável na máquina com água fria de até 30° C, sem amaciante e com pouco sabão. Veja aqui as dicas para os primeiros usos, cuidados diários e como limpar o tapete de yoga. Experimente passar um pano úmido antes da primeira prática e deixe secar bem antes de usar. Ter uma bolsa para o tapete também garante sua proteção e a facilidade ao transportá-lo. Com a limpeza e os cuidados certos, é possível estender a vida útil do seu tapete de yoga. Poeira, oleosidade da pele e suor podem penetrar na superfície do tapete e causar mau cheiro ou deixá-lo escorregadio e sujo. Por isso, é fundamental ter alguns cuidados básicos com o tapete depois de cada uso, para prolongar a sua vida útil e mantê-lo higienizado. Experimente também o nosso limpador higienizante de tapete de yoga. Cuide bem de seu tapete e aproveite sua prática!(Leitura de 4 minutos) por Alessandro, CEO da Yogateria Estamos há muito tempo trabalhando neste tapete de yoga. Ele é produzido em nossa fábrica, onde conseguimos oferecer empregos para muitas pessoas. Todos os nossos tapetes de yoga possuem certificação especial - e temos orgulho de sermos os primeiros e únicos no Brasil nesta categoria! Certificação STANDARD 100 pela OEKO-TEX® A OEKO-TEX diz: “O STANDARD 100 da OEKO-TEX® é um dos certificados mais conhecidos do mundo para têxteis testados para substâncias nocivas. Representa a confiança do cliente e alta segurança do produto.” O que significa que você pode colocar um bebê recém-nascido no tapete de yoga com segurança, e é totalmente livre de quaisquer substâncias perigosas (sem metais pesados, etc.), pra sua pele ficar feliz! Já sabemos que é seguro, mas o que é que torna este tapete de yoga tão especial? Sucesso Queremos te passar alguns números… Em todo o mundo, mais de 1000 unidades deste nosso modelo de tapete de yoga são vendidos por dia. Todo dia. Isso é mais de 300 mil tapetes por ano - é muito tapete de yoga! Aqui no Brasil já vendemos para mais de 850 cidades em apenas 18 meses. Wow! Da Europa ao Brasil, este tapete de yoga é puro sucesso. Mas por que? É resistente, tem várias cores, é seguro, tem o melhor custo benefício. Durabilidade Eu sei que ele pode até parecer com qualquer tapete de yoga de pvc convencional, mas a qualidade é inabalável e inquestionável. Dentro do nosso pvc tem uma rede de nylon que torna o tapete muito estável (e isso é muito importante, principalmente para as posturas de pé). Ele tem uma espessura de 4.5 mm e dura muito. Fizemos uma pesquisa comparativa com outros tapetes de yoga, e o Tapete de Yoga Asana dura de 5 a 10 vezes mais, dependendo da sua forma uso. Normalmente, seu tapete de yoga de pvc começa a esfarelar entre 3 a 12 meses, mas o nosso começará a dar alguns sinais (se der) apenas após 5 anos - ou mais. É durável, e também tem uma boa aderência, a melhor que um tapete de pvc pode ter. É claro que se você suar como um atleta olímpico, a aderência pode ser reduzida. Mas quanto mais você usa, mais aderente ele fica. Legal, né? Você sabe o que pode deixar um yogi nervoso? Quando o tapete de yoga não fica totalmente estendido no chão, e fica enrolado nas laterais. Ou quando o tapete fica deslisando pelo chão. Ou quando ele se desintegra todo e suja toda a sua casa. ISSO NÃO VAI ACONTECER COM O TAPETE DE YOGA ASANA. Te garanto. Custo benefício Você pode comprar aquele tapete de yoga por 50 reais (ou menos) e depois de 3 meses já vai jogar no lixo. POR FAVOR PARE COM ISSO. Recebemos esse tipo de mensagem diariamente. Realmente achamos que este é o melhor tapete de yoga custo - benefício disponível no Brasil, e não somos só nós que achamos, mas também os mais de 30 mil clientes que compraram nosso Tapete de Yoga Asana. Você pode usar em qualquer lugar Ele é bem resistente. Você pode praticar no sol, na praia, na natureza, em casa, no estúdio, onde quiser… E ele também é bem leve, com apenas 1,1kg! E se você quiser usar este tapete de yoga para outros exercícios, não tem problema, você pode usar até com sapatos (mas não fala isso pro seu professor de yoga). Tamanho Nós temos um padrão internacional, 183 x 60, que é 10cm maior do que a média dos tapetes encontrado no mercado brasileiro. É o suficiente para quem tem pernas mais longas, e seu shavasana vai te agradecer . Cores brilhantes Já viu as 8 cores? Uma mais linda do que a outra. Cores impossíveis de encontrar no Brasil, como petróleo, ameixa e açafrão… E a cor não desbota e fica novinha por décadas. Prometo! Acredito que já disse quase tudo, mas se ainda tiver alguma dúvida, leia nossa longa lista de avaliações - são mais de 1000 em apenas 18 meses! Isso vai te ajudar a tomar a sua decisão. Aproveite e boa prática! MATERIAL PVC eco TAMANHO 183 x 60 cm PESO 1.1 kg ESPESSURA 4.5 mm USO Interno / externo ADERÊNCIA ☆☆☆ Você é uma agência de comunicação, estúdio de yoga ou revendedor que precisa de mais de 20 tapetes?   Escreva uma mensagem para receber um orçamento: 21 98987 8270 1.1kg, 183x60cm e com 4.5mm Tamanho e peso perfeitos para praticar! Não. O asana além de ser produzido em PVC ecológico de alta qualidade possui uma costura interna em forma de rede que garante mais resistência e durabilidade ao tapete. Pode ser utilizado para yoga ou exercícios físicos mais intensos. Utilizando de forma adequada seu tapete irá durar por muitos anos. Todo tapete de PVC precisa de alguns dias para “maturar” para ganhar mais aderência. Clique aqui para dicas e primeiros cuidados. Como todo tapete de PVC, o Asana pode ter sua aderência reduzida por muita transpiração ou umidade, pois o PVC não absorve o excesso de suor das mãos e pés. Sim! O Asana é um tapete com superfície aderente, elástica e absorvente ao impacto. Oferece conforto para exercícios de yoga, ginástica, pilates ou outras atividades físicas que necessitem de apoio e proteção do corpo ao chão. Sim! O PVC ecológico é um material resistente, durável e fácil de limpar podendo ser utilizado tanto em áreas internas quanto externas, como parques, praia ou gramados por exemplo. Em nosso site você encontra bolsas de tapete com diferentes cores, modelos e tamanhos. Também temos alças de yoga, caso você só precise manter o seu tapete de yoga fechado para transporte. As bolsas e alças não estão inclusas neste produto. O PVC ecológico utiliza menos recursos e tem alguns componentes reciclados em seu processo de fabricação, é livre de toxinas e, além disso, o PVC ecológico da Yogateria é o único do Brasil com certificação Oeko-Tex que indica que a composição do material é livre de produtos químicos nocivos e seguro para uso humano. Sim! você pode utilizar um pano úmido com água pura ou com um pouco de sabão de côco. Para limpezas mais pesadas pode ainda ser lavado na máquina com água fria de até 30° C, sem amaciante e com pouco sabão. Nunca utilize produtos abrasivos ou álcool na limpeza do seu tapete! A longo prazo eles tendem a ressecar o material Para melhor conservação do tapete, sugerimos que a prática seja feita com os pés descalços e limpos.  Também recomendamos a higienização após o final da prática, principalmente em caso de uso em ambientes externos. O nosso Higienizador de Tapete é uma ótima opção para remover partículas de poeira, areia, grama úmida, etc. A limpeza também pode ser feita com um pano úmido. Sim. Temos diversas cores lindas, e podem ser selecionadas nas bolinhas coloridas aqui em cima na página do produto perto da descrição inicial. Além de ser leve, o tapete ocupa pouquíssimo espaço, pois quando enrolado as suas medidas são 60 x 11 cm (comprimento x diâmetro). Temos também a linha de tapetes mais finos e dobráveis para viagem.Não temos uma garantia fixa, pois depende do tipo de uso e cuidados com o tapete, mas caso tenha alguma necessidade especial, basta entrar em contato com o nosso setor de atendimento. Em caso de devolução ou troca por outro produto o prazo é de 30 dias após o recebimento do produto. O produto não deve apresentar marcas de uso ou manchas e deve estar limpo e embalado com plástico ou papel para a coleta da transportadora no mesmo endereço da entrega.",
+                    "product_subtitle": "<p class=\"p1\"><span style=\"color: #c21515;\"><strong>🏆  </strong></span><span style=\"font-size: 12pt;\"><span style=\"background-color: #ccff00; color: #3b3b48;\"><span style=\"color: #c21515;\"><strong> </strong></span><strong><span style=\"color: #000000;\">CAMPEÃO DE VENDAS </span></strong></span><br /></span></p><br /><span style=\"color: #000000;\">O tapete de yoga que não esfarela.<br />Perfeito para começar sua jornada no yoga.</span>",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "asana",
+                    "variant_sku": "ymar",
+                    "variant_barcode": null,
+                    "variant_title": "Bordô",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "165",
+                        "precision": 20
+                    },
+                    "created_at": "2025-07-14T10:39:32.218Z",
+                    "updated_at": "2025-07-14T10:39:32.218Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 165,
+                    "quantity": 1,
+                    "raw_quantity": {
+                        "value": "1",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01K0489DVS74EQ5RRG9M989CGT",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01K0489DVRCWHE8F38YVJJ8ENH",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "1",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2025-07-14T10:39:32.218Z",
+                        "updated_at": "2025-07-14T10:39:32.218Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01K0489DVSCETFM2GGYAV3QNFW",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 1,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                }
+            ],
+            "customer": {
+                "id": "cus_01JZCGH00YJ1YZ9RSCX4834YRB",
+                "company_name": null,
+                "first_name": null,
+                "last_name": null,
+                "email": "jk@test.com",
+                "phone": null,
+                "has_account": true,
+                "metadata": null,
+                "created_by": null,
+                "created_at": "2025-07-05T05:21:48.317Z",
+                "updated_at": "2025-07-05T05:21:48.317Z",
+                "deleted_at": null
+            },
+            "payment_status": "captured",
+            "fulfillment_status": "not_fulfilled"
+        },
+        {
+            "id": "order_01K1QTMN2EK941Y1VPG3SM0KR2",
+            "display_id": 3,
+            "status": "pending",
+            "version": 1,
+            "summary": {
+                "paid_total": 0,
+                "difference_sum": 0,
+                "raw_paid_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "refunded_total": 0,
+                "accounting_total": 254,
+                "credit_line_total": 0,
+                "transaction_total": 0,
+                "pending_difference": 254,
+                "raw_difference_sum": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_refunded_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "current_order_total": 254,
+                "original_order_total": 254,
+                "raw_accounting_total": {
+                    "value": "254",
+                    "precision": 20
+                },
+                "raw_credit_line_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_transaction_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_pending_difference": {
+                    "value": "254",
+                    "precision": 20
+                },
+                "raw_current_order_total": {
+                    "value": "254",
+                    "precision": 20
+                },
+                "raw_original_order_total": {
+                    "value": "254",
+                    "precision": 20
+                }
+            },
+            "metadata": {
+                "cart_id": "cart_01K1QTEMETKETDRV5MRKFCB4Z3",
+                "tiny_erp_errors": false
+            },
+            "created_at": "2025-08-03T11:21:30.448Z",
+            "updated_at": "2025-08-03T11:21:30.448Z",
+            "customer_id": "cus_01K1QTJ7R12KC2P41VW4H2RX41",
+            "items": [
+                {
+                    "id": "ordli_01K1QTMN2F8HPX6H68SXZD0FB0",
+                    "title": "Amora / Rosa",
+                    "subtitle": "Tapete de yoga estampado Ganges – 6mm PVC ecológico",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2024/09/Ganges-Azul.jpg",
+                    "variant_id": "variant_01JZCGGGZ1QJ701QTE1D12CX9S",
+                    "product_id": "prod_01JZCGGD57339RDE38GQXPX36Z",
+                    "product_title": "Tapete de yoga estampado Ganges – 6mm PVC ecológico",
+                    "product_description": "Tapete de yoga com conforto e estilo! O tapete de yoga Ganges tem uma espessura extra de 6 mm, trazendo mais conforto e proteção para as articulações (joelhos, coluna e cotovelos) mas sem comprometer seu equilíbrio durante a prática de Yoga, ginástica ou pilates. É antiderrapante em ambos os lados, possui boa tração e amortecimento de impacto, e é um tapete de longa duração. Recomendado para uso pessoal e profissional. Nossas pesquisas mostram que 70% dos nossos clientes aumentaram a frequência e disciplina da sua prática após a compra do seu próprio tapete de Yoga. Além de relatarem que se sentem mais confortáveis com a higiene por não precisar utilizar tapetes compartilhados. Seu aspecto marmorizado remete à fluidez das águas de onde vem a inspiração de seu nome, o rio Ganges, o rio sagrado da Índia. As combinações vibrantes de cores trazem o aspecto da cromoterapia para sua prática. A cromoterapia é uma ciência baseada no estudo das cores e seu objetivo é valorizar seus benefícios terapêuticos. Azul turquesa – Relaxante, calmante e paz Roxo e branco – Transformação, intuição e consciência Rosa e roxo – Estimulante, pureza, transmutação Verde e amarelo – Relaxante, harmonia e bom-humor Vermelho e laranja – Energizante, criatividade e entusiasmo O Tapete Ganges é produzido com PVC Ecológico, onde o processo de fabricação utiliza menos recursos e tem alguns componentes reciclados. Por isso, não possui cheiro forte característico do PVC comum. Feito com material durável e resistente, não esfarela. Pode ser usado ao ar livre – na natureza, praia, grama, pedras ou ambientes internos – com ou sem sapatos. É resistente para a prática de Hot Yoga. Além da qualidade do material ser superior, quando comparado ao Tapete PVC comum, o nosso tapete é mais estável pois possui uma rede de nylon no meio que proporciona mais firmeza no uso. Os tapetes de PVC precisam de alguns dias para “maturar “, ganhar mais aderência. Recomendamos passar um pano úmido e esperar secar antes de usar. Deixar o tapete aberto nos primeiros dias também ajudar a acelerar o processo. Então, não se preocupe se nos primeiros momento você não sentir a aderência completa. O PVC pode perder um pouco de aderência com excesso de umidade, se você sua bastante pode ver nossos outros modelos de tapetes de yoga com aderência extrema: Ecopro 6mm, Cortiça, Phoenix, Ecopro O PVC Ecológico da Yogateria é um PVC produzido com menos recursos químicos e com alguns componentes reciclados, não contém metais pesados, corantes cancerígenos e produtos químicos tóxicos chamados ftalatos. O nosso PVC Ecológico é uma versão do PVC mais sustentável, livre de toxinas e ftalatos. Para afirmar que o PVC é ecológico, é necessário que o material tenha o certificado que comprove um processo de fabricação mais consciente, livre de toxinas e ftalatos. O nosso PVC é o único ecológico e com certificado Oeko-Tex (TP025 122612) - Indica que o material é livre de produtos químicos nocivos e seguro para uso humano, e testado pela SGS - órgão suíço de inspeção, verificação, teste e certificação. Você encontrará este selo na embalagem do seu tapete de yoga. Não contém: Corantes que liberam uma substância toxica chamada AZO, feito por um processo no qual uma amina aromática é transformada em um componente de diazônio que reage com outro componente como o fenol ou naftol para formar o corante. DOP (Dioctil ftalato), ​​um plastificante usado na produção de plástico flexível de cloreto de polivinila (PVC). É um dos plastificantes mais utilizados no PVC devido ao seu baixo custo. 6P, produtos químicos tóxicos usados ​​para suavizar e aumentar a flexibilidade do plástico e do vinil. Todas essas substâncias são perigosas a saúde e costumam ser encontradas em muitos tapetes e equipamentos de yoga. Experimente passar um pano úmido antes da primeira prática e deixe secar bem antes de usar. Lavável na máquina até 30° C. Veja aqui as dicas para os primeiros usos, cuidados diários e como limpar o tapete de yoga. Ter uma bolsa para o tapete também garante sua proteção e a facilidade ao transportá-lo. Com a limpeza e os cuidados certos, é possível estender a vida útil do seu tapete de yoga. Poeira, oleosidade da pele e suor podem penetrar na superfície do tapete e causar mau cheiro ou deixá-lo escorregadio e sujo. Por isso, é fundamental ter alguns cuidados básicos com o tapete depois de cada uso, para prolongar a sua vida útil e mantê-lo higienizado. Experimente também o nosso limpador higienizante de tapete de yoga. Cuide bem de seu tapete e aproveite sua prática! Material PVC eco Tamanho 183cm x 60cm Peso 1.6kg Espessura 6mm Local de uso Interno / externo Aderência ☆☆☆ 1.6kg, 183x60cm e com 6mm Tamanho e peso perfeitos para praticar!O tapete Ganges além de ser produzido em PVC ecológico de alta qualidade possui uma costura interna em forma de rede que garante mais resistência e durabilidade ao tapete. Pode ser utilizado para yoga ou exercícios físicos mais intensos. Utilizando de forma adequada seu tapete irá durar por muitos anos.Todo tapete de PVC precisa de alguns dias para “maturar” para ganhar mais aderência. Clique aqui para dicas e primeiros cuidados. Como todo tapete de PVC, o tapete Ganges pode ter sua aderência reduzida por muita transpiração ou umidade, pois o PVC não absorve o excesso de suor das mãos e pés.O tapete de yoga Ganges tem uma espessura extra de 6 mm, trazendo mais conforto e proteção para as articulações (joelhos, coluna e cotovelos) mas sem comprometer seu equilíbrio durante a prática de Yoga, ginástica ou pilates.Sim. Temos diversas cores lindas, e podem ser selecionadas nas bolinhas coloridas aqui em cima na página do produto perto da descrição inicial.Sim! O Ganges é um tapete com superfície aderente, elástica e absorvente ao impacto. Oferece conforto para exercícios de yoga, ginástica, pilates ou outras atividades físicas que necessitem de apoio e proteção do corpo ao chão.Sim! O PVC ecológico é um material resistente, durável e fácil de limpar podendo ser utilizado tanto em áreas internas quanto externas, como parques, praia ou gramados por exemplo.Em nosso site você encontra bolsas de tapete com diferentes cores, modelos e tamanhos. Também temos alças de yoga, caso você só precise manter o seu tapete de yoga fechado para transporte. As bolsas e alças não estão inclusas neste produto.Sim! você pode utilizar um pano úmido com água pura ou com um pouco de sabão de côco. Para limpezas mais pesadas pode ainda ser lavado na máquina com água fria de até 30° C, sem amaciante e com pouco sabão. Nunca utilize produtos abrasivos ou álcool na limpeza do seu tapete! A longo prazo eles tendem a ressecar o materialO PVC ecológico utiliza menos recursos e tem alguns componentes reciclados em seu processo de fabricação, é livre de toxinas e, além disso, o PVC ecológico da Yogateria é o único do Brasil com certificação Oeko-Tex que indica que a composição do material é livre de produtos químicos nocivos e seguro para uso humano.Para melhor conservação do tapete, sugerimos que a prática seja feita com os pés descalços e limpos.  Também recomendamos a higienização após o final da prática, principalmente em caso de uso em ambientes externos. O nosso Higienizador de Tapete é uma ótima opção para remover partículas de poeira, areia, grama úmida, etc. A limpeza também pode ser feita com um pano úmido.Não temos uma garantia fixa, pois depende do tipo de uso e cuidados com o tapete, mas caso tenha alguma necessidade especial, basta entrar em contato com o nosso setor de atendimento.Em caso de devolução ou troca por outro produto o prazo é de 30 dias após o recebimento do produto. O produto não deve apresentar marcas de uso ou manchas e deve estar limpo e embalado com plástico ou papel para a coleta da transportadora no mesmo endereço da entrega.",
+                    "product_subtitle": "<span style=\"font-size: 10pt;\"><strong><span style=\"background-color: #8f6a73; color: #fff;\">  SEUS JOELHOS AGRADECEM  </span></strong></span><br /><strong>Conforto Extra</strong> para sua prática",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "ganges",
+                    "variant_sku": "940AL",
+                    "variant_barcode": null,
+                    "variant_title": "Amora / Rosa",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "235",
+                        "precision": 20
+                    },
+                    "created_at": "2025-08-03T11:21:30.448Z",
+                    "updated_at": "2025-08-03T11:21:30.448Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 235,
+                    "quantity": 1,
+                    "raw_quantity": {
+                        "value": "1",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01K1QTMN2FGH3N1H630DF87B7B",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01K1QTMN2EK941Y1VPG3SM0KR2",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "1",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2025-08-03T11:21:30.448Z",
+                        "updated_at": "2025-08-03T11:21:30.448Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01K1QTMN2F8HPX6H68SXZD0FB0",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 1,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                }
+            ],
+            "customer": {
+                "id": "cus_01K1QTJ7R12KC2P41VW4H2RX41",
+                "company_name": null,
+                "first_name": null,
+                "last_name": null,
+                "email": "ale.trotta@artofliving.it",
+                "phone": null,
+                "has_account": false,
+                "metadata": null,
+                "created_by": null,
+                "created_at": "2025-08-03T11:20:11.266Z",
+                "updated_at": "2025-08-03T11:20:11.266Z",
+                "deleted_at": null
+            },
+            "payment_status": "authorized",
+            "fulfillment_status": "not_fulfilled"
+        },
+        {
+            "id": "order_01KEA625XBG34J5WVT16YYETZF",
+            "display_id": 4,
+            "status": "pending",
+            "version": 1,
+            "summary": {
+                "paid_total": 234,
+                "difference_sum": 0,
+                "raw_paid_total": {
+                    "value": "234",
+                    "precision": 20
+                },
+                "refunded_total": 0,
+                "accounting_total": 234,
+                "credit_line_total": 0,
+                "transaction_total": 234,
+                "pending_difference": 0,
+                "raw_difference_sum": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_refunded_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "current_order_total": 234,
+                "original_order_total": 234,
+                "raw_accounting_total": {
+                    "value": "234",
+                    "precision": 20
+                },
+                "raw_credit_line_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_transaction_total": {
+                    "value": "234",
+                    "precision": 20
+                },
+                "raw_pending_difference": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_current_order_total": {
+                    "value": "234",
+                    "precision": 20
+                },
+                "raw_original_order_total": {
+                    "value": "234",
+                    "precision": 20
+                }
+            },
+            "metadata": {
+                "cart_id": "cart_01KEA58BKP92XTR13X1K9ETKXF",
+                "tapfiliate": {},
+                "tiny_erp_errors": false,
+                "tiny_erp_status": "OK",
+                "tiny_erp_order_id": 759962204,
+                "tiny_erp_order_number": "362446"
+            },
+            "created_at": "2026-01-06T17:35:49.679Z",
+            "updated_at": "2026-01-06T17:35:49.679Z",
+            "customer_id": "cus_01KEA5ZCM41F65EDY67V43R6S8",
+            "items": [
+                {
+                    "id": "ordli_01KEA625XC0Z716PYX15R3FQR9",
+                    "title": "Caneca Surya Namaskar Namaste Branca",
+                    "subtitle": "Caneca Surya Namaskar Namaste Branca",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2019/06/Caneca-cerâmica-Happy-Namaskar.jpg",
+                    "variant_id": "variant_01JZCGGGZ5S2SXDCN7XEJ2W0NY",
+                    "product_id": "prod_01JZCGGD580JY19YZF56HZ2PFN",
+                    "product_title": "Caneca Surya Namaskar Namaste Branca",
+                    "product_description": "Caneca de cerâmica branca com Surya Namaskar colorido e fundo com o símbolo do mantra Om. Um presente com propósito para um amigo ou para si mesmo. Tudo é energia. E quando carregamos a mensagem que queremos ver no mundo em nossa mente, em nosso corpo e em nossos objetos e acessórios, contribuímos para elevar a energia em nossas vidas e por onde passamos.As posturas representadas constituem o Surya Namaskar - a Saudação ao Sol, uma das séries de yoga mais importantes e conhecidas da humanidade. A prática de Surya Namaskar desperta a inteligência do corpo para gerar energia diretamente do sol. Quando praticada ao amanhecer, respirando corretamente, experimenta-se um efeito fenomenal na mente, corpo e alma. Om é um som sagrado, conhecido como o som primordial do universo - o início, meio e fim - a totalidade. Composto de sons com efeitos de cura e relaxamento. Um som que protege e abençoa. Este símbolo contém os 5 elementos e as energias que regem todo o universo: criação, preservação e destruição. Om costuma ser a preparação inicial para as práticas de yoga e harmoniza o corpo, mente e a alma.",
+                    "product_subtitle": "<div>Aproveite o momento, a cada gole.</div><br /><ul><br /> \t<li><strong>300ml</strong></li><br /> \t<li>8.5cm x 8.3cm</li><br /> \t<li>Cerâmica</li><br /> \t<li>Disponível em 9 estilos diferentes</li><br /></ul>",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "caneca-surya-namaskar-namaste-branca",
+                    "variant_sku": "513HN",
+                    "variant_barcode": null,
+                    "variant_title": "Caneca Surya Namaskar Namaste Branca",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "5.9",
+                        "precision": 20
+                    },
+                    "created_at": "2026-01-06T17:35:49.679Z",
+                    "updated_at": "2026-01-06T17:35:49.679Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 5.9,
+                    "quantity": 4,
+                    "raw_quantity": {
+                        "value": "4",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KEA625XEPDZZZ6XZ5SEP49KV",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KEA625XBG34J5WVT16YYETZF",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "4",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-01-06T17:35:49.680Z",
+                        "updated_at": "2026-01-06T17:35:49.680Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KEA625XC0Z716PYX15R3FQR9",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 4,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                },
+                {
+                    "id": "ordli_01KEA625XC7PQPYWB3J4BANSPJ",
+                    "title": "Caneca Mandala Azul",
+                    "subtitle": "Caneca Mandala Azul",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2019/06/Caneca-azul-cerâmica-Mandala.jpg",
+                    "variant_id": "variant_01JZCGGGZ3M74E00HPG5H73WH9",
+                    "product_id": "prod_01JZCGGD57ZDQTRNTBRYB8BWXB",
+                    "product_title": "Caneca Mandala Azul",
+                    "product_description": "Caneca de cerâmica azul com Mandala e Om, e fundo com o símbolo do mantra Om. Um presente com propósito para um amigo ou para si mesmo. Tudo é energia. E quando carregamos a mensagem que queremos ver no mundo em nossa mente, em nosso corpo e em nossos objetos e acessórios, contribuímos para elevar a energia em nossas vidas e por onde passamos. Om é um som sagrado, conhecido como o som primordial do universo - o início, meio e fim - a totalidade. Composto de sons com efeitos de cura e relaxamento. Um som que protege e abençoa. Este símbolo contém os 5 elementos e as energias que regem todo o universo: criação, preservação e destruição. Om costuma ser a preparação inicial para as práticas de yoga e harmoniza o corpo, mente e a alma. A mandala é um diagrama geométrico simétrico circular que simboliza integração, harmonia, paz e busca espiritual. É uma representação simbólica do universo com um mundo interior e exterior, e visto como uma forma mágica, sem início e fim. A energia se move no universo de forma circular, e a mandala significa círculo. Acredita-se que a mandala tem o poder de materializar suas intenções por estar recriando o momento da criação.",
+                    "product_subtitle": "<div>Aproveite o momento, a cada gole.</div><br /><ul><br /> \t<li><strong>300ml</strong></li><br /> \t<li>8.5cm x 8.3cm</li><br /> \t<li>Cerâmica</li><br /> \t<li>Disponível em 9 estilos diferentes</li><br /></ul>",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "caneca-mandala-azul",
+                    "variant_sku": "513BM",
+                    "variant_barcode": null,
+                    "variant_title": "Caneca Mandala Azul",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "5.9",
+                        "precision": 20
+                    },
+                    "created_at": "2026-01-06T17:35:49.679Z",
+                    "updated_at": "2026-01-06T17:35:49.679Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 5.9,
+                    "quantity": 4,
+                    "raw_quantity": {
+                        "value": "4",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KEA625XE0AWD0ZZW2HSVFF2C",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KEA625XBG34J5WVT16YYETZF",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "4",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-01-06T17:35:49.680Z",
+                        "updated_at": "2026-01-06T17:35:49.680Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KEA625XC7PQPYWB3J4BANSPJ",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 4,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                },
+                {
+                    "id": "ordli_01KEA625XCBAQ02H32XTYMBVCX",
+                    "title": "Caneca Surya Namaskar Rosa",
+                    "subtitle": "Caneca Surya Namaskar Rosa",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2019/06/Caneca-cerâmica-Saudação-ao-Sol.jpg",
+                    "variant_id": "variant_01JZCGGGZ7K0ZWP1T38NPDZBTZ",
+                    "product_id": "prod_01JZCGGD59VJ6V42SW2CBP1CRT",
+                    "product_title": "Caneca Surya Namaskar Rosa",
+                    "product_description": "Caneca de cerâmica rosa e lilás com Surya Namaskar e fundo com o símbolo do mantra Om. Um presente com propósito para um amigo ou para si mesmo. Tudo é energia. E quando carregamos a mensagem que queremos ver no mundo em nossa mente, em nosso corpo e em nossos objetos e acessórios, contribuímos para elevar a energia em nossas vidas e por onde passamos.As posturas representadas constituem o Surya Namaskar - a Saudação ao Sol, uma das séries de yoga mais importantes e conhecidas da humanidade. A prática de Surya Namaskar desperta a inteligência do corpo para gerar energia diretamente do sol. Quando praticada ao amanhecer, respirando corretamente, experimenta-se um efeito fenomenal na mente, corpo e alma. Om é um som sagrado, conhecido como o som primordial do universo - o início, meio e fim - a totalidade. Composto de sons com efeitos de cura e relaxamento. Um som que protege e abençoa. Este símbolo contém os 5 elementos e as energias que regem todo o universo: criação, preservação e destruição. Om costuma ser a preparação inicial para as práticas de yoga e harmoniza o corpo, mente e a alma.",
+                    "product_subtitle": "<div>Aproveite o momento, a cada gole.</div><br /><ul><br /> \t<li><strong>300ml</strong></li><br /> \t<li>8.5cm x 8.3cm</li><br /> \t<li>Cerâmica</li><br /> \t<li>Disponível em 9 estilos diferentes</li><br /></ul>",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "caneca-surya-namaskar-rosa",
+                    "variant_sku": "513SS",
+                    "variant_barcode": null,
+                    "variant_title": "Caneca Surya Namaskar Rosa",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "5.9",
+                        "precision": 20
+                    },
+                    "created_at": "2026-01-06T17:35:49.679Z",
+                    "updated_at": "2026-01-06T17:35:49.679Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 5.9,
+                    "quantity": 4,
+                    "raw_quantity": {
+                        "value": "4",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KEA625XE5BF5056CHATKJ3VM",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KEA625XBG34J5WVT16YYETZF",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "4",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-01-06T17:35:49.680Z",
+                        "updated_at": "2026-01-06T17:35:49.680Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KEA625XCBAQ02H32XTYMBVCX",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 4,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                },
+                {
+                    "id": "ordli_01KEA625XCERBYKASZEWWFSNAE",
+                    "title": "Amora",
+                    "subtitle": "Garrafa Yoga - 700ml",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2020/07/garrafa-yoga-verde-yogateria.jpg",
+                    "variant_id": "variant_01JZCGGGZTJVJ6R7V06VKCFDWB",
+                    "product_id": "prod_01JZCGGD5J2C1BE27H41KXP7FA",
+                    "product_title": "Garrafa Yoga - 700ml",
+                    "product_description": "Nossas garrafas são produzidas com tecnologia de ponta para que você tenha sempre sua bebida favorita com você! Ela acompanha duas tampas: uma de rosca com gancho mosquetão e outra com canudo retrátil. Você pode escolher a que mais se adapta a sua rotina!   A tampa esportiva com canudo é fácil de abrir e usar, mesmo durante a aula de yoga ou outros esportes. E a outra tampa conta com a praticidade do gancho mosquetão, você pode prender facilmente na sua bolsa ou mochila.  A garrafa é compacta e fácil de transportar. Suas tampas possuem um anel de vedação em silicone antivazamento, ela vai para onde você for.  Com estampas minimalistas, cores sóbrias e alta resistência a riscos, elas também não desbotam ou descascam.  Uma alternativa prática e ecológica às garrafas de plástico, ajuda o meio ambiente evitando o uso de descartáveis e é livre de BPA e toxinas. A flor da vida é o padrão geométrico da criação e da vida, considerado como um dos símbolos mais importantes da geometria sagrada, pois dentro dela estariam codificadas as formas fundamentais que constituem aquilo que conhecemos como tempo e espaço. É dito que o código da Flor da Vida contém toda a sabedoria similar ao código genético contido em nosso DNA. Om é um dos símbolos espirituais mais importantes da humanidade. Um som sagrado, conhecido como o som primordial do universo – o início, meio e fim – a totalidade. E é composto de sons com efeitos de cura e relaxamento. Um som que protege e abençoa. Este símbolo contém os 5 elementos e as energias que regem todo o universo: criação, preservação e destruição. Om costuma ser a preparação inicial para as práticas de yoga e harmoniza o corpo, mente e a alma. As Garrafas e copos da Yogateria são produzidos com uma de liga de Aço Inoxidável 18/8. É um material livre de BPA e toxinas, mundialmente conhecido pela qualidade para armazenamento e transporte de bebidas, pela facilidade de higienização e excelente resistência contra oxidação e corrosão. Recomendamos a higienização da garrafa após o uso com sabão neutro. Na parede externa utilize o lado macio da esponja e não guarde sua garrafa molhada, deixando escorrer antes de tampar e guardar. Para retirada de odores faça a limpeza com água morna e vinagre ou bicarbonato e deixe de molho por algumas horas e enxágue bem. Cuide bem de sua garrafa, mantendo ela sempre limpa e ela irá permanecer com você por muitos anos. Sua garrafa e sua saúde agradecem.",
+                    "product_subtitle": "",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "garrafa-yoga-700ml",
+                    "variant_sku": "517BO",
+                    "variant_barcode": null,
+                    "variant_title": "Amora",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "97",
+                        "precision": 20
+                    },
+                    "created_at": "2026-01-06T17:35:49.679Z",
+                    "updated_at": "2026-01-06T17:35:49.679Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 97,
+                    "quantity": 1,
+                    "raw_quantity": {
+                        "value": "1",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KEA625XDW9QDE7M85ANTY92E",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KEA625XBG34J5WVT16YYETZF",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "1",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-01-06T17:35:49.679Z",
+                        "updated_at": "2026-01-06T17:35:49.679Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KEA625XCERBYKASZEWWFSNAE",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 1,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                },
+                {
+                    "id": "ordli_01KEA625XCS5A1WCDD82F15104",
+                    "title": "Caneca Elefante Amarela",
+                    "subtitle": "Caneca Elefante Amarela",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2019/06/Caneca-azul-cerâmica-Elephantasy.jpg",
+                    "variant_id": "variant_01JZCGGGZ7WDE505V60RD52536",
+                    "product_id": "prod_01JZCGGD5947MKABK72B2EFR3M",
+                    "product_title": "Caneca Elefante Amarela",
+                    "product_description": "Caneca de cerâmica amarela, com elefante, elementos estilizados indianos, e fundo com o símbolo do mantra Om. Um presente com propósito para um amigo ou para si mesmo.Tudo é energia. E quando carregamos a mensagem que queremos ver no mundo em nossa mente, em nosso corpo e em nossos objetos e acessórios, contribuímos para elevar a energia em nossas vidas e por onde passamos. O elefante é símbolo de sabedoria, persistência e determinação. É o símbolo de estabilidade, paz e prosperidade, e é associado ao Chakra Muladhara - o chakra básico, que corresponde ao elemento terra. O elefante remete à imagem de Ganesha, o deus hindu com cabeça de elefante. Deus da sabedoria, da superação e remoção dos obstáculos.",
+                    "product_subtitle": "<div>Aproveite o momento, a cada gole.</div><br /><ul><br /> \t<li><strong>300ml</strong></li><br /> \t<li>8.5cm x 8.3cm</li><br /> \t<li>Cerâmica</li><br /> \t<li>Disponível em 9 estilos diferentes</li><br /></ul>",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "caneca-elefante-amarela",
+                    "variant_sku": "513EP",
+                    "variant_barcode": null,
+                    "variant_title": "Caneca Elefante Amarela",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "5.9",
+                        "precision": 20
+                    },
+                    "created_at": "2026-01-06T17:35:49.679Z",
+                    "updated_at": "2026-01-06T17:35:49.679Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 5.9,
+                    "quantity": 4,
+                    "raw_quantity": {
+                        "value": "4",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KEA625XESJRP3JG43JPVDGDF",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KEA625XBG34J5WVT16YYETZF",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "4",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-01-06T17:35:49.680Z",
+                        "updated_at": "2026-01-06T17:35:49.680Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KEA625XCS5A1WCDD82F15104",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 4,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                },
+                {
+                    "id": "ordli_01KEA625XCTNPNZG36V5YSYMZJ",
+                    "title": "Caneca Buddha Namaste Branca",
+                    "subtitle": "Caneca Buddha Namaste Branca",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2019/06/Caneca-cerâmica-NamasTEA.jpg",
+                    "variant_id": "variant_01JZCGGGZ69Q347743Y9HX815G",
+                    "product_id": "prod_01JZCGGD58NN99H9B7TSQ9Q1KX",
+                    "product_title": "Caneca Buddha Namaste Branca",
+                    "product_description": "Caneca de cerâmica branca com Buddha preto e branco, e fundo com o símbolo do mantra Om. Um presente com propósito para um amigo ou para si mesmo. Tudo é energia. E quando carregamos a mensagem que queremos ver no mundo em nossa mente, em nosso corpo e em nossos objetos e acessórios, contribuímos para elevar a energia em nossas vidas e por onde passamos.A imagem de Buddha traz paz, serenidade e centramento. Uma energia calmante, que equilibra as energias de seu estilo de vida. Om é um som sagrado, conhecido como o som primordial do universo - o início, meio e fim - a totalidade. Composto de sons com efeitos de cura e relaxamento. Um som que protege e abençoa. Este símbolo contém os 5 elementos e as energias que regem todo o universo: criação, preservação e destruição. Om costuma ser a preparação inicial para as práticas de yoga e harmoniza o corpo, mente e a alma.",
+                    "product_subtitle": "<div>Aproveite o momento, a cada gole.</div><br /><ul><br /> \t<li><strong>300ml</strong></li><br /> \t<li>8.5cm x 8.3cm</li><br /> \t<li>Cerâmica</li><br /> \t<li>Disponível em 9 estilos diferentes</li><br /></ul>",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "caneca-buddha-namaste-branca",
+                    "variant_sku": "513NA",
+                    "variant_barcode": null,
+                    "variant_title": "Caneca Buddha Namaste Branca",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "5.9",
+                        "precision": 20
+                    },
+                    "created_at": "2026-01-06T17:35:49.679Z",
+                    "updated_at": "2026-01-06T17:35:49.679Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 5.9,
+                    "quantity": 4,
+                    "raw_quantity": {
+                        "value": "4",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KEA625XEMSJ97P0K493DKY5Q",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KEA625XBG34J5WVT16YYETZF",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "4",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-01-06T17:35:49.680Z",
+                        "updated_at": "2026-01-06T17:35:49.680Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KEA625XCTNPNZG36V5YSYMZJ",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 4,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                }
+            ],
+            "customer": {
+                "id": "cus_01KEA5ZCM41F65EDY67V43R6S8",
+                "company_name": null,
+                "first_name": null,
+                "last_name": null,
+                "email": "ttoledoabisaber@gmail.com",
+                "phone": null,
+                "has_account": false,
+                "metadata": null,
+                "created_by": null,
+                "created_at": "2026-01-06T17:34:18.245Z",
+                "updated_at": "2026-01-06T17:34:18.245Z",
+                "deleted_at": null
+            },
+            "payment_status": "partially_captured",
+            "fulfillment_status": "not_fulfilled"
+        },
+        {
+            "id": "order_01KEE38YK56ZKB5SGFZF9M07EZ",
+            "display_id": 5,
+            "status": "pending",
+            "version": 1,
+            "summary": {
+                "paid_total": 605,
+                "difference_sum": 0,
+                "raw_paid_total": {
+                    "value": "605",
+                    "precision": 20
+                },
+                "refunded_total": 0,
+                "accounting_total": 605,
+                "credit_line_total": 0,
+                "transaction_total": 605,
+                "pending_difference": 0,
+                "raw_difference_sum": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_refunded_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "current_order_total": 605,
+                "original_order_total": 605,
+                "raw_accounting_total": {
+                    "value": "605",
+                    "precision": 20
+                },
+                "raw_credit_line_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_transaction_total": {
+                    "value": "605",
+                    "precision": 20
+                },
+                "raw_pending_difference": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_current_order_total": {
+                    "value": "605",
+                    "precision": 20
+                },
+                "raw_original_order_total": {
+                    "value": "605",
+                    "precision": 20
+                }
+            },
+            "metadata": {
+                "cart_id": "cart_01KEDP205EMQXQ3ZNAYSK7J34R",
+                "tapfiliate": {},
+                "tiny_erp_errors": false,
+                "tiny_erp_status": "OK",
+                "tiny_erp_order_id": 759968081,
+                "tiny_erp_order_number": "362878"
+            },
+            "created_at": "2026-01-08T06:04:03.560Z",
+            "updated_at": "2026-01-08T06:04:03.560Z",
+            "customer_id": "cus_01KEE351Q7KF8PTKDPKB91A8JN",
+            "items": [
+                {
+                    "id": "ordli_01KEE38YK61FNK6PBN56ZYJM55",
+                    "title": "Grafite",
+                    "subtitle": "Zafu Eco – Almofada pufe",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2021/02/zafu-eco-verde-oliva-yogateria.jpg",
+                    "variant_id": "variant_01JZCGGH01KYKJ5PK2QR8HXVS1",
+                    "product_id": "prod_01JZCGGD5W6RN4HQEEPXZWFWT8",
+                    "product_title": "Zafu Eco – Almofada pufe",
+                    "product_description": "A almofada clássica de meditação, ampla e confortável O zafu dá apoio e conforto na hora de meditar elevando os quadris, tornando a posição sentada de pernas cruzadas mais confortável e sendo a base perfeita para meditar. Alivia a tensão dos joelhos, quadris, pernas e tornozelos, além de alinhar e apoiar a coluna vertebral. Em japonês, ‘Za‘ significa “assento” e ‘fu‘ é uma planta usada para rechear as almofadas originalmente. E também é ligada à palavra ‘zazen’ que significa “meditação sentada”. Seu formato tradicionalmente utilizado para meditação desde os tempos antigos traz conforto e estabilidade, pois tem uma base larga e altura média em relação ao piso. O recheio em fibra de paina é leve, confortável e não deforma com o passar do tempo. A capa em algodão orgânico possui alça para transporte. Você pode levar o zafu e meditar em qualquer lugar.   Pode ainda ser usado para maior conforto no carro, como uma almofada para laptop, como uma almofada de chão para assistir TV ou enquanto brinca com as crianças. Uma linda peça de decoração para sua casa, estúdio de yoga, spa…Estudos mostram que a prática diária de meditação aumenta a sensação de bem estar além de reduzir significativamente o nível de estresse e ansiedade no organismo.  A meditação traz relaxamento para a mente. Uma mente relaxada é calma, estável e focada. Quanto mais desenvolvemos o hábito de meditar, mais fácil vai se tornando a prática e mais ela se incorpora em nossa rotina. Para uma boa prática de meditação você deve estar relaxado e confortável na medida certa, por isso é importante uma base estável e manter a coluna ereta. Mantendo os olhos fechados, ombros relaxados e a palma da mão apoiada sobre as coxas. Você pode utilizar seu  Zafu de duas formas: sentado ou de joelhos, de acordo com seu hábito ou flexibilidade corporal. Se for meditar sentado, mantenha as pernas cruzadas (Sukhasana), Lótus (Padmasana) ou o Meio Lótus (Ardha Padmasana) e utilize a borda do zafu permitindo que seus joelhos repousem no chão ou próximos dele. Caso opte pela posição ajoelhada (vajrasana) você pode utilizar o Zafu em pé, na posição vertical, apoiado com a lateral no chão e posicionando ele entre as suas pernas. Apoie os seus joelhos no chão e o quadril no zafu. Se precisar de mais conforto utilize um Zabuton As almofadas da Yogateria foram criadas em cada detalhe para que você tenha uma meditação confortável. A paina ou kapok, é uma fibra natural, de manejo sustentável, leve e que não deforma com o tempo e uso. As capas em algodão orgânico podem ser higienizadas com um pano levemente umedecido. Nunca coloque a seu zafu na secadora de roupas. Para completar a limpeza  você pode borrifar no Zafu o Limpador Higienizante Yogateria. Ele é antibacteriano, antifúngico e desodorizante, ajudando a manter também seu zafu limpo e protegido. Recheio de fibra de paina kapok ✓ 100% natural ✓ Vegano ✓ 7 X mais leve do que o algodão ✓ Não deforma ✓ Isolamento de temperatura e atérmico ✓ Impermeável ✓ Hipoalergênico ✓ Antibacteriano ✓ Antiácaro ✓ Durável",
+                    "product_subtitle": "",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "zafu-eco-almofada-pufe",
+                    "variant_sku": "144s",
+                    "variant_barcode": null,
+                    "variant_title": "Grafite",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "230",
+                        "precision": 20
+                    },
+                    "created_at": "2026-01-08T06:04:03.561Z",
+                    "updated_at": "2026-01-08T06:04:03.561Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 230,
+                    "quantity": 1,
+                    "raw_quantity": {
+                        "value": "1",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KEE38YK77SAAV4X07QWFT96D",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KEE38YK56ZKB5SGFZF9M07EZ",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "1",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-01-08T06:04:03.561Z",
+                        "updated_at": "2026-01-08T06:04:03.561Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KEE38YK61FNK6PBN56ZYJM55",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 1,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                },
+                {
+                    "id": "ordli_01KEE38YK620NN7R3THVW2CTXY",
+                    "title": "Grafite",
+                    "subtitle": "Zabuton Eco - Almofada plana",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2021/02/zabuton-eco-grafite-yogateria.jpg",
+                    "variant_id": "variant_01JZCGGH013ATWTEN8WFQ9Q9GW",
+                    "product_id": "prod_01JZCGGD5W3SGF0XDZT4F1GGVY",
+                    "product_title": "Zabuton Eco - Almofada plana",
+                    "product_description": "Almofada para meditação, orgânica, plana e ampla Para completar sua meditação! O zabuton é uma almofada plana e ampla geralmente utilizada combinada com Zafu ou almofadas, mas também pode ser utilizado sozinho, criando uma grande base acolchoada para sua meditação. Traz conforto extra para seus joelhos e pés, fazendo que não fiquem em contato direto com o piso e por isso é  muito utilizado por quem tem mais sensibilidade nas articulações. Você pode utilizar durante sua meditação e pranayamas ou até mesmo em atividades como leitura, assistir tv e ouvir música. Suas medidas são generosamente grandes - 80x80 centímetros - e seu recheio possui multi camadas de fibra, garantindo conforto e leveza.  A capa produzida 100% algodão orgânico é macia, confortável e ecologicamente correta. Possui zíper, possibilitando a retirada para lavagem. Uma linda peça de decoração para sua casa, estúdio de yoga, spa…  Pode compor kits com os demais produtos da linha ECO ou coordenados com as estampas da linha Maharaja. Estudos mostram que a prática diária de meditação aumenta a sensação de bem estar além de reduzir significativamente o nível de estresse e ansiedade no organismo.  A meditação traz relaxamento para a mente. Uma mente relaxada é calma, estável e focada. Quanto mais desenvolvemos o hábito de meditar, mais fácil vai se tornando a prática e mais ela se incorpora em nossa rotina. Para uma boa prática de meditação você deve estar relaxado e confortável na medida certa, por isso é importante uma base confortável e manter a coluna ereta. Mantendo os olhos fechados, ombros relaxados, pernas cruzadas (Sukhasana), Lótus (Padmasana) ou o Meio Lótus (Ardha Padmasana) e a palma da mão apoiada sobre as coxas. Com o tempo, você encontrará a posição que funciona melhor para você. Os Zabutons da Yogateria foram pensados em cada detalhe para que você tenha uma meditação de qualidade. Pode usar sempre! Quanto mais tempo de meditação melhor.   As capas em algodão orgânico possuem zíper, permitindo lavar quando for necessário. Sempre que desejar higienize com um pano levemente umedecido. Para uma limpeza mais profunda, recomendamos retirar a capa e lavar com água corrente.  Se utilizar a máquina de lavar não lave com temperatura da água superior a 30°C. Nunca coloque a capa do zabuton na secadora de roupas. Para completar a limpeza  você pode borrifar no Zabuton o Limpador Higienizante Yogateria. Ele é antibacteriano, antifúngico e desodorizante, ajudando a manter também seu Zabuton limpo e protegido.",
+                    "product_subtitle": "",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "zabuton-eco-almofada-plana",
+                    "variant_sku": "159s",
+                    "variant_barcode": null,
+                    "variant_title": "Grafite",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "375",
+                        "precision": 20
+                    },
+                    "created_at": "2026-01-08T06:04:03.561Z",
+                    "updated_at": "2026-01-08T06:04:03.561Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 375,
+                    "quantity": 1,
+                    "raw_quantity": {
+                        "value": "1",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KEE38YK8BVZRFTBXYMSR5EQ6",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KEE38YK56ZKB5SGFZF9M07EZ",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "1",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-01-08T06:04:03.561Z",
+                        "updated_at": "2026-01-08T06:04:03.561Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KEE38YK620NN7R3THVW2CTXY",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 1,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                },
+                {
+                    "id": "ordli_01KEE38YK6HV9W7MVWZPYC7JNN",
+                    "title": "Free Gift 300",
+                    "subtitle": "Free Gift",
+                    "thumbnail": "https://medusa-yogateria-staging.s3.sa-east-1.amazonaws.com/gift-01K0XZMGW9E8KT9F1F38ZJ69P2.jpg",
+                    "variant_id": "variant_01K0Y7NB61J7DC3HSC6SP0W31Y",
+                    "product_id": "prod_01K0XZMJ4WEJTHAPQ5X7XQPKD8",
+                    "product_title": "Free Gift",
+                    "product_description": null,
+                    "product_subtitle": null,
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "free-gift",
+                    "variant_sku": "free-gift-300",
+                    "variant_barcode": null,
+                    "variant_title": "Free Gift 300",
+                    "variant_option_values": null,
+                    "requires_shipping": false,
+                    "is_discountable": false,
+                    "is_tax_inclusive": true,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": {
+                        "value": "0",
+                        "precision": 20
+                    },
+                    "raw_unit_price": {
+                        "value": "0",
+                        "precision": 20
+                    },
+                    "created_at": "2026-01-08T06:04:03.561Z",
+                    "updated_at": "2026-01-08T06:04:03.561Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": 0,
+                    "unit_price": 0,
+                    "quantity": 1,
+                    "raw_quantity": {
+                        "value": "1",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KEE38YK8H880QF53YETVCFJZ",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KEE38YK56ZKB5SGFZF9M07EZ",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "1",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-01-08T06:04:03.561Z",
+                        "updated_at": "2026-01-08T06:04:03.561Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KEE38YK6HV9W7MVWZPYC7JNN",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 1,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                }
+            ],
+            "customer": {
+                "id": "cus_01KEE351Q7KF8PTKDPKB91A8JN",
+                "company_name": null,
+                "first_name": null,
+                "last_name": null,
+                "email": "omegabookstore53@gmail.com",
+                "phone": null,
+                "has_account": false,
+                "metadata": null,
+                "created_by": null,
+                "created_at": "2026-01-08T06:01:55.687Z",
+                "updated_at": "2026-01-08T06:01:55.687Z",
+                "deleted_at": null
+            },
+            "payment_status": "captured",
+            "fulfillment_status": "not_fulfilled"
+        },
+        {
+            "id": "order_01KFDGPRPKP9VN06B2B15PB3GW",
+            "display_id": 6,
+            "status": "pending",
+            "version": 1,
+            "summary": {
+                "paid_total": 0,
+                "difference_sum": 0,
+                "raw_paid_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "refunded_total": 0,
+                "accounting_total": 216,
+                "credit_line_total": 0,
+                "transaction_total": 0,
+                "pending_difference": 216,
+                "raw_difference_sum": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_refunded_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "current_order_total": 216,
+                "original_order_total": 216,
+                "raw_accounting_total": {
+                    "value": "216",
+                    "precision": 20
+                },
+                "raw_credit_line_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_transaction_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_pending_difference": {
+                    "value": "216",
+                    "precision": 20
+                },
+                "raw_current_order_total": {
+                    "value": "216",
+                    "precision": 20
+                },
+                "raw_original_order_total": {
+                    "value": "216",
+                    "precision": 20
+                }
+            },
+            "metadata": {
+                "cart_id": "cart_01KFCXBK3CE2P4ACJV0RW8RHJX",
+                "tapfiliate": {},
+                "tiny_erp_errors": false,
+                "tiny_erp_status": "OK",
+                "tiny_erp_order_id": 760009497,
+                "tiny_erp_order_number": "366028"
+            },
+            "created_at": "2026-01-20T10:55:15.158Z",
+            "updated_at": "2026-01-20T10:55:15.158Z",
+            "customer_id": "cus_01JZCGH3EJTR4661ZXZN3HWYRM",
+            "items": [
+                {
+                    "id": "ordli_01KFDGPRPM35EQM0SNH3J47PSM",
+                    "title": "Ameixa",
+                    "subtitle": "Tapete de yoga estampado Leela Mandala Design - 4.5mm PVC ecológico",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2024/09/Leela-MandalaDesign-Ameixa.jpg",
+                    "variant_id": "variant_01JZCGGGZA8VEJCDP9ZG9F943E",
+                    "product_id": "prod_01JZCGGD592YQWEGJY0YSJZ97F",
+                    "product_title": "Tapete de yoga estampado Leela Mandala Design - 4.5mm PVC ecológico",
+                    "product_description": "O tapete de yoga com a estampa que te inspira! O Leela Mandala Design é uma versão do tapete de yoga clássico com superfície antiderrapante e absorvente ao impacto. Oferece conforto para exercícios de yoga, ginástica ou pilates básicos e moderados. Nossas pesquisas mostram que 70% dos nossos clientes aumentaram a frequência e disciplina da sua prática após a compra do seu próprio tapete de Yoga. Além de relatarem que se sentem mais confortáveis com a higiene por não precisar utilizar tapetes compartilhados. A mandala é um diagrama geométrico simétrico circular que simboliza integração, harmonia, paz e busca espiritual. É uma representação simbólica do universo com um mundo interior e exterior, e visto como uma forma mágica, sem início e fim. A energia se move no universo de forma circular, e a mandala significa círculo. Acredita-se que a mandala tem o poder de materializar suas intenções por estar recriando o momento da criação. A estampa não descasca ou desbota, mesmo em ambientes quentes, como aulas de Hot Yoga, ou com uso intenso. O Tapete de Yoga Leela Mandala Design é produzido com PVC Ecológico, onde o processo de fabricação utiliza menos recursos e tem alguns componentes reciclados. Por isso, não possui cheiro forte característico do PVC comum. Feito com material durável e resistente, não esfarela. Pode ser usado ao ar livre - na natureza, praia, grama, pedras ou ambientes internos - com ou sem sapatos. É resistente para a prática de Hot Yoga. Além da qualidade do material ser superior, quando comparado ao Tapete PVC comum, o nosso tapete é mais estável pois possui uma rede de nylon no meio que proporciona mais firmeza no uso. Os tapetes de PVC precisam de alguns dias para \"maturar \", ganhar mais aderência. Recomendamos passar um pano úmido e esperar secar antes de usar. Deixar o tapete aberto nos primeiros dias também ajudar a acelerar o processo. Então, não se preocupe se nos primeiros momento você não sentir a aderência completa. Se você sua bastante, você pode ver nossos outros modelos de tapetes de yoga com aderência extrema: Cortiça, Phoenix, Ecopro O PVC Ecológico da Yogateria é um PVC produzido com menos recursos químicos e com alguns componentes reciclados, não contém metais pesados, corantes cancerígenos e produtos químicos tóxicos chamados ftalatos. O nosso PVC Ecológico é uma versão do PVC mais sustentável, livre de toxinas e ftalatos. Para afirmar que o PVC é ecológico, é necessário que o material tenha o certificado que comprove um processo de fabricação mais consciente, livre de toxinas e ftalatos. O nosso PVC é o único ecológico e com certificado Oeko-Tex (TP025 122612) - Indica que o material é livre de produtos químicos nocivos e seguro para uso humano, e testado pela SGS - órgão suíço de inspeção, verificação, teste e certificação. Você encontrará este selo na embalagem do seu tapete de yoga. Não contém: Corantes que liberam uma substância toxica chamada AZO, feito por um processo no qual uma amina aromática é transformada em um componente de diazônio que reage com outro componente como o fenol ou naftol para formar o corante. DOP (Dioctil ftalato), ​​um plastificante usado na produção de plástico flexível de cloreto de polivinila (PVC). É um dos plastificantes mais utilizados no PVC devido ao seu baixo custo. 6P, produtos químicos tóxicos usados ​​para suavizar e aumentar a flexibilidade do plástico e do vinil. Todas essas substâncias são perigosas a saúde e costumam ser encontradas em muitos tapetes e equipamentos de yoga. Experimente passar um pano úmido antes da primeira prática e deixe secar bem antes de usar. Lavável na máquina até 30° C. Veja aqui as dicas para os primeiros usos, cuidados diários e como limpar o tapete de yoga. Ter uma bolsa para o tapete também garante sua proteção e a facilidade ao transportá-lo. Com a limpeza e os cuidados certos, é possível estender a vida útil do seu tapete de yoga. Poeira, oleosidade da pele e suor podem penetrar na superfície do tapete e causar mau cheiro ou deixá-lo escorregadio e sujo. Por isso, é fundamental ter alguns cuidados básicos com o tapete depois de cada uso, para prolongar a sua vida útil e mantê-lo higienizado. Experimente também o nosso limpador higienizante de tapete de yoga. Cuide bem de seu tapete e aproveite sua prática! Material PVC eco Tamanho 183cm x 60cm Peso 1.1kg Espessura 4.5mm Local de uso Interno / externo Aderência ☆☆☆ 1.1kg, 183x60cm e com 4.5mm Tamanho e peso perfeitos para praticar!Não. O tapete Leela Mandala Design além de ser produzido em PVC ecológico de alta qualidade possui uma costura interna em forma de rede que garante mais resistência e durabilidade ao tapete. Pode ser utilizado para yoga ou exercícios físicos mais intensos. Utilizando de forma adequada seu tapete irá durar por muitos anos.Todo tapete de PVC precisa de alguns dias para “maturar” para ganhar mais aderência. Clique aqui para dicas e primeiros cuidados. Como todo tapete de PVC, o Leela Mandala Design pode ter sua aderência reduzida por muita transpiração ou umidade, pois o PVC não absorve o excesso de suor das mãos e pés.Sim! O Leela Mandala Design é um tapete com superfície aderente, elástica e absorvente ao impacto. Oferece conforto para exercícios de yoga, ginástica, pilates ou outras atividades físicas que necessitem de apoio e proteção do corpo ao chão.Sim! O PVC ecológico é um material resistente, durável e fácil de limpar podendo ser utilizado tanto em áreas internas quanto externas, como parques, praia ou gramados por exemplo.Em nosso site você encontra bolsas de tapete com diferentes cores, modelos e tamanhos. Também temos alças de yoga, caso você só precise manter o seu tapete de yoga fechado para transporte. As bolsas e alças não estão inclusas neste produto.O PVC ecológico utiliza menos recursos e tem alguns componentes reciclados em seu processo de fabricação, é livre de toxinas e, além disso, o PVC ecológico da Yogateria é o único do Brasil com certificação Oeko-Tex que indica que a composição do material é livre de produtos químicos nocivos e seguro para uso humano.Sim! você pode utilizar um pano úmido com água pura ou com um pouco de sabão de côco. Para limpezas mais pesadas pode ainda ser lavado na máquina com água fria de até 30° C, sem amaciante e com pouco sabão. Nunca utilize produtos abrasivos ou álcool na limpeza do seu tapete! A longo prazo eles tendem a ressecar o materialPara melhor conservação do tapete, sugerimos que a prática seja feita com os pés descalços e limpos. Não temos uma garantia fixa, pois depende do tipo de uso e cuidados com o tapete, mas caso tenha alguma necessidade especial, basta entrar em contato com o nosso setor de atendimento.Em caso de devolução ou troca por outro produto o prazo é de 30 dias após o recebimento do produto.",
+                    "product_subtitle": "<span style=\"font-size: 10pt;\"><strong><span style=\"background-color: purple; color: #fff;\">  O MAIS AMADO </span></strong></span><br />O tapete de yoga lindo e versátil,<br />com design que te inspira",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "leela-mandala-design",
+                    "variant_sku": "896M2P",
+                    "variant_barcode": null,
+                    "variant_title": "Ameixa",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "197",
+                        "precision": 20
+                    },
+                    "created_at": "2026-01-20T10:55:15.158Z",
+                    "updated_at": "2026-01-20T10:55:15.158Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 197,
+                    "quantity": 1,
+                    "raw_quantity": {
+                        "value": "1",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KFDGPRPNCMYHRQP0QYX3T3AB",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KFDGPRPKP9VN06B2B15PB3GW",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "1",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-01-20T10:55:15.158Z",
+                        "updated_at": "2026-01-20T10:55:15.158Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KFDGPRPM35EQM0SNH3J47PSM",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 1,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                }
+            ],
+            "customer": {
+                "id": "cus_01JZCGH3EJTR4661ZXZN3HWYRM",
+                "company_name": null,
+                "first_name": "Dharmik",
+                "last_name": "Patel",
+                "email": "djdevil2110@gmail.com",
+                "phone": null,
+                "has_account": true,
+                "metadata": {
+                    "nicename": "djdevil2110",
+                    "user_name": "djdevil2110",
+                    "registerd_date": "2024-03-07"
+                },
+                "created_by": null,
+                "created_at": "2025-07-05T05:21:48.656Z",
+                "updated_at": "2025-07-05T05:21:48.656Z",
+                "deleted_at": null
+            },
+            "payment_status": "authorized",
+            "fulfillment_status": "not_fulfilled"
+        },
+        {
+            "id": "order_01KFJ3TARPQC8XC4ZKB8NTJ158",
+            "display_id": 7,
+            "status": "pending",
+            "version": 1,
+            "summary": {
+                "paid_total": 0,
+                "difference_sum": 0,
+                "raw_paid_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "refunded_total": 0,
+                "accounting_total": 194,
+                "credit_line_total": 0,
+                "transaction_total": 0,
+                "pending_difference": 194,
+                "raw_difference_sum": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_refunded_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "current_order_total": 194,
+                "original_order_total": 194,
+                "raw_accounting_total": {
+                    "value": "194",
+                    "precision": 20
+                },
+                "raw_credit_line_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_transaction_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_pending_difference": {
+                    "value": "194",
+                    "precision": 20
+                },
+                "raw_current_order_total": {
+                    "value": "194",
+                    "precision": 20
+                },
+                "raw_original_order_total": {
+                    "value": "194",
+                    "precision": 20
+                }
+            },
+            "metadata": {
+                "cart_id": "cart_01KF3CFWAB1JAFPCJRPW87J3NM",
+                "tapfiliate": {},
+                "tiny_erp_errors": false,
+                "tiny_erp_status": "OK",
+                "tiny_erp_order_id": 760016116,
+                "tiny_erp_order_number": "366517"
+            },
+            "created_at": "2026-01-22T05:46:12.633Z",
+            "updated_at": "2026-01-22T05:46:12.633Z",
+            "customer_id": "cus_01JZCGH3EJTR4661ZXZN3HWYRM",
+            "items": [
+                {
+                    "id": "ordli_01KFJ3TARQ4M5B3FAJ9J0802H7",
+                    "title": "mayuri / bordô, 60cm",
+                    "subtitle": "Bolsa Yoga Maharaja",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2019/06/Bolsa-Yoga-Maharaj-algodão-100-mandala.jpg",
+                    "variant_id": "variant_01JZCGGGZ7848096Q0AG3QY4JD",
+                    "product_id": "prod_01JZCGGD58NFPM571ZS6Z2THCS",
+                    "product_title": "Bolsa Yoga Maharaja",
+                    "product_description": "Praticidade e estilo para seu tapete de yoga Nossa bolsa preferida! Ter uma bolsa para o seu tapete de yoga garante sua proteção e a facilidade ao transportá-lo. Seus 2 bolsos externos e sua alça ajustável torna o transporte do tapete de yoga tão simples e fácil, que é uma inspiração para sair de casa e ir para a aula de yoga. O design das estampas fazem parte da linda coleção Maharaja, cujo nome tem origem indiana (mahā, “grande”) e (rāja, “rei”). Também disponíveis nas capas de nossos bolsters e almofadas de meditação. 100% Algodão resistente 2 bolsos externos com zíper para chaves, celular, carteira, cinto de yoga e toalha Alça ajustável, e pode ser carregada na vertical, horizontal  ou transpassada 2 tamanhos disponíveis para tapetes de yoga de até 60cm ou 70cm de largura e com até 6mm de espessuraSim. Temos diversas cores lindas, e podem ser selecionadas nas bolinhas coloridas aqui em cima na página do produto perto da descrição inicial.Não temos uma garantia fixa, pois depende do tipo de uso e cuidados com o produto, mas caso tenha alguma necessidade especial, basta entrar em contato com o nosso setor de atendimento. Em caso de devolução ou troca por outro produto o prazo é de 30 dias após o recebimento do produto. O produto não deve apresentar marcas de uso ou manchas e deve estar limpo e embalado com plástico ou papel para a coleta da transportadora no mesmo endereço da entrega.",
+                    "product_subtitle": "",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "bolsa-yoga-maharaj-algodao-100",
+                    "variant_sku": "541MR",
+                    "variant_barcode": null,
+                    "variant_title": "mayuri / bordô, 60cm",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "175",
+                        "precision": 20
+                    },
+                    "created_at": "2026-01-22T05:46:12.633Z",
+                    "updated_at": "2026-01-22T05:46:12.633Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 175,
+                    "quantity": 1,
+                    "raw_quantity": {
+                        "value": "1",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KFJ3TARQQY6YTBTQGPD8FRM0",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KFJ3TARPQC8XC4ZKB8NTJ158",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "1",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-01-22T05:46:12.633Z",
+                        "updated_at": "2026-01-22T05:46:12.633Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KFJ3TARQ4M5B3FAJ9J0802H7",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 1,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                }
+            ],
+            "customer": {
+                "id": "cus_01JZCGH3EJTR4661ZXZN3HWYRM",
+                "company_name": null,
+                "first_name": "Dharmik",
+                "last_name": "Patel",
+                "email": "djdevil2110@gmail.com",
+                "phone": null,
+                "has_account": true,
+                "metadata": {
+                    "nicename": "djdevil2110",
+                    "user_name": "djdevil2110",
+                    "registerd_date": "2024-03-07"
+                },
+                "created_by": null,
+                "created_at": "2025-07-05T05:21:48.656Z",
+                "updated_at": "2025-07-05T05:21:48.656Z",
+                "deleted_at": null
+            },
+            "payment_status": "authorized",
+            "fulfillment_status": "not_fulfilled"
+        },
+        {
+            "id": "order_01KFJ75549SZRMC68CGKX3TWQJ",
+            "display_id": 8,
+            "status": "pending",
+            "version": 1,
+            "summary": {
+                "paid_total": 0,
+                "difference_sum": 0,
+                "raw_paid_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "refunded_total": 0,
+                "accounting_total": 345,
+                "credit_line_total": 0,
+                "transaction_total": 0,
+                "pending_difference": 345,
+                "raw_difference_sum": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_refunded_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "current_order_total": 345,
+                "original_order_total": 345,
+                "raw_accounting_total": {
+                    "value": "345",
+                    "precision": 20
+                },
+                "raw_credit_line_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_transaction_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_pending_difference": {
+                    "value": "345",
+                    "precision": 20
+                },
+                "raw_current_order_total": {
+                    "value": "345",
+                    "precision": 20
+                },
+                "raw_original_order_total": {
+                    "value": "345",
+                    "precision": 20
+                }
+            },
+            "metadata": {
+                "cart_id": "cart_01KFJ42M3BGSHSZZ88ND40M6CH",
+                "tapfiliate": {},
+                "tiny_erp_errors": false,
+                "tiny_erp_status": "OK",
+                "tiny_erp_order_id": 760016179,
+                "tiny_erp_order_number": "366525"
+            },
+            "created_at": "2026-01-22T06:44:33.035Z",
+            "updated_at": "2026-01-22T06:44:33.035Z",
+            "customer_id": "cus_01JZCGH3EJTR4661ZXZN3HWYRM",
+            "items": [
+                {
+                    "id": "ordli_01KFJ75549ZXYRQN11AYCX51KS",
+                    "title": "roxo",
+                    "subtitle": "Tapete de yoga Ecopro Travel – 1.3mm borracha natural",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2024/09/EcoPro-Cinza.jpg",
+                    "variant_id": "variant_01JZCGGGYBGD4JVYQXSGNFTFNX",
+                    "product_id": "prod_01JZCGGD50R7NEKPYEWXXHS64C",
+                    "product_title": "Tapete de yoga Ecopro Travel – 1.3mm borracha natural",
+                    "product_description": "Tapete de yoga leve e antiderrapante para viagem! O tapete de yoga Ecopro Travel é a versão mais fina e leve do nosso tapete preferido Ecopro, a base perfeita para práticas de yoga mais intensas. Este tapete de borracha natural oferece excelente aderência em ambos os lados, pra você nunca mais escorregar no meio de sua prática! Leve e com apenas 1,3 mm de espessura, pode ser guardado em qualquer mala ou mochila para economia de espaço. Não importa para onde sua viagem de yoga te leve, este tapete é um companheiro confiável e de fácil manutenção em qualquer lugar. Além de ser um tapete de yoga bem aderente para práticas avançadas de yoga, onde um tapete antiderrapante é importante para garantir o alinhamento correto e a execução segura dos asanas. 100% Borracha natural ecológica. Sem corantes AZO, DOP, metais pesados e 6P – DEHP, DBP, BBP, DINP, DIDP e DNOP. Quanto mais aderência um tapete de yoga oferece, menor será sua resistência à abrasão e pode apresentar sinais de uso gerado pelo impacto e marcas de atritos. No entanto, a funcionalidade e aderência não são afetadas, e basta passar um pano úmido que as marcas desaparecem. Recomendamos limpar os pés e mãos antes de iniciar a prática. Livre de produtos químicos, alérgenos e quaisquer substâncias nocivas. Certificado com os mais altos padrões, de acordo com o Oeko-Tex 100, Classe 1, que garante um nível de segurança para uso em bebês. (Certificado 2012OK0503). Você encontrará este selo na embalagem do seu tapete de yoga. Não contém: Corantes que liberam uma substância toxica chamada AZO, feito por um processo no qual uma amina aromática é transformada em um componente de diazônio que reage com outro componente como o fenol ou naftol para formar o corante. DOP (Dioctil ftalato), ​​um plastificante usado na produção de plástico flexível de cloreto de polivinila (PVC). É um dos plastificantes mais utilizados no PVC devido ao seu baixo custo. 6P, produtos químicos tóxicos usados ​​para suavizar e aumentar a flexibilidade do plástico e do vinil. São perigosos para a saúde e são encontrados em muitos tapetes e equipamentos de yoga. Passe um pano úmido para limpar, e não lave na máquina de lavar. Mantenha fora da luz solar direta. Recomendamos limpar o tapete após o uso com um pano levemente úmido. Enrole o tapete apenas quando estiver seco. Não use produtos de limpeza à base de álcool. Experimente passar um pano úmido antes da primeira prática e deixe secar bem antes de usar. Veja aqui as dicas para os primeiros usos, cuidados diários e como limpar o tapete de yoga. Com a limpeza e os cuidados certos, é possível estender a vida útil do seu tapete de yoga. Poeira, oleosidade da pele e suor podem penetrar na superfície do tapete e causar mau cheiro ou deixá-lo escorregadio e sujo. Por isso, é fundamental ter alguns cuidados básicos com o tapete depois de cada uso, para prolongar a sua vida útil e mantê-lo higienizado. Experimente também o nosso limpador higienizante de tapete de yoga. Cuide bem de seu tapete e aproveite sua prática! Material Borracha Natural Tamanho 185cm x 60cm Peso 900g Espessura 1,3mm Local de uso Interno Aderência ☆☆☆☆☆",
+                    "product_subtitle": "",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "tapete-de-yoga-ecopro-travel",
+                    "variant_sku": "657V",
+                    "variant_barcode": null,
+                    "variant_title": "roxo",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "345",
+                        "precision": 20
+                    },
+                    "created_at": "2026-01-22T06:44:33.036Z",
+                    "updated_at": "2026-01-22T06:44:33.036Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 345,
+                    "quantity": 1,
+                    "raw_quantity": {
+                        "value": "1",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KFJ7554ATHZVSJ8P16A1JDM8",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KFJ75549SZRMC68CGKX3TWQJ",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "1",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-01-22T06:44:33.036Z",
+                        "updated_at": "2026-01-22T06:44:33.036Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KFJ75549ZXYRQN11AYCX51KS",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 1,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                },
+                {
+                    "id": "ordli_01KFJ7554AY87MFA2ZTQS1KX87",
+                    "title": "Free Gift 300",
+                    "subtitle": "Free Gift",
+                    "thumbnail": "https://medusa-yogateria-staging.s3.sa-east-1.amazonaws.com/gift-01K0XZMGW9E8KT9F1F38ZJ69P2.jpg",
+                    "variant_id": "variant_01K0Y7NB61J7DC3HSC6SP0W31Y",
+                    "product_id": "prod_01K0XZMJ4WEJTHAPQ5X7XQPKD8",
+                    "product_title": "Free Gift",
+                    "product_description": null,
+                    "product_subtitle": null,
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "free-gift",
+                    "variant_sku": "free-gift-300",
+                    "variant_barcode": null,
+                    "variant_title": "Free Gift 300",
+                    "variant_option_values": null,
+                    "requires_shipping": false,
+                    "is_discountable": false,
+                    "is_tax_inclusive": true,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": {
+                        "value": "0",
+                        "precision": 20
+                    },
+                    "raw_unit_price": {
+                        "value": "0",
+                        "precision": 20
+                    },
+                    "created_at": "2026-01-22T06:44:33.036Z",
+                    "updated_at": "2026-01-22T06:44:33.036Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": 0,
+                    "unit_price": 0,
+                    "quantity": 1,
+                    "raw_quantity": {
+                        "value": "1",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KFJ7554B7C4D358NYPSAKXNS",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KFJ75549SZRMC68CGKX3TWQJ",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "1",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-01-22T06:44:33.036Z",
+                        "updated_at": "2026-01-22T06:44:33.036Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KFJ7554AY87MFA2ZTQS1KX87",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 1,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                }
+            ],
+            "customer": {
+                "id": "cus_01JZCGH3EJTR4661ZXZN3HWYRM",
+                "company_name": null,
+                "first_name": "Dharmik",
+                "last_name": "Patel",
+                "email": "djdevil2110@gmail.com",
+                "phone": null,
+                "has_account": true,
+                "metadata": {
+                    "nicename": "djdevil2110",
+                    "user_name": "djdevil2110",
+                    "registerd_date": "2024-03-07"
+                },
+                "created_by": null,
+                "created_at": "2025-07-05T05:21:48.656Z",
+                "updated_at": "2025-07-05T05:21:48.656Z",
+                "deleted_at": null
+            },
+            "payment_status": "authorized",
+            "fulfillment_status": "not_fulfilled"
+        },
+        {
+            "id": "order_01KHJHGBGT6F3B5TB86HR3FJZD",
+            "display_id": 9,
+            "status": "pending",
+            "version": 1,
+            "summary": {
+                "paid_total": 0,
+                "difference_sum": 0,
+                "raw_paid_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "refunded_total": 0,
+                "accounting_total": 345,
+                "credit_line_total": 0,
+                "transaction_total": 0,
+                "pending_difference": 345,
+                "raw_difference_sum": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_refunded_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "current_order_total": 345,
+                "original_order_total": 345,
+                "raw_accounting_total": {
+                    "value": "345",
+                    "precision": 20
+                },
+                "raw_credit_line_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_transaction_total": {
+                    "value": "0",
+                    "precision": 20
+                },
+                "raw_pending_difference": {
+                    "value": "345",
+                    "precision": 20
+                },
+                "raw_current_order_total": {
+                    "value": "345",
+                    "precision": 20
+                },
+                "raw_original_order_total": {
+                    "value": "345",
+                    "precision": 20
+                }
+            },
+            "metadata": {
+                "cart_id": "cart_01KHBEE6RWHF0TEQFT9D8BMPWS",
+                "tapfiliate": {},
+                "tiny_erp_errors": false,
+                "tiny_erp_status": "OK",
+                "tiny_erp_order_id": 760092092,
+                "tiny_erp_order_number": "371417"
+            },
+            "created_at": "2026-02-16T06:16:49.436Z",
+            "updated_at": "2026-02-16T06:16:49.436Z",
+            "customer_id": "cus_01KHJHEBBCKRPZ4GKX8KM24RMG",
+            "items": [
+                {
+                    "id": "ordli_01KHJHGBGTJCKYMN7NCVVHV0F2",
+                    "title": "roxo",
+                    "subtitle": "Tapete de yoga Ecopro Travel – 1.3mm borracha natural",
+                    "thumbnail": "https://yogateria.com.br/wp-content/uploads/2024/09/EcoPro-Cinza.jpg",
+                    "variant_id": "variant_01JZCGGGYBGD4JVYQXSGNFTFNX",
+                    "product_id": "prod_01JZCGGD50R7NEKPYEWXXHS64C",
+                    "product_title": "Tapete de yoga Ecopro Travel – 1.3mm borracha natural",
+                    "product_description": "Tapete de yoga leve e antiderrapante para viagem! O tapete de yoga Ecopro Travel é a versão mais fina e leve do nosso tapete preferido Ecopro, a base perfeita para práticas de yoga mais intensas. Este tapete de borracha natural oferece excelente aderência em ambos os lados, pra você nunca mais escorregar no meio de sua prática! Leve e com apenas 1,3 mm de espessura, pode ser guardado em qualquer mala ou mochila para economia de espaço. Não importa para onde sua viagem de yoga te leve, este tapete é um companheiro confiável e de fácil manutenção em qualquer lugar. Além de ser um tapete de yoga bem aderente para práticas avançadas de yoga, onde um tapete antiderrapante é importante para garantir o alinhamento correto e a execução segura dos asanas. 100% Borracha natural ecológica. Sem corantes AZO, DOP, metais pesados e 6P – DEHP, DBP, BBP, DINP, DIDP e DNOP. Quanto mais aderência um tapete de yoga oferece, menor será sua resistência à abrasão e pode apresentar sinais de uso gerado pelo impacto e marcas de atritos. No entanto, a funcionalidade e aderência não são afetadas, e basta passar um pano úmido que as marcas desaparecem. Recomendamos limpar os pés e mãos antes de iniciar a prática. Livre de produtos químicos, alérgenos e quaisquer substâncias nocivas. Certificado com os mais altos padrões, de acordo com o Oeko-Tex 100, Classe 1, que garante um nível de segurança para uso em bebês. (Certificado 2012OK0503). Você encontrará este selo na embalagem do seu tapete de yoga. Não contém: Corantes que liberam uma substância toxica chamada AZO, feito por um processo no qual uma amina aromática é transformada em um componente de diazônio que reage com outro componente como o fenol ou naftol para formar o corante. DOP (Dioctil ftalato), ​​um plastificante usado na produção de plástico flexível de cloreto de polivinila (PVC). É um dos plastificantes mais utilizados no PVC devido ao seu baixo custo. 6P, produtos químicos tóxicos usados ​​para suavizar e aumentar a flexibilidade do plástico e do vinil. São perigosos para a saúde e são encontrados em muitos tapetes e equipamentos de yoga. Passe um pano úmido para limpar, e não lave na máquina de lavar. Mantenha fora da luz solar direta. Recomendamos limpar o tapete após o uso com um pano levemente úmido. Enrole o tapete apenas quando estiver seco. Não use produtos de limpeza à base de álcool. Experimente passar um pano úmido antes da primeira prática e deixe secar bem antes de usar. Veja aqui as dicas para os primeiros usos, cuidados diários e como limpar o tapete de yoga. Com a limpeza e os cuidados certos, é possível estender a vida útil do seu tapete de yoga. Poeira, oleosidade da pele e suor podem penetrar na superfície do tapete e causar mau cheiro ou deixá-lo escorregadio e sujo. Por isso, é fundamental ter alguns cuidados básicos com o tapete depois de cada uso, para prolongar a sua vida útil e mantê-lo higienizado. Experimente também o nosso limpador higienizante de tapete de yoga. Cuide bem de seu tapete e aproveite sua prática! Material Borracha Natural Tamanho 185cm x 60cm Peso 900g Espessura 1,3mm Local de uso Interno Aderência ☆☆☆☆☆",
+                    "product_subtitle": "",
+                    "product_type": null,
+                    "product_type_id": null,
+                    "product_collection": null,
+                    "product_handle": "tapete-de-yoga-ecopro-travel",
+                    "variant_sku": "657V",
+                    "variant_barcode": null,
+                    "variant_title": "roxo",
+                    "variant_option_values": null,
+                    "requires_shipping": true,
+                    "is_discountable": true,
+                    "is_tax_inclusive": false,
+                    "is_custom_price": false,
+                    "metadata": {},
+                    "raw_compare_at_unit_price": null,
+                    "raw_unit_price": {
+                        "value": "345",
+                        "precision": 20
+                    },
+                    "created_at": "2026-02-16T06:16:49.436Z",
+                    "updated_at": "2026-02-16T06:16:49.436Z",
+                    "deleted_at": null,
+                    "compare_at_unit_price": null,
+                    "unit_price": 345,
+                    "quantity": 1,
+                    "raw_quantity": {
+                        "value": "1",
+                        "precision": 20
+                    },
+                    "detail": {
+                        "id": "orditem_01KHJHGBGVXWKSV29X3Z4QM766",
+                        "version": 1,
+                        "metadata": null,
+                        "order_id": "order_01KHJHGBGT6F3B5TB86HR3FJZD",
+                        "raw_unit_price": null,
+                        "raw_compare_at_unit_price": null,
+                        "raw_quantity": {
+                            "value": "1",
+                            "precision": 20
+                        },
+                        "raw_fulfilled_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_delivered_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_shipped_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_requested_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_received_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_return_dismissed_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "raw_written_off_quantity": {
+                            "value": "0",
+                            "precision": 20
+                        },
+                        "created_at": "2026-02-16T06:16:49.436Z",
+                        "updated_at": "2026-02-16T06:16:49.436Z",
+                        "deleted_at": null,
+                        "item_id": "ordli_01KHJHGBGTJCKYMN7NCVVHV0F2",
+                        "unit_price": null,
+                        "compare_at_unit_price": null,
+                        "quantity": 1,
+                        "fulfilled_quantity": 0,
+                        "delivered_quantity": 0,
+                        "shipped_quantity": 0,
+                        "return_requested_quantity": 0,
+                        "return_received_quantity": 0,
+                        "return_dismissed_quantity": 0,
+                        "written_off_quantity": 0
+                    }
+                }
+            ],
+            "customer": {
+                "id": "cus_01KHJHEBBCKRPZ4GKX8KM24RMG",
+                "company_name": null,
+                "first_name": null,
+                "last_name": null,
+                "email": "dharmikjpatel21@gmail.com",
+                "phone": null,
+                "has_account": true,
+                "metadata": null,
+                "created_by": null,
+                "created_at": "2026-02-16T06:15:43.724Z",
+                "updated_at": "2026-02-16T06:15:43.725Z",
+                "deleted_at": null
+            },
+            "payment_status": "authorized",
+            "fulfillment_status": "not_fulfilled"
+        }
+    ],
+    "count": 9,
+    "offset": 0,
+    "limit": 15
+}

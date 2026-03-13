@@ -1,0 +1,90 @@
+{
+    "retorno": {
+        "status_processamento": "3",
+        "status": "OK",
+        "pedido": {
+            "id": "755433652",
+            "numero": "237985",
+            "numero_ecommerce": "210391",
+            "data_pedido": "31/08/2024",
+            "data_prevista": "",
+            "data_faturamento": "",
+            "data_envio": "",
+            "data_entrega": "",
+            "id_lista_preco": null,
+            "descricao_lista_preco": "Padrão",
+            "cliente": {
+                "nome": "uy987 98789",
+                "codigo": "",
+                "nome_fantasia": "",
+                "tipo_pessoa": "F",
+                "cpf_cnpj": "270.051.840-33",
+                "ie": "",
+                "rg": "",
+                "endereco": "",
+                "numero": "",
+                "complemento": "",
+                "bairro": "",
+                "cidade": "",
+                "uf": "",
+                "fone": "(34) 56786-6554",
+                "email": "testtsc99@yopmail.com",
+                "cep": ""
+            },
+            "itens": [
+                {
+                    "item": {
+                        "id_produto": "576040418",
+                        "codigo": "531SA",
+                        "descricao": "Tapete e Almofada de Acupressão e Massagem Vital - GRANDE - ameixa",
+                        "unidade": "UN",
+                        "quantidade": "1",
+                        "valor_unitario": "326.0000000000"
+                    }
+                }
+            ],
+            "parcelas": [
+                {
+                    "parcela": {
+                        "dias": "0",
+                        "data": "31/08/2024",
+                        "valor": "326.0000000000",
+                        "obs": "",
+                        "forma_pagamento": "pix",
+                        "meio_pagamento": "PagHiper"
+                    }
+                }
+            ],
+            "marcadores": [],
+            "condicao_pagamento": "0",
+            "forma_pagamento": "pix",
+            "meio_pagamento": "PagHiper",
+            "nome_transportador": "Total Express",
+            "frete_por_conta": "R",
+            "valor_frete": "0.0000000000",
+            "valor_desconto": 0,
+            "outras_despesas": "0.00",
+            "total_produtos": "326.0000000000",
+            "total_pedido": "326.0000000000",
+            "numero_ordem_compra": "210391",
+            "deposito": "Galpao",
+            "ecommerce": {
+                "id": "8343",
+                "numeroPedidoEcommerce": "210391",
+                "numeroPedidoCanalVenda": "",
+                "nomeEcommerce": "WooCommerce"
+            },
+            "forma_envio": "TOTALEXPRESS",
+            "forma_frete": "Serviço Expresso",
+            "situacao": "Cancelado",
+            "obs": "Ref. ao pedido número 210391\rEndereço de entrega:\nPraça da Sé 123 Sé 123456",
+            "obs_interna": "",
+            "id_vendedor": "0",
+            "codigo_rastreamento": "",
+            "url_rastreamento": "",
+            "id_nota_fiscal": "0",
+            "pagamentos_integrados": [],
+            "id_natureza_operacao": "575494968"
+        }
+    }
+}

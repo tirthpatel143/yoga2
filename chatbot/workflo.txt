@@ -1,0 +1,74 @@
+graph TD;
+    A[👤 User Types Question] -->|Frontend UI| B(📱 index.html / script.js)
+    B -->|POST Request to /chat| C[⚙️ Backend API server.py]
+    
+    C --> D{🔍 Identify User?}
+    D -->|Yes ID/Email| E[📦 Fetch Order Data]
+    D -->|No ID| F[💬 General Chat Flow]
+    
+    E -->|Check carts.json / orders.json| G[📊 Build User Context]
+    G --> H{🛒 Is Query Order-Related?}
+    
+    H -->|Yes| I[🧠 Send Context + Query to AI]
+    H -->|No| F
+    F -->|Send Query only| J[🧠 AI Generates Response]
+    I --> J
+    
+    J --> K[💾 Save to Database]
+    K --> L{🛍️ Does response have Products?}
+    
+    L -->|Yes| M[🖼️ Generate Product Cards]
+    L -->|No| N[💬 Generate Text Response]
+    
+    M --> O[📤 Send Response JSON to Frontend]
+    N --> O
+    
+    O --> P[✨ Display Answer in Chat UI]
+
+
+
+
+Detailed Step-by-Step Breakdown
+Here is exactly what happens in your code from start to finish when a user asks a question:
+
+1. The Interaction (Frontend)
+The User Asks: The user types a message in the chat box on 
+
+index.html
+ and clicks send.
+The Request is Sent: Your frontend (script.js) packages this message along with the User's ID/Email (if they provided one) and sends an HTTP POST request to the backend server endpoint matching /chat.
+2. Analyzing the Request (Backend)
+Receiving the Data: The FastApi backend (
+
+server.py
+) receives the message and user_id.
+Smart ID Extraction: It checks if the user accidentally typed their email or a customer ID (like cus_123) directly inside the chat message using regular expressions. If they did, it automatically updates their user_id.
+3. Gathering Context (Backend)
+Fetching Orders: If a user_id exists, the system automatically runs 
+
+fetch_all_orders_for_user()
+.
+It checks local files (carts.json and orders.json).
+If not found locally, it reaches out to the external ORDER_API_URL.
+Checking Specific Orders: It checks the user's message to see if they mentioned a specific order number (e.g., "Where is order #1234?"). If they did, it runs 
+
+fetch_order_info()
+ to get details directly from the API.
+Building the Brain: All this information is combined into a hidden system_context string.
+4. The AI Processing Engine (Artificial Intelligence)
+Intent Recognition: The server uses keywords ("order", "pedido", "cart", "rastrear") to decide if the user is asking about an order or just asking for yoga advice.
+The Prompt:
+If order-related: It gives the AI engine the hidden system_context so the bot knows exactly what the user ordered, allowing the AI to give highly personalized customer support.
+If general: It just passes the user's question directly to the AI.
+The Generation: Your chat_engine (your custom AI model) processes the prompt and comes up with the best textual answer.
+5. Database Logging
+Saving History: The server takes the user's original message and the AI's final answer and saves them into the SQL database (db.save_chat_message). It generates a unique message_id for this piece of dialogue.
+6. Adding Product Cards (Visuals)
+Product Matching: If the AI's response isn't a simple greeting and doesn't involve checking orders, the server scans the AI's generated text response.
+Card Generation: It compares words in the AI's text against the 
+
+product_lookup
+ cache memory (built when the server starts). If it finds a match (e.g., the AI mentioned "Yoga Mat"), it attaches an image, price, and URL to create a beautifully formatted product card to send alongside the text.
+7. Delivering the Final Result
+The Return Trip: The server packages the text response, the product cards (if any), and the message_id (so users can give a thumbs up / thumbs down feedback) and sends it back to the frontend.
+The Display: The frontend JavaScript receives this data and updates the chat UI window, creating a message bubble with the text and displaying any product cards neatly below it! The entire process happens in just a few seconds.

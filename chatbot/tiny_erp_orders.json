@@ -1,0 +1,134 @@
+{
+  "27005184033": {
+    "orders": [
+      {
+        "order_id": "210391",
+        "customer_name": "uy987 98789",
+        "total": 326.0,
+        "status": "Cancelado",
+        "order_date": "31/08/2024",
+        "tracking_code": null,
+        "tracking_url": null
+      },
+      {
+        "order_id": "210393",
+        "customer_name": "uy987 98789",
+        "total": 326.0,
+        "status": "Cancelado",
+        "order_date": "31/08/2024",
+        "tracking_code": null,
+        "tracking_url": null
+      },
+      {
+        "order_id": "212261",
+        "customer_name": "uy987 98789",
+        "total": 326.0,
+        "status": "Cancelado",
+        "order_date": "09/09/2024",
+        "tracking_code": null,
+        "tracking_url": null
+      },
+      {
+        "order_id": "212738",
+        "customer_name": "uy987 98789",
+        "total": 326.0,
+        "status": "Cancelado",
+        "order_date": "12/09/2024",
+        "tracking_code": null,
+        "tracking_url": null
+      },
+      {
+        "order_id": "212740",
+        "customer_name": "uy987 98789",
+        "total": 326.0,
+        "status": "Cancelado",
+        "order_date": "12/09/2024",
+        "tracking_code": null,
+        "tracking_url": null
+      },
+      {
+        "order_id": "212974",
+        "customer_name": "uy987 98789",
+        "total": 326.0,
+        "status": "Cancelado",
+        "order_date": "13/09/2024",
+        "tracking_code": null,
+        "tracking_url": null
+      },
+      {
+        "order_id": "cart_01KJ59S5HDND8GXQ88MA3WED1W",
+        "customer_name": "uy987 98789",
+        "total": 395.0,
+        "status": "Em aberto",
+        "order_date": "23/02/2026",
+        "tracking_code": null,
+        "tracking_url": null
+      },
+      {
+        "order_id": "cart_01KJ7XS9JN4NP5AE2WK6SQY3FN",
+        "customer_name": "uy987 98789",
+        "total": 73.0,
+        "status": "Cancelado",
+        "order_date": "24/02/2026",
+        "tracking_code": null,
+        "tracking_url": null
+      },
+      {
+        "order_id": "cart_01KJCVRXA6EVP9ZBM7H7W6MQTS",
+        "customer_name": "Dharmik Patel",
+        "total": 169.0,
+        "status": "Preparando envio",
+        "order_date": "26/02/2026",
+        "tracking_code": null,
+        "tracking_url": null
+      },
+      {
+        "order_id": "cart_01KJFPM9WFMGD37BJWR5SQAG36",
+        "customer_name": "Dharmik Patel",
+        "total": 254.0,
+        "status": "Em aberto",
+        "order_date": "27/02/2026",
+        "tracking_code": null,
+        "tracking_url": null
+      },
+      {
+        "order_id": "cart_01KJQ7XVHK0MAQYW2K2XKRMJ1R",
+        "customer_name": "Dharmik Patel",
+        "total": 38.0,
+        "status": "Preparando envio",
+        "order_date": "02/03/2026",
+        "tracking_code": null,
+        "tracking_url": null
+      },
+      {
+        "order_id": "cart_01KJSAW1HZ3X2KJDKSMPXKBZYJ",
+        "customer_name": "Dharmik Patel",
+        "total": 38.0,
+        "status": "Preparando envio",
+        "order_date": "03/03/2026",
+        "tracking_code": null,
+        "tracking_url": null
+      },
+      {
+        "order_id": "350000",
+        "customer_name": "Dharmik Patel",
+        "total": 38.0,
+        "status": "Cancelado",
+        "order_date": "03/03/2026",
+        "tracking_code": null,
+        "tracking_url": null
+      },
+      {
+        "order_id": "350001",
+        "customer_name": "Dharmik Patel",
+        "total": 38.0,
+        "status": "Cancelado",
+        "order_date": "03/03/2026",
+        "tracking_code": null,
+        "tracking_url": null
+      }
+    ],
+    "fetched_at": "2026-03-12T10:12:08.554137",
+    "total_orders": 14
+  }
+}
