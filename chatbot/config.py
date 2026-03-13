@@ -15,6 +15,7 @@ COLLECTION_NAME = os.getenv("COLLECTION_NAME", "yogateria_products_v2")
 # TinyERP Configuration
 TINY_ERP_URL = os.getenv("TINY_ERP_URL")
 TINY_ERP_API_KEY = os.getenv("TINY_ERP_API_KEY")
+TINY_ERP_ORDER_DETAILS_URL = os.getenv("TINY_ERP_ORDER_DETAILS_URL", "https://yogateria.medusajs.app/store/tiny-erp-orders")
 
 # HF Configuration
 HF_TOKEN = os.getenv("HF_TOKEN")

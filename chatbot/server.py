@@ -614,90 +614,54 @@ def chat_endpoint(request: ChatRequest):
         # --- TinyERP Orders Integration (CPF/CNPJ based) ---
         # Generate a unique session key for this user
         session_key = user_id if user_id else "anonymous"
-        
-        # Check if user is asking about their orders/history (comprehensive check)
-        is_asking_orders = bool(re.search(r'(my order|meu pedido|my orders|meus pedidos|past order|pedidos anteriores|order history|histórico de pedidos|minhas compras|my purchase|track.*order|where.*order|order.*status|check.*order|find.*order|search.*order|view.*order|show.*order|previous order|recent order)', user_message.lower()))
-        
-        # Check if user provided CPF/CNPJ (11 or 14 digits)
-        cpf_cnpj_match = re.search(r'\b(\d{11}|\d{14}|\d{3}\.?\d{3}\.?\d{3}-?\d{2}|\d{2}\.?\d{3}\.?\d{3}/?0001-?\d{2})\b', user_message)
-        
-        # Check if we already have CPF/CNPJ stored in the session
-        stored_cpf_cnpj = None
+        print(f"[DEBUG] session_key: {session_key}")
+        print(f"[DEBUG] active conversation_state keys: {list(conversation_state.keys())}")
         if session_key in conversation_state:
-            stored_cpf_cnpj = conversation_state[session_key].get('cpf_cnpj')
-            
-        is_new_cpf = False
-        # If CPF/CNPJ is provided, store it in session for future use
-        if cpf_cnpj_match:
-            cpf_cnpj = cpf_cnpj_match.group(0)
-            print(f"[SERVER] Detected CPF/CNPJ: {cpf_cnpj} - Storing in session")
-            
-            if not stored_cpf_cnpj or stored_cpf_cnpj != cpf_cnpj:
-                is_new_cpf = True
-            
-            # Store or update CPF/CNPJ in session
-            if session_key not in conversation_state:
-                conversation_state[session_key] = {}
-            conversation_state[session_key]['cpf_cnpj'] = cpf_cnpj
+             print(f"[DEBUG] state for this session: {conversation_state[session_key]}")
+
         
-        # If user is asking about orders
-        if is_asking_orders:
-            # Check if we have CPF/CNPJ (either just provided or already stored)
-            current_cpf_cnpj = cpf_cnpj_match.group(0) if cpf_cnpj_match else stored_cpf_cnpj
+        # --- Check if user clicked an order card to view its details ---
+        specific_order_details_match = re.search(r'Show details for order\s+([a-zA-Z0-9_\-]+)', user_message, re.IGNORECASE)
+        if specific_order_details_match:
+            order_id = specific_order_details_match.group(1)
+            details_context, detailed_order = tiny_erp.fetch_order_details(order_id)
             
-            if not current_cpf_cnpj:
-                # First time - ask for CPF/CNPJ
-                resp_text = "To check your order information, I need your CPF or CNPJ number. Please provide your CPF (11 digits) or CNPJ (14 digits).\n\nFor example: '270.051.840-33' or '12.345.678/0001-90'"
-                message_id = db.save_chat_message(request.message, resp_text)
-                return {
-                    "response": resp_text,
-                    "products": [],
-                    "orders": [],
-                    "message_id": message_id,
-                    "follow_ups": ["What products do you offer?", "Tell me about yoga mats", "How can I help you today?"]
-                }
-            else:
-                # We have CPF/CNPJ - fetch orders and show options
-                orders = tiny_erp.fetch_and_store_orders(current_cpf_cnpj)
-                
-                if orders:
-                    # Store in session and set awaiting choice
-                    if session_key not in conversation_state:
-                        conversation_state[session_key] = {}
-                    
-                    conversation_state[session_key]['cpf_cnpj'] = current_cpf_cnpj
-                    conversation_state[session_key]['awaiting_order_choice'] = True
-                    conversation_state[session_key]['awaiting_search_param'] = False
-                    
-                    total_count = len(orders)
-                    resp_text = f"I found **{total_count} orders** for you! How would you like to view them?\n\n1️⃣ **Show my last 3 recent orders**\n2️⃣ **Search by order date or order ID**\n\nPlease choose an option!"
-                    message_id = db.save_chat_message(request.message, resp_text)
-                    
-                    return {
-                        "response": resp_text,
-                        "products": [],
-                        "orders": [],
-                        "message_id": message_id,
-                        "follow_ups": ["Show recent orders", "Search by date", "Search by order ID"]
-                    }
+            try:
+                system_msg = f"{details_context}\n\nPlease format the order details concisely and clearly for the user. Highlight the items and status."
+                response = chat_engine.chat(system_msg)
+                resp_text = str(response)
+            except Exception as e:
+                print(f"Chat Error during order details: {e}")
+                # Fallback text if LLM fails
+                if detailed_order:
+                    items_list = "\n".join([f"- {item}" for item in detailed_order.get('items', [])])
+                    resp_text = f"Here are the details for your order **#{detailed_order['order_id']}**:\n\n"
+                    resp_text += f"**Status:** {detailed_order['status']}\n"
+                    resp_text += f"**Total:** R$ {detailed_order['total']:.2f}\n\n"
+                    resp_text += f"**Items:**\n{items_list}\n"
                 else:
-                    resp_text = f"I couldn't find any orders for CPF/CNPJ: {current_cpf_cnpj}. Please verify the number and try again."
-                    message_id = db.save_chat_message(request.message, resp_text)
-                    return {
-                        "response": resp_text,
-                        "products": [],
-                        "orders": [],
-                        "message_id": message_id,
-                        "follow_ups": ["Try another CPF/CNPJ", "What products do you offer?", "Tell me about yoga mats"]
-                    }
+                    resp_text = f"I was able to find order #{order_id}, but I'm having trouble retrieving the full details right now. Please try again in a moment."
+
+            message_id = db.save_chat_message(request.message, resp_text)
+            
+            return {
+                "response": resp_text,
+                "products": [],
+                "orders": [detailed_order] if detailed_order else [],
+                "message_id": message_id,
+                "follow_ups": ["Show my recent orders", "Search by order date", "Search by order ID"]
+            }
+        # --- Check for active TinyERP conversation states first to prevent loops ---
         
         # Check if we're in a state waiting for order search preference
         if session_key in conversation_state and conversation_state[session_key].get('awaiting_order_choice'):
             cpf_cnpj = conversation_state[session_key]['cpf_cnpj']
             
-            # Check user's choice (adding support for "1" and "2")
-            wants_recent = bool(re.search(r'(recent|last|latest|three|3|últimos|recentes|^1$|1\w|one)', user_message.lower().strip()))
-            wants_search = bool(re.search(r'(date|order id|search|find|buscar|data|id do pedido|número|^2$|2\w|two)', user_message.lower().strip()))
+            # Check user's choice (adding support for exact button text and short codes)
+            wants_recent = bool(re.search(r'(recent|last|latest|3|recentes|^1$|1\w|one)', user_message.lower().strip()))
+            wants_search = bool(re.search(r'(date|order id|search|data|id do pedido|número|^2$|2\w|two)', user_message.lower().strip()))
+            print(f"[DEBUG] wants_recent: {wants_recent}, wants_search: {wants_search}")
+
             
             if wants_recent:
                 # User wants last 3 recent orders
@@ -759,7 +723,7 @@ def chat_endpoint(request: ChatRequest):
                 }
             else:
                 # User didn't make a clear choice, ask again
-                resp_text = "I didn't quite understand. Would you like to:\n\n1️⃣ **See your last 3 recent orders**\n2️⃣ **Search by order date or order ID**\n\nPlease let me know your preference!"
+                resp_text = "I didn't quite understand. Would you like to:\n\n<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"1️⃣ Show my last 3 recent orders\"; document.getElementById(\"send-button\").click();'>1️⃣ Show my last 3 recent orders</button>\n<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"2️⃣ Search by order date or order ID\"; document.getElementById(\"send-button\").click();'>2️⃣ Search by order date or order ID</button>\n\nPlease let me know your preference!"
                 message_id = db.save_chat_message(request.message, resp_text)
                 
                 return {
@@ -767,7 +731,7 @@ def chat_endpoint(request: ChatRequest):
                     "products": [],
                     "orders": [],
                     "message_id": message_id,
-                    "follow_ups": ["Show recent orders", "Search by date", "Search by order ID"]
+                    "follow_ups": ["1️⃣ Show my last 3 recent orders", "2️⃣ Search by order date or order ID"]
                 }
         
         # Check if we're waiting for search parameter (date or order ID)
@@ -851,6 +815,84 @@ def chat_endpoint(request: ChatRequest):
                         "message_id": message_id,
                         "follow_ups": ["Show recent orders", "Try another search"]
                     }
+
+        # Check if user is asking about their orders/history (comprehensive check)
+        is_asking_orders = bool(re.search(r'(my order|meu pedido|my orders|meus pedidos|past order|pedidos anteriores|order history|histórico de pedidos|minhas compras|my purchase|track.*order|where.*order|order.*status|check.*order|find.*order|search.*order|view.*order|show.*order|previous order|recent order)', user_message.lower()))
+        
+        # Check if user provided CPF/CNPJ (11 or 14 digits)
+        cpf_cnpj_match = re.search(r'\b(\d{11}|\d{14}|\d{3}\.?\d{3}\.?\d{3}-?\d{2}|\d{2}\.?\d{3}\.?\d{3}/?0001-?\d{2})\b', user_message)
+        
+        # Check if we already have CPF/CNPJ stored in the session
+        stored_cpf_cnpj = None
+        if session_key in conversation_state:
+            stored_cpf_cnpj = conversation_state[session_key].get('cpf_cnpj')
+            
+        is_new_cpf = False
+        # If CPF/CNPJ is provided, store it in session for future use
+        if cpf_cnpj_match:
+            cpf_cnpj = cpf_cnpj_match.group(0)
+            print(f"[SERVER] Detected CPF/CNPJ: {cpf_cnpj} - Storing in session")
+            
+            if not stored_cpf_cnpj or stored_cpf_cnpj != cpf_cnpj:
+                is_new_cpf = True
+            
+            # Store or update CPF/CNPJ in session
+            if session_key not in conversation_state:
+                conversation_state[session_key] = {}
+            conversation_state[session_key]['cpf_cnpj'] = cpf_cnpj
+        
+        # If user is asking about orders
+        if is_asking_orders:
+            # Check if we have CPF/CNPJ (either just provided or already stored)
+            current_cpf_cnpj = cpf_cnpj_match.group(0) if cpf_cnpj_match else stored_cpf_cnpj
+            
+            if not current_cpf_cnpj:
+                # First time - ask for CPF/CNPJ
+                resp_text = "To check your order information, I need your CPF or CNPJ number. Please provide your CPF (11 digits) or CNPJ (14 digits).\n\nFor example: '270.051.840-33' or '12.345.678/0001-90'"
+                message_id = db.save_chat_message(request.message, resp_text)
+                return {
+                    "response": resp_text,
+                    "products": [],
+                    "orders": [],
+                    "message_id": message_id,
+                    "follow_ups": ["What products do you offer?", "Tell me about yoga mats", "How can I help you today?"]
+                }
+            else:
+                # We have CPF/CNPJ - fetch orders and show options
+                orders = tiny_erp.fetch_and_store_orders(current_cpf_cnpj)
+                
+                if orders:
+                    # Store in session and set awaiting choice
+                    if session_key not in conversation_state:
+                        conversation_state[session_key] = {}
+                    
+                    conversation_state[session_key]['cpf_cnpj'] = current_cpf_cnpj
+                    conversation_state[session_key]['awaiting_order_choice'] = True
+                    conversation_state[session_key]['awaiting_search_param'] = False
+                    
+                    total_count = len(orders)
+                    resp_text = f"I found **{total_count} orders** for you! How would you like to view them?\n\n<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"1️⃣ Show my last 3 recent orders\"; document.getElementById(\"send-button\").click();'>1️⃣ Show my last 3 recent orders</button>\n<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"2️⃣ Search by order date or order ID\"; document.getElementById(\"send-button\").click();'>2️⃣ Search by order date or order ID</button>\n\nPlease choose an option!"
+                    message_id = db.save_chat_message(request.message, resp_text)
+                    
+                    return {
+                        "response": resp_text,
+                        "products": [],
+                        "orders": [],
+                        "message_id": message_id,
+                        "follow_ups": ["1️⃣ Show my last 3 recent orders", "2️⃣ Search by order date or order ID"]
+                    }
+                else:
+                    resp_text = f"I couldn't find any orders for CPF/CNPJ: {current_cpf_cnpj}. Please verify the number and try again."
+                    message_id = db.save_chat_message(request.message, resp_text)
+                    return {
+                        "response": resp_text,
+                        "products": [],
+                        "orders": [],
+                        "message_id": message_id,
+                        "follow_ups": ["Try another CPF/CNPJ", "What products do you offer?", "Tell me about yoga mats"]
+                    }
+        
+
         
         # Handle case where user just provides CPF/CNPJ (in response to our request or spontaneously)
         # Only trigger options if we just stored new CPF/CNPJ and user isn't in middle of another flow
@@ -875,7 +917,7 @@ def chat_endpoint(request: ChatRequest):
                     
                     # Ask user what they want to do
                     total_count = len(orders)
-                    resp_text = f"Great! I found **{total_count} orders** for CPF/CNPJ: {cpf_cnpj}.\n\nHow would you like to view them?\n\n1️⃣ **Show my last 3 recent orders**\n2️⃣ **Search by order date or order ID**\n\nPlease choose an option!"
+                    resp_text = f"Great! I found **{total_count} orders** for CPF/CNPJ: {cpf_cnpj}.\n\nHow would you like to view them?\n\n<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"1️⃣ Show my last 3 recent orders\"; document.getElementById(\"send-button\").click();'>1️⃣ Show my last 3 recent orders</button>\n<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"2️⃣ Search by order date or order ID\"; document.getElementById(\"send-button\").click();'>2️⃣ Search by order date or order ID</button>\n\nPlease choose an option!"
                     message_id = db.save_chat_message(request.message, resp_text)
                     
                     return {
@@ -883,7 +925,7 @@ def chat_endpoint(request: ChatRequest):
                         "products": [],
                         "orders": [],
                         "message_id": message_id,
-                        "follow_ups": ["Show recent orders", "Search by date", "Search by order ID"]
+                        "follow_ups": ["1️⃣ Show my last 3 recent orders", "2️⃣ Search by order date or order ID"]
                     }
                 else:
                     # No orders found or API error

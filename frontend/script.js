@@ -64,15 +64,16 @@ function createOrderCard(order) {
     console.log('createOrderCard called with:', order);
     
     const card = document.createElement('div');
-    card.className = 'order-card';
+    card.className = order.is_detailed ? 'order-card detailed' : 'order-card';
     
-    // Status translation and color mapping
+    // Status translation and color mapping for normal cards
     const statusTranslation = {
         'Em aberto': 'Open',
         'Preparando envio': 'Preparing Shipment',
         'Cancelado': 'Cancelled',
         'Enviado': 'Shipped',
-        'Entregue': 'Delivered'
+        'Entregue': 'Delivered',
+        'Pronto para Envio': 'Ready for Shipment'
     };
     
     const statusColors = {
@@ -80,21 +81,107 @@ function createOrderCard(order) {
         'Preparando envio': '#CCE5FF',
         'Cancelado': '#F8D7DA',
         'Enviado': '#D4EDDA',
-        'Entregue': '#D4EDDA'
+        'Entregue': '#D4EDDA',
+        'Pronto para Envio': '#D1ECF1'
     };
     
     const statusText = statusTranslation[order.status] || order.status;
     const statusBgColor = statusColors[order.status] || '#E2E3E5';
-    
-    card.innerHTML = `
-        <div class="order-info">
-            <h3 class="order-title">Order #${order.order_id}</h3>
-            <span class="order-status" style="background-color: ${statusBgColor}; color: #000;">${statusText}</span>
-            <p class="order-date"><strong>Order Date:</strong> ${order.order_date}</p>
-            <p class="order-total"><strong>Order Total:</strong> R$ ${order.total.toFixed(2)}</p>
-            <a href="#" class="view-btn" onclick="event.preventDefault(); console.log('View order ${order.order_id}');">View Order</a>
-        </div>
-    `;
+
+    if (order.is_detailed) {
+        // Detailed Card Rendering
+        const steps = [
+            { id: 'realizado', title: 'Pedido Realizado', desc: 'Aguardando pagamento', statusSet: ['Em aberto'] },
+            { id: 'pagamento', title: 'Pagamento Confirmado', desc: 'Pedido aprovado e em processamento', statusSet: [] },
+            { id: 'separacao', title: 'Preparando Envio', desc: 'Seu pedido está sendo separado', statusSet: ['Preparando envio'] },
+            { id: 'pronto', title: 'Pronto para Envio', desc: 'Pedido embalado e aguardando coleta', statusSet: ['Pronto para Envio'] },
+            { id: 'enviado', title: 'Enviado', desc: 'Pedido a caminho', statusSet: ['Enviado'] },
+            { id: 'entregue', title: 'Entregue', desc: 'Pedido entregue com sucesso', statusSet: ['Entregue'] }
+        ];
+
+        // Heuristic to find current step index
+        let currentStepIndex = 0;
+        const normalizedStatus = order.status;
+        for (let i = steps.length - 1; i >= 0; i--) {
+            if (steps[i].statusSet.includes(normalizedStatus)) {
+                currentStepIndex = i;
+                break;
+            }
+        }
+        // Fallback for logic: if status is beyond "Em aberto", assume at least step 0
+        if (currentStepIndex === 0 && normalizedStatus !== 'Em aberto' && normalizedStatus !== 'Cancelado') {
+             // If it's something unknown but not open/canceled, maybe it's processing
+             currentStepIndex = 1;
+        }
+
+        const icons = {
+            realizado: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+            pagamento: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
+            separacao: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>`,
+            pronto: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/><path d="m4.6 19.1 5-2.9"/><path d="m14.4 16.2 5 2.9"/></svg>`,
+            enviado: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polyline points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
+            entregue: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.4 2 21 9.6 19.1 11.5 11.5 3.9z"/><path d="M2 13.4 9.6 21 11.5 19.1 3.9 11.5z"/><path d="m14 14 5 5-1.5 1.5-5-5z"/><path d="M1.3 5.4 5.4 1.3"/><path d="m3 7 7 7"/></svg>`
+        };
+
+        card.innerHTML = `
+            <div class="order-info">
+                <div class="detailed-header">
+                    <div class="header-left">
+                        <span class="label">Pedido</span>
+                        <h3>#${order.order_id}</h3>
+                    </div>
+                    <div class="header-right">
+                        <span class="label">Data do pedido</span>
+                        <span class="date">${order.order_date}</span>
+                    </div>
+                </div>
+
+                <div class="detailed-customer-total">
+                    <div class="customer-info">
+                        <span class="label">Cliente</span>
+                        <span class="name">${order.customer_name}</span>
+                    </div>
+                    <div class="total-info">
+                        <span class="label">Total</span>
+                        <span class="amount">R$ ${order.total.toFixed(2)}</span>
+                    </div>
+                </div>
+
+                <div class="status-timeline-container">
+                    <h4>Status do Pedido</h4>
+                    <div class="timeline">
+                        ${steps.map((step, index) => `
+                            <div class="timeline-step ${index < currentStepIndex ? 'completed' : (index === currentStepIndex ? 'active' : '')}">
+                                <div class="step-icon">${icons[step.id]}</div>
+                                <div class="step-content">
+                                    <div class="step-title">${step.title}</div>
+                                    <div class="step-desc">${step.desc}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="items-container">
+                    <h4>Itens do Pedido</h4>
+                    <div class="items-list">
+                        ${order.items.map(item => `<div class="item-row">${item}</div>`).join('')}
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        // Simple Card Rendering
+        card.innerHTML = `
+            <div class="order-info">
+                <h3 class="order-title">Order #${order.order_id}</h3>
+                <span class="order-status" style="background-color: ${statusBgColor}; color: #000;">${statusText}</span>
+                <p class="order-date"><strong>Order Date:</strong> ${order.order_date}</p>
+                <p class="order-total"><strong>Order Total:</strong> R$ ${order.total.toFixed(2)}</p>
+                <a href="#" class="view-btn" onclick="event.preventDefault(); document.getElementById('user-input').value = 'Show details for order ${order.order_id}'; document.getElementById('send-button').click();">View Order</a>
+            </div>
+        `;
+    }
     
     console.log('Card created:', card);
     return card;
@@ -268,7 +355,7 @@ async function sendMessage() {
             data.follow_ups.forEach(q => {
                 const item = document.createElement('div');
                 item.className = 'follow-up-item';
-                item.innerHTML = `&#8618; ${q}`;
+                item.innerHTML = `${q}`;
                 item.onclick = () => {
                     userInput.value = q;
                     sendMessage();

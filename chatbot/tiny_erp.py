@@ -8,7 +8,7 @@ import os
 import requests
 from typing import Optional, Dict, List
 from datetime import datetime
-from config import TINY_ERP_URL, TINY_ERP_API_KEY
+from config import TINY_ERP_URL, TINY_ERP_API_KEY, TINY_ERP_ORDER_DETAILS_URL
 
 
 def parse_date(date_str: str) -> datetime:
@@ -325,3 +325,106 @@ def format_orders_for_llm_context(orders: List[Dict]) -> str:
     context += f"Total orders found: {len(orders)}\n"
     
     return context
+
+
+def fetch_order_details(order_id: str) -> str:
+    """
+    Fetch specific order details from TinyERP and format as LLM context
+    
+    Args:
+        order_id: The ID of the order to fetch
+        
+    Returns:
+        Tuple (context_string, detailed_order_dict)
+    """
+    if not TINY_ERP_ORDER_DETAILS_URL:
+        return "", None
+        
+    try:
+        url = f"{TINY_ERP_ORDER_DETAILS_URL}/{order_id}"
+        
+        headers = {}
+        if TINY_ERP_API_KEY:
+            headers['x-publishable-api-key'] = TINY_ERP_API_KEY
+            
+        print(f"[TINY_ERP] Fetching details for order: {order_id}")
+        response = requests.get(url, headers=headers, timeout=10)
+        
+        if response.status_code == 200:
+            data = response.json()
+            order_data = data.get('order', {}) if 'order' in data else data
+            
+            if not order_data:
+                return f"System Note: Failed to parse details for order #{order_id}.", None
+                
+            # Try to handle Medusa-like structure or TinyERP native structure
+            display_id = order_data.get('display_id', order_data.get('id', order_id))
+            status = order_data.get('status', order_data.get('situacao', 'Unknown'))
+            fulfillment = order_data.get('fulfillment_status', 'Unknown')
+            total = order_data.get('total', order_data.get('valor', 0))
+            
+            # Extract items
+            items_text = []
+            items = order_data.get('items', [])
+            
+            # Handle TinyERP items format if present
+            if 'itens' in order_data:
+                items = order_data['itens']
+                for item_wrapper in items:
+                    item = item_wrapper.get('item', item_wrapper)
+                    qty = item.get('quantidade', 1)
+                    title = item.get('descricao', item.get('title', 'Item'))
+                    price = item.get('valor_unitario', item.get('unit_price', 0))
+                    items_text.append(f"{qty}x {title} - R$ {float(price):.2f}")
+            else:
+                # Handle standard format
+                for item in items:
+                    qty = item.get('quantity', 1)
+                    title = item.get('title', 'Item')
+                    price = item.get('unit_price', 0) / 100 if item.get('unit_price') else 0
+                    if price > 0:
+                        items_text.append(f"{qty}x {title} - R$ {price:.2f}")
+                    else:
+                        items_text.append(f"{qty}x {title}")
+                        
+            items_str = "\\n  - ".join(items_text) if items_text else "No items found"
+            
+            # Format context
+            context = f"System Note: The user requested details for order #{display_id}. Here are the full details:\\n"
+            context += f"Status: {status}\\n"
+            if fulfillment != 'Unknown':
+                context += f"Fulfillment: {fulfillment}\\n"
+            if total > 0:
+                context += f"Total: {total}\\n"
+                
+            if isinstance(order_data.get('customer'), dict):
+                customer = order_data['customer']
+                email = customer.get('email', '')
+                if email:
+                    context += f"Customer Email: {email}\\n"
+                    
+            context += f"\\nItems in this order:\\n  - {items_str}\\n\\n"
+            context += "Please provide a helpful summary of this order to the user."
+            
+            # Prepare detailed card data for frontend
+            detailed_order = {
+                "order_id": display_id,
+                "status": status,
+                "total": float(total) if total else 0.0,
+                "order_date": order_data.get('data_pedido', ''),
+                "items": items_text,
+                "customer_name": order_data.get('cliente', {}).get('nome', 'N/A'),
+                "tracking_code": order_data.get('codigo_rastreamento'),
+                "tracking_url": order_data.get('url_rastreamento'),
+                "is_detailed": True
+            }
+            
+            return context, detailed_order
+            
+        else:
+            print(f"[TINY_ERP] Failed to fetch order details. Status: {response.status_code}")
+            return f"System Note: The system failed to retrieve details for order #{order_id}. Error code: {response.status_code}.", None
+            
+    except Exception as e:
+        print(f"[TINY_ERP] Error fetching order details: {e}")
+        return f"System Note: There was an error trying to fetch details for order #{order_id}.", None
