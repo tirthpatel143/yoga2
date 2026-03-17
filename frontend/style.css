@@ -240,12 +240,12 @@ header {
 }
 
 .view-btn {
-    background-color: #f0f0f0;
-    color: #000;
-    border: none;
+    background-color: rgba(188, 161, 54, 0.1);
+    color: var(--accent-color);
+    border: 1px solid rgba(188, 161, 54, 0.3);
     padding: 8px;
     border-radius: 8px;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.8rem;
     cursor: pointer;
     transition: var(--transition);
@@ -254,7 +254,8 @@ header {
 }
 
 .view-btn:hover {
-    background-color: #e0e0e0;
+    background-color: var(--accent-color);
+    color: white;
 }
 
 /* Orders Container */
@@ -272,22 +273,25 @@ header {
     display: none;
 }
 
-/* Order Card - Matching Product Card Style */
+/* Order Card - Premium Dark/Gold Theme */
 .order-card {
-    min-width: 240px;
-    max-width: 260px;
-    background-color: var(--card-bg);
+    min-width: 260px;
+    max-width: 280px;
+    background-color: #111111;
     border-radius: var(--border-radius);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
     transition: var(--transition);
     animation: slideIn 0.5s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .order-card:hover {
     transform: translateY(-5px);
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 15px 45px rgba(188, 161, 54, 0.2);
 }
 
 .order-info {
@@ -298,9 +302,9 @@ header {
 }
 
 .order-title {
-    color: var(--card-text);
-    font-weight: 600;
-    font-size: 0.95rem;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1rem;
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -308,35 +312,38 @@ header {
 }
 
 .order-status {
-    padding: 4px 10px;
-    border-radius: 8px;
-    font-size: 0.7rem;
-    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
     white-space: nowrap;
     align-self: flex-start;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .order-date,
 .order-total {
-    color: #555;
+    color: #cccccc;
     font-size: 0.85rem;
     margin: 0;
 }
 
 .order-date strong,
 .order-total strong {
-    color: var(--card-text);
+    color: var(--accent-color);
     font-weight: 600;
 }
 
-/* Detailed Order Card Styles */
+/* Detailed Order Card - Full Dark Theme */
 .order-card.detailed {
     min-width: 100%;
     max-width: 100%;
-    background-color: #f8f9fa;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background: #000000;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(188, 161, 54, 0.3);
 }
 
 .order-card.detailed .order-info {
@@ -353,15 +360,19 @@ header {
 
 .header-left .label, .header-right .label {
     font-size: 0.75rem;
-    color: #888;
+    color: var(--accent-color);
     margin-bottom: 4px;
     display: block;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .header-left h3 {
     font-size: 1.4rem;
     font-weight: 700;
     margin: 0;
+    color: #ffffff;
 }
 
 .header-right {
@@ -371,41 +382,49 @@ header {
 .header-right .date {
     font-size: 1.1rem;
     font-weight: 600;
+    color: #ffffff;
+}
+
+.customer-info .label, .total-info .label {
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    margin-bottom: 4px;
+    display: block;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .detailed-customer-total {
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 20px;
 }
 
-.customer-info .name {
+.customer-info .name, .total-info .amount {
     font-size: 1.1rem;
     font-weight: 600;
-}
-
-.total-info {
-    text-align: right;
-}
-
-.total-info .amount {
-    font-size: 1.2rem;
-    font-weight: 700;
+    color: #ffffff;
 }
 
 /* Timeline Styles */
 .status-timeline-container {
-    background: white;
+    background: #0f0f0f;
     border-radius: 12px;
     padding: 24px;
     margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .status-timeline-container h4 {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 24px;
-    color: #111;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .timeline {
@@ -420,7 +439,7 @@ header {
     top: 0;
     bottom: 40px;
     width: 2px;
-    background: #eee;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .timeline-step {
@@ -450,14 +469,14 @@ header {
 }
 
 .timeline-step.completed .step-icon {
-    background: #eefbff;
-    color: #2b7de9;
+    background: rgba(188, 161, 54, 0.1);
+    color: var(--accent-color);
 }
 
 .timeline-step.active .step-icon {
     background: #ffffff;
-    box-shadow: 0 0 0 4px #eefbff;
-    color: #2b7de9;
+    box-shadow: 0 0 0 4px rgba(188, 161, 54, 0.2);
+    color: var(--accent-color);
 }
 
 .step-content {
@@ -467,34 +486,46 @@ header {
 .step-title {
     font-weight: 700;
     font-size: 1rem;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 2px;
 }
 
 .step-desc {
     font-size: 0.85rem;
-    color: #777;
+    color: #aaaaaa;
 }
 
 /* Items Styles */
 .items-container {
-    background: white;
+    background: #0f0f0f;
     border-radius: 12px;
     padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .items-container h4 {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 20px;
-    color: #111;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .item-row {
     font-size: 1rem;
-    font-weight: 600;
-    color: #333;
+    font-weight: 500;
+    color: #eeeeee;
     margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.item-row::before {
+    content: '•';
+    color: var(--accent-color);
+    font-weight: bold;
 }
 
 .item-row:last-child {

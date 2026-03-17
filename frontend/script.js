@@ -69,20 +69,25 @@ function createOrderCard(order) {
     // Status translation and color mapping for normal cards
     const statusTranslation = {
         'Em aberto': 'Open',
-        'Preparando envio': 'Preparing Shipment',
+        'Preparando envio': 'Preparing shipment',
         'Cancelado': 'Cancelled',
         'Enviado': 'Shipped',
         'Entregue': 'Delivered',
-        'Pronto para Envio': 'Ready for Shipment'
+        'Pronto para Envio': 'Ready for shipment',
+        'Faturado': 'Billed',
+        'Aguardando pagamento': 'Awaiting payment',
+        'Não faturado': 'Not billed'
     };
     
     const statusColors = {
-        'Em aberto': '#FFF3CD',
-        'Preparando envio': '#CCE5FF',
-        'Cancelado': '#F8D7DA',
-        'Enviado': '#D4EDDA',
-        'Entregue': '#D4EDDA',
-        'Pronto para Envio': '#D1ECF1'
+        'Em aberto': '#FFC107', // Warning/Amber
+        'Preparando envio': '#E91E63', // Pink
+        'Cancelado': '#F44336', // Red
+        'Enviado': '#4CAF50', // Green
+        'Entregue': '#2E7D32', // Dark Green
+        'Pronto para Envio': '#00BCD4', // Cyan
+        'Faturado': '#2196F3', // Blue
+        'Aguardando pagamento': '#FF9800' // Orange
     };
     
     const statusText = statusTranslation[order.status] || order.status;
@@ -91,12 +96,12 @@ function createOrderCard(order) {
     if (order.is_detailed) {
         // Detailed Card Rendering
         const steps = [
-            { id: 'realizado', title: 'Pedido Realizado', desc: 'Aguardando pagamento', statusSet: ['Em aberto'] },
-            { id: 'pagamento', title: 'Pagamento Confirmado', desc: 'Pedido aprovado e em processamento', statusSet: [] },
-            { id: 'separacao', title: 'Preparando Envio', desc: 'Seu pedido está sendo separado', statusSet: ['Preparando envio'] },
-            { id: 'pronto', title: 'Pronto para Envio', desc: 'Pedido embalado e aguardando coleta', statusSet: ['Pronto para Envio'] },
-            { id: 'enviado', title: 'Enviado', desc: 'Pedido a caminho', statusSet: ['Enviado'] },
-            { id: 'entregue', title: 'Entregue', desc: 'Pedido entregue com sucesso', statusSet: ['Entregue'] }
+            { id: 'realizado', title: 'Order Placed', desc: 'Awaiting payment', statusSet: ['Em aberto'] },
+            { id: 'pagamento', title: 'Payment Confirmed', desc: 'Order approved and processing', statusSet: [] },
+            { id: 'separacao', title: 'Preparing Shipment', desc: 'Your order is being picked', statusSet: ['Preparando envio'] },
+            { id: 'pronto', title: 'Ready for Shipment', desc: 'Order packed and awaiting pickup', statusSet: ['Pronto para Envio'] },
+            { id: 'enviado', title: 'Shipped', desc: 'Order is on its way', statusSet: ['Enviado'] },
+            { id: 'entregue', title: 'Delivered', desc: 'Order delivered successfully', statusSet: ['Entregue'] }
         ];
 
         // Heuristic to find current step index
@@ -127,28 +132,28 @@ function createOrderCard(order) {
             <div class="order-info">
                 <div class="detailed-header">
                     <div class="header-left">
-                        <span class="label">Pedido</span>
+                        <span class="label">Order</span>
                         <h3>#${order.order_id}</h3>
                     </div>
                     <div class="header-right">
-                        <span class="label">Data do pedido</span>
+                        <span class="label">Order Date</span>
                         <span class="date">${order.order_date}</span>
                     </div>
                 </div>
 
                 <div class="detailed-customer-total">
                     <div class="customer-info">
-                        <span class="label">Cliente</span>
+                        <span class="label">Customer</span>
                         <span class="name">${order.customer_name}</span>
                     </div>
                     <div class="total-info">
-                        <span class="label">Total</span>
+                        <span class="label">Total Amount</span>
                         <span class="amount">R$ ${order.total.toFixed(2)}</span>
                     </div>
                 </div>
 
                 <div class="status-timeline-container">
-                    <h4>Status do Pedido</h4>
+                    <h4>Order Status</h4>
                     <div class="timeline">
                         ${steps.map((step, index) => `
                             <div class="timeline-step ${index < currentStepIndex ? 'completed' : (index === currentStepIndex ? 'active' : '')}">
@@ -163,7 +168,7 @@ function createOrderCard(order) {
                 </div>
 
                 <div class="items-container">
-                    <h4>Itens do Pedido</h4>
+                    <h4>Order Items</h4>
                     <div class="items-list">
                         ${order.items.map(item => `<div class="item-row">${item}</div>`).join('')}
                     </div>
