@@ -621,7 +621,7 @@ def chat_endpoint(request: ChatRequest):
 
         
         # --- Check if user clicked an order card to view its details ---
-        specific_order_details_match = re.search(r'Show details for order\s+([a-zA-Z0-9_\-]+)', user_message, re.IGNORECASE)
+        specific_order_details_match = re.search(r'(?:Show details for order|View details for order|Show details for|Pedido)\s*#?\s*([a-zA-Z0-9_\-]+)', user_message, re.IGNORECASE)
         if specific_order_details_match:
             order_id = specific_order_details_match.group(1)
             details_context, detailed_order = tiny_erp.fetch_order_details(order_id)

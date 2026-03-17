@@ -2,133 +2,133 @@
   "27005184033": {
     "orders": [
       {
-        "order_id": "210391",
+        "order_id": "755433652",
         "customer_name": "uy987 98789",
         "total": 326.0,
-        "status": "Cancelado",
+        "status": "Cancelled",
         "order_date": "31/08/2024",
         "tracking_code": null,
         "tracking_url": null
       },
       {
-        "order_id": "210393",
+        "order_id": "755433675",
         "customer_name": "uy987 98789",
         "total": 326.0,
-        "status": "Cancelado",
+        "status": "Cancelled",
         "order_date": "31/08/2024",
         "tracking_code": null,
         "tracking_url": null
       },
       {
-        "order_id": "212261",
+        "order_id": "755529206",
         "customer_name": "uy987 98789",
         "total": 326.0,
-        "status": "Cancelado",
+        "status": "Cancelled",
         "order_date": "09/09/2024",
         "tracking_code": null,
         "tracking_url": null
       },
       {
-        "order_id": "212738",
+        "order_id": "755584455",
         "customer_name": "uy987 98789",
         "total": 326.0,
-        "status": "Cancelado",
+        "status": "Cancelled",
         "order_date": "12/09/2024",
         "tracking_code": null,
         "tracking_url": null
       },
       {
-        "order_id": "212740",
+        "order_id": "755584513",
         "customer_name": "uy987 98789",
         "total": 326.0,
-        "status": "Cancelado",
+        "status": "Cancelled",
         "order_date": "12/09/2024",
         "tracking_code": null,
         "tracking_url": null
       },
       {
-        "order_id": "212974",
+        "order_id": "755598428",
         "customer_name": "uy987 98789",
         "total": 326.0,
-        "status": "Cancelado",
+        "status": "Cancelled",
         "order_date": "13/09/2024",
         "tracking_code": null,
         "tracking_url": null
       },
       {
-        "order_id": "cart_01KJ59S5HDND8GXQ88MA3WED1W",
+        "order_id": "760117519",
         "customer_name": "uy987 98789",
         "total": 395.0,
-        "status": "Em aberto",
+        "status": "Open",
         "order_date": "23/02/2026",
         "tracking_code": null,
         "tracking_url": null
       },
       {
-        "order_id": "cart_01KJ7XS9JN4NP5AE2WK6SQY3FN",
+        "order_id": "760117806",
         "customer_name": "uy987 98789",
         "total": 73.0,
-        "status": "Cancelado",
+        "status": "Cancelled",
         "order_date": "24/02/2026",
         "tracking_code": null,
         "tracking_url": null
       },
       {
-        "order_id": "cart_01KJCVRXA6EVP9ZBM7H7W6MQTS",
+        "order_id": "760122189",
         "customer_name": "Dharmik Patel",
         "total": 169.0,
-        "status": "Preparando envio",
+        "status": "Preparing Shipment",
         "order_date": "26/02/2026",
         "tracking_code": null,
         "tracking_url": null
       },
       {
-        "order_id": "cart_01KJFPM9WFMGD37BJWR5SQAG36",
+        "order_id": "760128502",
         "customer_name": "Dharmik Patel",
         "total": 254.0,
-        "status": "Em aberto",
+        "status": "Open",
         "order_date": "27/02/2026",
         "tracking_code": null,
         "tracking_url": null
       },
       {
-        "order_id": "cart_01KJQ7XVHK0MAQYW2K2XKRMJ1R",
+        "order_id": "760132498",
         "customer_name": "Dharmik Patel",
         "total": 38.0,
-        "status": "Preparando envio",
+        "status": "Preparing Shipment",
         "order_date": "02/03/2026",
         "tracking_code": null,
         "tracking_url": null
       },
       {
-        "order_id": "cart_01KJSAW1HZ3X2KJDKSMPXKBZYJ",
+        "order_id": "760132505",
         "customer_name": "Dharmik Patel",
         "total": 38.0,
-        "status": "Preparando envio",
+        "status": "Preparing Shipment",
         "order_date": "03/03/2026",
         "tracking_code": null,
         "tracking_url": null
       },
       {
-        "order_id": "350000",
+        "order_id": "760132842",
         "customer_name": "Dharmik Patel",
         "total": 38.0,
-        "status": "Cancelado",
+        "status": "Cancelled",
         "order_date": "03/03/2026",
         "tracking_code": null,
         "tracking_url": null
       },
       {
-        "order_id": "350001",
+        "order_id": "760132851",
         "customer_name": "Dharmik Patel",
         "total": 38.0,
-        "status": "Cancelado",
+        "status": "Cancelled",
         "order_date": "03/03/2026",
         "tracking_code": null,
         "tracking_url": null
       }
     ],
-    "fetched_at": "2026-03-12T10:12:08.554137",
+    "fetched_at": "2026-03-16T16:20:35.137733",
     "total_orders": 14
   }
 }

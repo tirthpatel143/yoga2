@@ -119,7 +119,7 @@ def setup_chatbot():
         api_base="https://openrouter.ai/api/v1",
         is_chat_model=True,
         context_window=100000, # Added context window to stop LlamaIndex looping 'refine' requests
-        max_tokens=4096
+        max_tokens=1024
     )
     Settings.context_window = 100000
     
