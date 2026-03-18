@@ -2,6 +2,7 @@ import qdrant_client
 from llama_index.core import VectorStoreIndex, Settings, PromptTemplate
 from llama_index.core.memory import ChatMemoryBuffer
 from llama_index.vector_stores.qdrant import QdrantVectorStore
+from llama_index.postprocessor.flag_embedding_reranker import FlagEmbeddingReranker
 
 from config import (
     QDRANT_URL, COLLECTION_NAME, HF_TOKEN, 
@@ -172,13 +173,17 @@ def setup_chatbot():
         clean_system_prompt = SYSTEM_PROMPT.split("### CONTEXT:")[0].strip()
         enhanced_system_prompt = f"{clean_system_prompt}\n\n{catalog_summary}"
         
-        # Initialize memory buffer to keep history efficient (Pro Level)
-        memory = ChatMemoryBuffer.from_defaults(token_limit=1500)
+        # Initialize memory buffer — token_limit raised so history has room alongside system prompt
+        memory = ChatMemoryBuffer.from_defaults(token_limit=4000)
+
+        # Reranker: fetch 20 candidates from Qdrant, rerank to best 5 before LLM
+        reranker = FlagEmbeddingReranker(model="BAAI/bge-reranker-base", top_n=5)
         
         chat_engine = index.as_chat_engine(
             chat_mode="condense_plus_context",
             memory=memory,
-            similarity_top_k=TOP_K,
+            similarity_top_k=20,
+            node_postprocessors=[reranker],
             system_prompt=enhanced_system_prompt
         )
         
@@ -200,6 +205,7 @@ def setup_chatbot():
                     llm_input = self._condense_prompt_template.format(
                         chat_history=chat_history_str, question=latest_message
                     )
+                    print(f"\n[LLM CALL 1] Condensing Question using Groq (llama-3.1-8b-instant)...")
                     return str(groq_condenser.complete(llm_input))
                     
                 chat_engine._condense_question = types.MethodType(custom_condense, chat_engine)

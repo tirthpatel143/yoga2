@@ -7,7 +7,7 @@ import json
 import os
 import requests
 from typing import Optional, Dict, List
-from datetime import datetime
+from datetime import datetime, timedelta
 from config import TINY_ERP_URL, TINY_ERP_API_KEY, TINY_ERP_ORDER_DETAILS_URL
 
 
@@ -114,8 +114,9 @@ def parse_tiny_erp_orders(api_response: Dict) -> List[Dict]:
         for pedido_wrapper in pedidos:
             pedido = pedido_wrapper.get('pedido', {})
             
-            # Extract required fields
-            order_id = str(pedido.get('id', '')) or pedido.get('numero_ecommerce', '') or pedido.get('numero', 'N/A')
+            # Extract required fields — strictly prioritizing internal 'id' for the order ID
+            raw_id = pedido.get('id') or pedido.get('numero_ecommerce') or pedido.get('numero')
+            order_id = str(raw_id) if raw_id else 'N/A'
             name = pedido.get('nome', 'Unknown')
             total = pedido.get('valor', 0)
             status = pedido.get('situacao', 'Unknown')
@@ -207,6 +208,16 @@ def load_orders_from_file(cpf_cnpj: str) -> Optional[List[Dict]]:
         customer_data = data.get(cpf_cnpj_clean)
         
         if customer_data:
+            # --- Cache TTL check (2 hours) ---
+            CACHE_TTL_HOURS = 2
+            fetched_at = customer_data.get('fetched_at', '')
+            try:
+                age = datetime.now() - datetime.fromisoformat(fetched_at)
+                if age > timedelta(hours=CACHE_TTL_HOURS):
+                    print("[TINY_ERP] Cache expired, forcing refresh")
+                    return None
+            except Exception:
+                pass  # If timestamp is missing/malformed treat cache as valid
             print(f"[TINY_ERP] Loaded {customer_data.get('total_orders', 0)} orders from file")
             return customer_data.get('orders', [])
         

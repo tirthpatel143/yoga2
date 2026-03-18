@@ -663,6 +663,7 @@ def generate_llm_questions(product: Dict) -> List[str]:
         - Return ONLY the questions, one per line, no numbering or extra text.
         """
         
+        print(f"\n[LLM CALL] Generating Product Questions using {Settings.llm.model}...")
         response = Settings.llm.complete(prompt)
         # Filter and clean questions
         questions = []
@@ -1208,12 +1209,28 @@ def chat_endpoint(request: ChatRequest):
             system_context = product_context + "\n" + system_context
 
         # --- Final Context Assembly and Chat ---
+        from llama_index.core import Settings
         if system_context:
-            # We add a strong instruction to favor the context provided
-            final_prompt = f"### System Context & Data\n{system_context}\n\n### Instructions\nProvide a clear, helpful response based ONLY on the context above. If the context doesn't answer the question, use your general knowledge but mention it's general.\n\n### User Question\n{user_message}"
+            final_prompt = (
+                f"### System Context & Data\n{system_context}\n\n"
+                f"### Behavioral Requirements\n"
+                f"1. **Clarifying Questions**: If the user's query is vague, you MUST ask 2-3 specific counter-questions to narrow down their needs before suggesting products.\n"
+                f"2. **Follow-up Buttons**: You MUST always end your response with exactly 3 clickable follow-up questions under the '### FOLLOW-UPS:' header.\n"
+                f"3. **Format**: Use the professional and Zen Yogateria tone.\n\n"
+                f"### User Question\n{user_message}"
+            )
+            print(f"\n[LLM CALL] Final Synthesis using {Settings.llm.model} (Context provided)...")
             response = chat_engine.chat(final_prompt)
         else:
-            response = chat_engine.chat(user_message)
+            final_prompt = (
+                f"### Behavioral Requirements\n"
+                f"1. **Clarifying Questions**: If the user's query is vague, you MUST ask 2-3 specific counter-questions to narrow down their needs before suggesting products.\n"
+                f"2. **Follow-up Buttons**: You MUST always end your response with exactly 3 clickable follow-up questions under the '### FOLLOW-UPS:' header.\n"
+                f"3. **Format**: Use the professional and Zen Yogateria tone.\n\n"
+                f"### User Question\n{user_message}"
+            )
+            print(f"\n[LLM CALL] Final Synthesis using {Settings.llm.model} (No Context)...")
+            response = chat_engine.chat(final_prompt)
             
         resp_text = str(response)
         
