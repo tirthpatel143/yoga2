@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from pydantic import BaseModel
 from chatbot import setup_chatbot
-from typing import List, Optional
+from typing import List, Optional, Dict
 import nest_asyncio
 import uvicorn
 import json
@@ -252,6 +252,7 @@ def build_product_lookup():
 class ChatRequest(BaseModel):
     message: str
     user_id: Optional[str] = None
+    product_url: Optional[str] = None
 
 class FeedbackRequest(BaseModel):
     message_id: int
@@ -591,6 +592,75 @@ def fetch_all_orders_for_user(user_id: str) -> str:
         
     return ""
 
+def extract_handle_from_url(url: str) -> Optional[str]:
+    """Extract product handle from Yogateria URL."""
+    if not url:
+        return None
+    
+    # regex for handle extraction
+    # patterns: /produto/handle or ?handle=... or /handle/ or just the last part
+    patterns = [
+        r'/produto/([^/?#]+)',
+        r'handle=([^&]+)',
+        r'yogateria\.com\.br/([^/?#]+)/?$'
+    ]
+    
+    for pattern in patterns:
+        match = re.search(pattern, url)
+        if match:
+            return match.group(1).rstrip('/')
+            
+    # Fallback: if it's a deep URL, take the last non-empty segment
+    parts = url.strip('/').split('/')
+    if parts:
+        return parts[-1]
+    return None
+
+def find_product_by_handle(handle: str, product_data: List[Dict]) -> Optional[Dict]:
+    """Find product in catalog by its handle."""
+    if not handle:
+        return None
+    for p in product_data:
+        if p.get('handle') == handle or p.get('id') == handle:
+            return p
+    return None
+
+def generate_llm_questions(product: Dict) -> List[str]:
+    """Use the LLM to generate 4 relevant questions for a specific product."""
+    from llama_index.core import Settings
+    try:
+        title = product.get('title', 'this product')
+        description = product.get('description', '')[:1000] # Use first 1000 chars for context
+        
+        prompt = f"""As a Yogateria expert, generate 4 short, engaging, and specific questions a customer would ask about this product.
+        Product: {title}
+        Context: {description}
+        
+        ### LANGUAGE REQUIREMENT:
+        **THE QUESTIONS MUST BE IN ENGLISH.** Even if the product title or description is in Portuguese or any other language, you MUST generate the 4 questions in English.
+        
+        Guidelines:
+        - Make questions specific to the product type (e.g., if it's a book, ask about content/author; if a mat, ask about grip/thickness).
+        - Keep them under 10 words each.
+        - Return ONLY the questions, one per line, no numbering or extra text.
+        """
+        
+        response = Settings.llm.complete(prompt)
+        questions = [q.strip().strip('"').strip('- ') for q in str(response).split('\n') if q.strip() and '?' in q]
+        
+        if not questions:
+            # Fallback if LLM fails to format correctly
+            return [
+                f"What are the main features of {title}?",
+                "What are the materials used?",
+                "Is it suitable for beginners?",
+                "What are the shipping options?"
+            ]
+        return questions[:4]
+    except Exception as e:
+        print(f"Error generating LLM questions: {e}")
+        return ["Tell me more about this product.", "What are the features?", "What is the price?", "Is it available?"]
+
 @app.post("/chat")
 def chat_endpoint(request: ChatRequest):
     global chat_engine, product_lookup
@@ -600,7 +670,67 @@ def chat_endpoint(request: ChatRequest):
     try:
         user_message = request.message
         user_id = request.user_id
+        product_url = request.product_url
         
+        # --- Product Redirection / Context Logic ---
+        product_context = ""
+        suggested_questions = []
+        
+        # Detect URL in message if not explicitly provided in field
+        if not product_url:
+            url_match = re.search(r'https?://[^\s]+', user_message)
+            if url_match:
+                product_url = url_match.group(0)
+        
+        if product_url:
+            handle = extract_handle_from_url(product_url)
+            print(f"[PRODUCT REDIRECT] Handle: {handle} from URL: {product_url}")
+            
+            # Load product data for lookup
+            with open(PRODUCT_DATA_PATH, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                catalog = data.get("products", [])
+            
+            product = find_product_by_handle(handle, catalog)
+            if product:
+                title = product.get('title')
+                product_context = f"System Note: The user is currently viewing the product page for '{title}'. Here is the product description and features:\n"
+                product_context += f"Description: {product.get('description')}\n"
+                
+                # Fetch variants for better context
+                variants = product.get('variants', [])
+                if variants:
+                    product_context += "Available variants and prices:\n"
+                    for v in variants:
+                        price = v.get('calculated_price', {}).get('calculated_amount', 'N/A')
+                        product_context += f"- {v.get('title')}: R$ {price}\n"
+                
+                # Use LLM to generate intelligent, product-specific questions
+                suggested_questions = generate_llm_questions(product)
+                
+                # If the user message is just the URL or empty, handle it as a minimal 'activation'
+                if user_message.strip() == product_url or not user_message.strip().replace(product_url, '').strip():
+                    # We return early if it's just a URL redirection to keep it brief
+                    resp_text = f"I see you're interested in the **{title}**! What would you like to know about it?\n\n"
+                    
+                    # Convert suggested questions to inline buttons inside the chat bubble
+                    for q in suggested_questions:
+                        # Escape quotes for JS onclick
+                        q_esc = q.replace("'", "\\'")
+                        resp_text += f"<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"{q_esc}\"; document.getElementById(\"send-button\").click();'>{q}</button>\n"
+                    
+                    message_id = db.save_chat_message(request.message, resp_text)
+                    
+                    return {
+                        "response": resp_text,
+                        "products": [], # Keep it clean
+                        "orders": [],
+                        "message_id": message_id,
+                        "follow_ups": [] # Clear follow-ups as they are now inline buttons
+                    }
+        
+        # --------------------------------------------
+
         # If the user explicitly puts a user ID in the chat, override the stored one
         id_match = re.search(r'cus_[a-zA-Z0-9]+', user_message)
         if id_match:
@@ -1038,6 +1168,9 @@ def chat_endpoint(request: ChatRequest):
             except Exception as e:
                 print(f"Color context build error: {e}")
 
+        if product_context:
+            system_context = product_context + "\n" + system_context
+
         if system_context:
             if is_order_related:
                 system_msg = f"User Account Data:\n{system_context}\nPlease use the above user and order information to answer the user's query.\n\nUser Query: {user_message}"
@@ -1147,12 +1280,17 @@ def chat_endpoint(request: ChatRequest):
                     if len(products) >= 3:
                         break
 
+        # Combine LLM follow-ups with our suggested questions if they exist
+        final_follow_ups = list(set(follow_ups + suggested_questions))
+        if len(final_follow_ups) > 5:
+            final_follow_ups = final_follow_ups[:5]
+
         return {
             "response": resp_text,
             "products": products,
             "orders": [],  # Empty for regular product queries
             "message_id": message_id,
-            "follow_ups": follow_ups
+            "follow_ups": final_follow_ups
         }
     except Exception as e:
         print(f"Chat Error: {e}")

@@ -251,13 +251,26 @@ async function sendMessage() {
     scrollToBottom();
 
     try {
+        // Get product_url from the current page URL parameter if it exists
+        const urlParams = new URLSearchParams(window.location.search);
+        let productUrl = urlParams.get('product_url');
+        
+        // If not in URL, but the message itself is a URL, use it
+        if (!productUrl && text.match(/^https?:\/\/[^\s]+$/)) {
+            productUrl = text;
+        }
+
         // 3. Real API Call to Localhost
         const response = await fetch('http://localhost:8005/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ message: text, user_id: currentUserId })
+            body: JSON.stringify({ 
+                message: text, 
+                user_id: currentUserId,
+                product_url: productUrl 
+            })
         });
 
         if (!response.ok) throw new Error('Server issues');
@@ -409,7 +422,19 @@ userInput.addEventListener('keypress', (e) => {
     }
 });
 
-// Auto-focus input
+// Auto-focus input and handle product_url query param
 window.addEventListener('load', () => {
     userInput.focus();
+    
+    // Proactive: If product_url is in query params, trigger initial message
+    const params = new URLSearchParams(window.location.search);
+    const pUrl = params.get('product_url');
+    if (pUrl && pUrl.startsWith('http')) {
+        console.log("Proactive product chat detected:", pUrl);
+        // Only trigger if no other messages exist yet
+        if (chatHistory.children.length <= 1) {
+            userInput.value = pUrl;
+            sendMessage();
+        }
+    }
 });

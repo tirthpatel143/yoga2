@@ -16,20 +16,27 @@ def generate_catalog_summary():
     from config import PRODUCT_DATA_PATH, PRODUCT_API_URL, X_PUBLISHABLE_KEY
     
     try:
-        if PRODUCT_API_URL:
+        data = None
+        if False: # Temporarily skip slow API fetch
             headers = {}
             if X_PUBLISHABLE_KEY:
                 headers['x-publishable-api-key'] = X_PUBLISHABLE_KEY
-            print(f"Fetching catalog summary from API: {PRODUCT_API_URL}")
-            response = requests.get(PRODUCT_API_URL, headers=headers)
-            response.raise_for_status()
-            data = response.json()
-        else:
+            print(f"Fetching catalog summary from API: {PRODUCT_API_URL} (Timeout 15s)")
+            try:
+                response = requests.get(PRODUCT_API_URL, headers=headers, timeout=15)
+                response.raise_for_status()
+                data = response.json()
+                print("API catalog fetch successful.")
+            except Exception as e:
+                print(f"API catalog fetch failed: {e}. Falling back to local file.")
+        
+        if not data:
             if not PRODUCT_DATA_PATH or not os.path.exists(PRODUCT_DATA_PATH):
                 print(f"Warning: PRODUCT_DATA_PATH is not set or file does not exist.")
                 return ""
             with open(PRODUCT_DATA_PATH, 'r', encoding='utf-8') as f:
                 data = json.load(f)
+                print("Local catalog loaded.")
         
         products = data.get("products", [])
         price_data = []
