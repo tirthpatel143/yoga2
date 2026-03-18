@@ -10,7 +10,7 @@ import json
 import db
 import requests
 import re
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 from config import ORDER_API_URL, X_PUBLISHABLE_KEY, PRODUCT_DATA_PATH
 import tiny_erp
 
@@ -151,6 +151,7 @@ def build_product_lookup():
 
             lookup[title] = {
                 "title": title,
+                "subtitle": p.get("subtitle") or "",
                 "price": price,
                 "image": p.get("thumbnail") or (p.get("images")[0]["url"] if p.get("images") else "https://via.placeholder.com/200"),
                 "url": base_url,
@@ -233,6 +234,7 @@ def build_product_lookup():
                     product_variants[key].append(
                         {
                             "title": title,
+                            "subtitle": p.get("subtitle") or "",
                             "price": variant_price,
                             "image": thumb,
                             "url": variant_url,
@@ -593,27 +595,43 @@ def fetch_all_orders_for_user(user_id: str) -> str:
     return ""
 
 def extract_handle_from_url(url: str) -> Optional[str]:
-    """Extract product handle from Yogateria URL."""
+    """Extract product handle from Yogateria URL robustly."""
     if not url:
         return None
     
-    # regex for handle extraction
-    # patterns: /produto/handle or ?handle=... or /handle/ or just the last part
-    patterns = [
-        r'/produto/([^/?#]+)',
-        r'handle=([^&]+)',
-        r'yogateria\.com\.br/([^/?#]+)/?$'
-    ]
-    
-    for pattern in patterns:
-        match = re.search(pattern, url)
-        if match:
-            return match.group(1).rstrip('/')
+    try:
+        # Strip query and fragments
+        parsed = urlparse(url)
+        path = parsed.path.strip('/')
+        query = parsed.query
+        
+        # 1. Try common query parameter 'handle'
+        handle_match = re.search(r'handle=([^&]+)', query)
+        if handle_match:
+            return handle_match.group(1)
             
-    # Fallback: if it's a deep URL, take the last non-empty segment
-    parts = url.strip('/').split('/')
-    if parts:
-        return parts[-1]
+        # 2. Try patterns with regex
+        patterns = [
+            r'/produto/([^/?#]+)',
+            r'yogateria\.com\.br/([^/?#]+)/?$'
+        ]
+        
+        for pattern in patterns:
+            match = re.search(pattern, url)
+            if match:
+                return match.group(1).rstrip('/')
+        
+        # 3. Fallback: the last segment of the path usually contains the handle
+        segments = path.split('/')
+        if segments:
+            # Handle deep URLs like /roupas-yoga/bermuda-flex
+            # The handle is almost always the last part before query/fragment
+            handle = segments[-1]
+            if handle:
+                return handle.strip()
+    except Exception as e:
+        print(f"Error extracting handle: {e}")
+        
     return None
 
 def find_product_by_handle(handle: str, product_data: List[Dict]) -> Optional[Dict]:
@@ -646,7 +664,14 @@ def generate_llm_questions(product: Dict) -> List[str]:
         """
         
         response = Settings.llm.complete(prompt)
-        questions = [q.strip().strip('"').strip('- ') for q in str(response).split('\n') if q.strip() and '?' in q]
+        # Filter and clean questions
+        questions = []
+        for line in str(response).split('\n'):
+            q = line.strip().strip('"').strip("'").strip("-").strip("*").strip("123456789. ")
+            if q and '?' in q:
+                # Basic length sanity check
+                if 5 < len(q) < 100:
+                    questions.append(q)
         
         if not questions:
             # Fallback if LLM fails to format correctly
@@ -675,8 +700,7 @@ def chat_endpoint(request: ChatRequest):
         # --- Product Redirection / Context Logic ---
         product_context = ""
         suggested_questions = []
-        
-        # Detect URL in message if not explicitly provided in field
+        is_url_turn = False
         if not product_url:
             url_match = re.search(r'https?://[^\s]+', user_message)
             if url_match:
@@ -692,6 +716,10 @@ def chat_endpoint(request: ChatRequest):
                 catalog = data.get("products", [])
             
             product = find_product_by_handle(handle, catalog)
+            
+            # Determine if this is a "pure URL" message
+            is_pure_url = user_message.strip() == product_url or not user_message.strip().replace(product_url, '').strip()
+            
             if product:
                 title = product.get('title')
                 product_context = f"System Note: The user is currently viewing the product page for '{title}'. Here is the product description and features:\n"
@@ -708,25 +736,28 @@ def chat_endpoint(request: ChatRequest):
                 # Use LLM to generate intelligent, product-specific questions
                 suggested_questions = generate_llm_questions(product)
                 
-                # If the user message is just the URL or empty, handle it as a minimal 'activation'
-                if user_message.strip() == product_url or not user_message.strip().replace(product_url, '').strip():
-                    # We return early if it's just a URL redirection to keep it brief
-                    resp_text = f"I see you're interested in the **{title}**! What would you like to know about it?\n\n"
-                    
-                    # Convert suggested questions to inline buttons inside the chat bubble
-                    for q in suggested_questions:
-                        # Escape quotes for JS onclick
-                        q_esc = q.replace("'", "\\'")
-                        resp_text += f"<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"{q_esc}\"; document.getElementById(\"send-button\").click();'>{q}</button>\n"
-                    
+                # If pure URL, return activation response
+                if is_pure_url:
+                    resp_text = f"I see you're interested in the **{title}**! What would you like to know about it?"
                     message_id = db.save_chat_message(request.message, resp_text)
-                    
                     return {
                         "response": resp_text,
-                        "products": [], # Keep it clean
+                        "products": [], 
                         "orders": [],
                         "message_id": message_id,
-                        "follow_ups": [] # Clear follow-ups as they are now inline buttons
+                        "follow_ups": suggested_questions 
+                    }
+            elif is_pure_url:
+                # Recognizable URL but not in static catalog - avoid "cannot browse" fallback
+                if "yogateria.com.br" in product_url.lower():
+                    resp_text = "I see you've shared a Yogateria product link! While I don't have this specific item's details handy in my quick-lookup catalog, I can still help. What would you like to know about our products, or are you looking for a similar item?"
+                    message_id = db.save_chat_message(request.message, resp_text)
+                    return {
+                        "response": resp_text,
+                        "products": [],
+                        "orders": [],
+                        "message_id": message_id,
+                        "follow_ups": ["See all products", "How can I track my order?", "Tell me about yoga mats"]
                     }
         
         # --------------------------------------------
@@ -841,7 +872,7 @@ def chat_endpoint(request: ChatRequest):
                 conversation_state[session_key]['awaiting_search_param'] = True
                 conversation_state[session_key]['awaiting_order_choice'] = False
                 
-                resp_text = "Sure! Please provide either:\n\n📅 **Order Date** (e.g., 03/03/2026 or 12/09/2024)\n🔢 **Order ID** (e.g., 210391 or cart_01KJSAW1HZ3X2KJDKSMPXKBZYJ)\n\nI'll search for your order based on what you provide."
+                resp_text = "Sure! Please provide either:\n\n📅 **Order Date** (e.g., 03/03/2026 or 12/09/2024)\n🔢 **Order ID** (e.g., 755433675 or cart_01KJSAW1HZ3X2KJDKSMPXKBZYJ)\n\nI'll search for your order based on what you provide."
                 message_id = db.save_chat_message(request.message, resp_text)
                 
                 return {
@@ -1127,6 +1158,11 @@ def chat_endpoint(request: ChatRequest):
             
         # Determine if the query is order or cart related
         is_order_related = bool(re.search(r'(order|pedido|cart|carrinho|history|histórico|status|track|rastrear)', user_message, re.IGNORECASE))
+        
+        if is_order_related:
+            order_info = fetch_order_info(user_message, user_id)
+            if order_info:
+                system_context = order_info + "\n\n" + system_context
 
         # --- Color-specific variant filter context ---
         # If the user is asking about colors (e.g., green/blue mat), provide
@@ -1171,12 +1207,11 @@ def chat_endpoint(request: ChatRequest):
         if product_context:
             system_context = product_context + "\n" + system_context
 
+        # --- Final Context Assembly and Chat ---
         if system_context:
-            if is_order_related:
-                system_msg = f"User Account Data:\n{system_context}\nPlease use the above user and order information to answer the user's query.\n\nUser Query: {user_message}"
-            else:
-                system_msg = f"User Profile Context:\n{system_context}\n\nUser Query: {user_message}"
-            response = chat_engine.chat(system_msg)
+            # We add a strong instruction to favor the context provided
+            final_prompt = f"### System Context & Data\n{system_context}\n\n### Instructions\nProvide a clear, helpful response based ONLY on the context above. If the context doesn't answer the question, use your general knowledge but mention it's general.\n\n### User Question\n{user_message}"
+            response = chat_engine.chat(final_prompt)
         else:
             response = chat_engine.chat(user_message)
             

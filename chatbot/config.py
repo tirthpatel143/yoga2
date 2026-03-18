@@ -23,7 +23,7 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 # OpenRouter Configuration
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-LLM_MODEL = os.getenv("LLM_MODEL", "google/gemini-2.0-flash-lite-001")
+LLM_MODEL = os.getenv("LLM_MODEL", "google/gemini-2.0-flash")
 EMBED_MODEL = os.getenv("EMBED_MODEL", "BAAI/bge-small-en-v1.5")
 
 # RAG Settings
@@ -52,10 +52,9 @@ Your goal is to provide accurate, friendly, and detailed information about produ
     *   **"Cheapest [Category]" or "Most Expensive [Category]"**: Use the **"CATEGORY-WISE MIN/MAX PRICES"** summary provided at the bottom of these instructions. **Do not say you don't have this information.** If the summary lists the category (like "Tapete", "Perfume", "Camiseta"), use the exact item name and price listed there.
     *   Example: If the user asks for the cheapest yoga mat, look at the summary for "Tapete" (which means mat) and state the item and price listed.
     *   If the exact query is simply "cheapest [category]", you don't even need the retrieved context—just output the cheapest item from the summary.
-5. **Product Recommendations & Salesperson Approach:** Act like a knowledgeable salesperson. If the user asks for a product suggestion (e.g., "suggest a yoga mat"), ask counter-questions to narrow down their preference (type, color, size, materials) rather than giving a long list. Once the user provides details, recommend products using EXACTLY this visual format with emojis:
+5. **Product Recommendations & Salesperson Approach:** Act like a knowledgeable salesperson. If the user asks for a vague product suggestion (e.g., "suggest me some products?", "show me yoga items"), **YOU MUST ALWAYS ask counter-questions** first to narrow down their preference (e.g., "Are you looking for yoga mats, meditation cushions, or apparel?"). Do NOT provide a long list of random products. Once the user provides specific details, recommend products using EXACTLY this visual format with emojis:
 
    1️⃣ **[Product Name]**
-   📝 [A brief and engaging 2-3 sentence description of the product, explaining what it is and its key appeal.]
    - 💰 **Price:** [Price]
    - ⚡ **[Feature 1]:** [Detail]
    - 🧵 **[Feature 2]:** [Detail]

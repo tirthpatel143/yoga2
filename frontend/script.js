@@ -3,8 +3,9 @@ const chatHistory = document.getElementById('chat-history');
 const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
 
-// Store User ID
+// Store User ID and active product context
 let currentUserId = null;
+let activeProductUrl = null;
 
 // Mock Product Data (For Demonstration)
 const mockProducts = [
@@ -47,9 +48,10 @@ function createProductCard(product) {
     card.className = 'product-card';
 
     card.innerHTML = `
-        <img src="${product.image}" alt="${product.title}" class="product-image">
+        <img src="${product.image}" alt="" class="product-image">
         <div class="product-info">
             <h3 class="product-title">${product.title}</h3>
+            ${product.subtitle ? `<p class="product-description" style="font-size: 0.75rem; color: #555; margin-bottom: 4px;">${product.subtitle}</p>` : ''}
             <span class="product-price">${product.price}</span>
             ${product.variant_label ? `<span class="product-variant">${product.variant_label}</span>` : ''}
             <a href="${product.url}" target="_blank" class="view-btn">View Product</a>
@@ -62,10 +64,10 @@ function createProductCard(product) {
 // Helper: Create order card
 function createOrderCard(order) {
     console.log('createOrderCard called with:', order);
-    
+
     const card = document.createElement('div');
     card.className = order.is_detailed ? 'order-card detailed' : 'order-card';
-    
+
     // Status translation and color mapping for normal cards
     const statusTranslation = {
         'Em aberto': 'Open',
@@ -78,7 +80,7 @@ function createOrderCard(order) {
         'Aguardando pagamento': 'Awaiting payment',
         'Não faturado': 'Not billed'
     };
-    
+
     const statusColors = {
         'Em aberto': '#FFC107', // Warning/Amber
         'Preparando envio': '#E91E63', // Pink
@@ -89,7 +91,7 @@ function createOrderCard(order) {
         'Faturado': '#2196F3', // Blue
         'Aguardando pagamento': '#FF9800' // Orange
     };
-    
+
     const statusText = statusTranslation[order.status] || order.status;
     const statusBgColor = statusColors[order.status] || '#E2E3E5';
 
@@ -115,8 +117,8 @@ function createOrderCard(order) {
         }
         // Fallback for logic: if status is beyond "Em aberto", assume at least step 0
         if (currentStepIndex === 0 && normalizedStatus !== 'Em aberto' && normalizedStatus !== 'Cancelado') {
-             // If it's something unknown but not open/canceled, maybe it's processing
-             currentStepIndex = 1;
+            // If it's something unknown but not open/canceled, maybe it's processing
+            currentStepIndex = 1;
         }
 
         const icons = {
@@ -187,7 +189,7 @@ function createOrderCard(order) {
             </div>
         `;
     }
-    
+
     console.log('Card created:', card);
     return card;
 }
@@ -251,13 +253,14 @@ async function sendMessage() {
     scrollToBottom();
 
     try {
-        // Get product_url from the current page URL parameter if it exists
         const urlParams = new URLSearchParams(window.location.search);
-        let productUrl = urlParams.get('product_url');
-        
-        // If not in URL, but the message itself is a URL, use it
-        if (!productUrl && text.match(/^https?:\/\/[^\s]+$/)) {
-            productUrl = text;
+        let incomingUrl = urlParams.get('product_url');
+
+        // Update active context if URL is in message or query params
+        if (text.match(/^https?:\/\/[^\s]+$/)) {
+            activeProductUrl = text;
+        } else if (incomingUrl) {
+            activeProductUrl = incomingUrl;
         }
 
         // 3. Real API Call to Localhost
@@ -266,17 +269,17 @@ async function sendMessage() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ 
-                message: text, 
+            body: JSON.stringify({
+                message: text,
                 user_id: currentUserId,
-                product_url: productUrl 
+                product_url: activeProductUrl
             })
         });
 
         if (!response.ok) throw new Error('Server issues');
 
         const data = await response.json();
-        
+
         // Debug: Log the response data
         console.log('Backend response:', data);
         console.log('Orders data:', data.orders);
@@ -425,7 +428,7 @@ userInput.addEventListener('keypress', (e) => {
 // Auto-focus input and handle product_url query param
 window.addEventListener('load', () => {
     userInput.focus();
-    
+
     // Proactive: If product_url is in query params, trigger initial message
     const params = new URLSearchParams(window.location.search);
     const pUrl = params.get('product_url');
