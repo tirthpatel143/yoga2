@@ -70,6 +70,9 @@ def fetch_orders_from_tiny_erp(cpf_cnpj: str) -> Optional[Dict]:
             data = response.json()
             print(f"[TINY_ERP] Successfully fetched orders")
             return data
+        elif response.status_code == 500 and "API Bloqueada" in response.text:
+            print("[TINY_ERP] API Rate Limited (Bloqueada). Exceeded number of accesses.")
+            return {"error": "rate_limit", "message": "TinyERP API Rate Limited"}
         else:
             print(f"[TINY_ERP] API request failed with status code: {response.status_code}")
             # Try to get error message from response
@@ -179,12 +182,13 @@ def save_orders_to_file(orders: List[Dict], cpf_cnpj: str):
         print(f"[TINY_ERP] Error saving orders to file: {e}")
 
 
-def load_orders_from_file(cpf_cnpj: str) -> Optional[List[Dict]]:
+def load_orders_from_file(cpf_cnpj: str, ignore_ttl: bool = False) -> Optional[List[Dict]]:
     """
     Load orders from local JSON file
     
     Args:
         cpf_cnpj: Customer's CPF/CNPJ
+        ignore_ttl: If True, returns cached data even if it's expired
         
     Returns:
         List of orders or None if not found
@@ -209,16 +213,18 @@ def load_orders_from_file(cpf_cnpj: str) -> Optional[List[Dict]]:
         
         if customer_data:
             # --- Cache TTL check (2 hours) ---
-            CACHE_TTL_HOURS = 2
-            fetched_at = customer_data.get('fetched_at', '')
-            try:
-                age = datetime.now() - datetime.fromisoformat(fetched_at)
-                if age > timedelta(hours=CACHE_TTL_HOURS):
-                    print("[TINY_ERP] Cache expired, forcing refresh")
-                    return None
-            except Exception:
-                pass  # If timestamp is missing/malformed treat cache as valid
-            print(f"[TINY_ERP] Loaded {customer_data.get('total_orders', 0)} orders from file")
+            if not ignore_ttl:
+                CACHE_TTL_HOURS = 2
+                fetched_at = customer_data.get('fetched_at', '')
+                try:
+                    age = datetime.now() - datetime.fromisoformat(fetched_at)
+                    if age > timedelta(hours=CACHE_TTL_HOURS):
+                        print("[TINY_ERP] Cache expired, forcing refresh")
+                        return None
+                except Exception:
+                    pass  # If timestamp is missing/malformed treat cache as valid
+            
+            print(f"[TINY_ERP] Loaded {customer_data.get('total_orders', 0)} orders from file (ignore_ttl={ignore_ttl})")
             return customer_data.get('orders', [])
         
         return None
@@ -258,10 +264,11 @@ def fetch_and_store_orders(cpf_cnpj: str, force_refresh: bool = False) -> Option
     # Fetch from API
     api_response = fetch_orders_from_tiny_erp(cpf_cnpj)
     
-    if not api_response:
-        # If API fails, try to use cached data as fallback
-        print("[TINY_ERP] API failed, attempting to use cached data")
-        return load_orders_from_file(cpf_cnpj)
+    if not api_response or (isinstance(api_response, dict) and api_response.get('error') == 'rate_limit'):
+        # If API fails or is rate-limited, try to use cached data as fallback (ignore TTL)
+        reason = "API rate-limited" if isinstance(api_response, dict) and api_response.get('error') == 'rate_limit' else "API failed"
+        print(f"[TINY_ERP] {reason}, attempting to use cached data as fallback (ignoring TTL)")
+        return load_orders_from_file(cpf_cnpj, ignore_ttl=True)
     
     # Parse the orders
     parsed_orders = parse_tiny_erp_orders(api_response)
@@ -270,6 +277,10 @@ def fetch_and_store_orders(cpf_cnpj: str, force_refresh: bool = False) -> Option
         # Save to file
         save_orders_to_file(parsed_orders, cpf_cnpj)
         return parsed_orders
+    else:
+        # If parsing fails or returns no orders, try fallback to cache
+        print("[TINY_ERP] No orders parsed from API, checking cache as fallback")
+        return load_orders_from_file(cpf_cnpj, ignore_ttl=True)
     
     return None
 

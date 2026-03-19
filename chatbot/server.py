@@ -610,24 +610,29 @@ def extract_handle_from_url(url: str) -> Optional[str]:
         if handle_match:
             return handle_match.group(1)
             
-        # 2. Try patterns with regex
+        # 2. Try patterns with regex (prioritize specific product paths)
         patterns = [
             r'/produto/([^/?#]+)',
+            r'/produtos-meditacao/([^/?#]+)',
+            r'/tapetes-de-yoga/([^/?#]+)',
+            r'/roupas-yoga/([^/?#]+)',
+            r'/acessorios-yoga/([^/?#]+)',
+            r'/peso-kali/([^/?#]+)',
             r'yogateria\.com\.br/([^/?#]+)/?$'
         ]
         
         for pattern in patterns:
             match = re.search(pattern, url)
             if match:
-                return match.group(1).rstrip('/')
+                res = match.group(1).rstrip('/')
+                if res and len(res) > 2:
+                    return res
         
-        # 3. Fallback: the last segment of the path usually contains the handle
-        segments = path.split('/')
+        # 3. Fallback: the last NON-EMPTY segment of the path usually contains the handle
+        segments = [s for s in path.split('/') if s]
         if segments:
-            # Handle deep URLs like /roupas-yoga/bermuda-flex
-            # The handle is almost always the last part before query/fragment
             handle = segments[-1]
-            if handle:
+            if handle and len(handle) > 2:
                 return handle.strip()
     except Exception as e:
         print(f"Error extracting handle: {e}")
@@ -687,6 +692,38 @@ def generate_llm_questions(product: Dict) -> List[str]:
         print(f"Error generating LLM questions: {e}")
         return ["Tell me more about this product.", "What are the features?", "What is the price?", "Is it available?"]
 
+def clean_and_extract_follow_ups(resp_text: str) -> tuple[str, list[str]]:
+    """
+    Clean the LLM response text by removing 'FOLLOW-UPS' segment and extracting bullet points.
+    Handles variations like '### FOLLOW-UPS:', '**FOLLOW-UPS:**', etc.
+    """
+    follow_ups = []
+    # Use regex to find ANY variation of FOLLOW-UPS (###, ##, #, or none, with bolding/space)
+    # Handles "### FOLLOW-UPS:", "**FOLLOW-UPS:**", "FOLLOW-UPS:", etc.
+    pattern = r"(?i)(?:#{1,3}\s*|\*\*|__)*FOLLOW-UPS(?:\s*|:|\*\*|__)*"
+    
+    if re.search(pattern, resp_text, flags=re.MULTILINE):
+        # We found a match. Let's split it.
+        # we want to split by the first occurrence of the FOLLOW-UPS header
+        parts = re.split(pattern, resp_text, maxsplit=1, flags=re.IGNORECASE)
+        if len(parts) > 1:
+            clean_text = parts[0].strip()
+            follow_ups_raw = parts[1].strip().split("\n")
+            for line in follow_ups_raw:
+                line = line.strip()
+                # Extract question and remove bullet markers
+                if line.startswith("- ") or line.startswith("* ") or line.startswith("• "):
+                    follow_ups.append(line[2:].strip())
+                elif line.startswith(tuple("123456789")):
+                    # Handle numbered bullets too just in case
+                    q = re.sub(r'^\d+\.?\s*', '', line).strip()
+                    if q: follow_ups.append(q)
+                elif "?" in line and len(line) > 5:
+                    follow_ups.append(line.strip())
+            return clean_text, follow_ups
+            
+    return resp_text, []
+
 @app.post("/chat")
 def chat_endpoint(request: ChatRequest):
     global chat_engine, product_lookup
@@ -700,7 +737,8 @@ def chat_endpoint(request: ChatRequest):
         
         # --- Product Redirection / Context Logic ---
         product_context = ""
-        suggested_questions = []
+        suggested_questions = [] # Questions suggested by LLM for specific products
+        inline_buttons = [] # Structured buttons to be rendered INSIDE the bubble
         is_url_turn = False
         if not product_url:
             url_match = re.search(r'https?://[^\s]+', user_message)
@@ -737,16 +775,19 @@ def chat_endpoint(request: ChatRequest):
                 # Use LLM to generate intelligent, product-specific questions
                 suggested_questions = generate_llm_questions(product)
                 
-                # If pure URL, return activation response
+                # If pure URL, return activation response with intelligent inline buttons
                 if is_pure_url:
                     resp_text = f"I see you're interested in the **{title}**! What would you like to know about it?"
+                    
                     message_id = db.save_chat_message(request.message, resp_text)
+                    print(f"[DEBUG] Pure URL activation response with {len(suggested_questions)} inline buttons: {suggested_questions}")
                     return {
                         "response": resp_text,
                         "products": [], 
                         "orders": [],
                         "message_id": message_id,
-                        "follow_ups": suggested_questions 
+                        "follow_ups": [], # Clear follow-ups to keep it focused on the inline buttons
+                        "inline_buttons": suggested_questions  # Contextual buttons for this product
                     }
             elif is_pure_url:
                 # Recognizable URL but not in static catalog - avoid "cannot browse" fallback
@@ -792,8 +833,11 @@ def chat_endpoint(request: ChatRequest):
                 system_msg = f"{details_context}\n\nPlease format the order details concisely and clearly for the user. Highlight the items and status."
                 response = chat_engine.chat(system_msg)
                 resp_text = str(response)
+                # Clean and extract follow-ups to prevent them from printing in the text box
+                resp_text, llm_follow_ups = clean_and_extract_follow_ups(resp_text)
             except Exception as e:
                 print(f"Chat Error during order details: {e}")
+                llm_follow_ups = []
                 # Fallback text if LLM fails
                 if detailed_order:
                     items_list = "\n".join([f"- {item}" for item in detailed_order.get('items', [])])
@@ -806,12 +850,19 @@ def chat_endpoint(request: ChatRequest):
 
             message_id = db.save_chat_message(request.message, resp_text)
             
+            # Combine navigational buttons with LLM questions if any (limit to 5)
+            nav_buttons = ["Show my recent orders", "Search by order date", "Search by order ID"]
+            final_fups = list(set(nav_buttons + llm_follow_ups))
+            if len(final_fups) > 5:
+                final_fups = final_fups[:5]
+            
             return {
                 "response": resp_text,
                 "products": [],
                 "orders": [detailed_order] if detailed_order else [],
                 "message_id": message_id,
-                "follow_ups": ["Show my recent orders", "Search by order date", "Search by order ID"]
+                "follow_ups": final_fups,
+                "inline_buttons": []
             }
         # --- Check for active TinyERP conversation states first to prevent loops ---
         
@@ -865,7 +916,8 @@ def chat_endpoint(request: ChatRequest):
                             "Tell me more about a specific order",
                             "What are the shipping options?",
                             "How do I track my order?"
-                        ]
+                        ],
+                        "inline_buttons": []
                     }
             
             elif wants_search:
@@ -881,11 +933,13 @@ def chat_endpoint(request: ChatRequest):
                     "products": [],
                     "orders": [],
                     "message_id": message_id,
-                    "follow_ups": []
+                    "follow_ups": [],
+                    "inline_buttons": []
                 }
             else:
                 # User didn't make a clear choice, ask again
-                resp_text = "I didn't quite understand. Would you like to:\n\n<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"1️⃣ Show my last 3 recent orders\"; document.getElementById(\"send-button\").click();'>1️⃣ Show my last 3 recent orders</button>\n<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"2️⃣ Search by order date or order ID\"; document.getElementById(\"send-button\").click();'>2️⃣ Search by order date or order ID</button>\n\nPlease let me know your preference!"
+                order_buttons = ["1️⃣ Show my last 3 recent orders", "2️⃣ Search by order date or order ID"]
+                resp_text = "I didn't quite understand. Would you like to:\n\nPlease let me know your preference!"
                 message_id = db.save_chat_message(request.message, resp_text)
                 
                 return {
@@ -893,7 +947,8 @@ def chat_endpoint(request: ChatRequest):
                     "products": [],
                     "orders": [],
                     "message_id": message_id,
-                    "follow_ups": ["1️⃣ Show my last 3 recent orders", "2️⃣ Search by order date or order ID"]
+                    "follow_ups": [], # Clear to avoid duplication with inline buttons
+                    "inline_buttons": order_buttons
                 }
         
         # Check if we're waiting for search parameter (date or order ID)
@@ -962,7 +1017,8 @@ def chat_endpoint(request: ChatRequest):
                         "follow_ups": [
                             "Search for another order",
                             "Show my recent orders"
-                        ]
+                        ],
+                        "inline_buttons": []
                     }
                 else:
                     # No matching orders found
@@ -975,7 +1031,8 @@ def chat_endpoint(request: ChatRequest):
                         "products": [],
                         "orders": [],
                         "message_id": message_id,
-                        "follow_ups": ["Show recent orders", "Try another search"]
+                        "follow_ups": ["Show recent orders", "Try another search"],
+                        "inline_buttons": []
                     }
 
         # Check if user is asking about their orders/history (comprehensive check)
@@ -1017,7 +1074,8 @@ def chat_endpoint(request: ChatRequest):
                     "products": [],
                     "orders": [],
                     "message_id": message_id,
-                    "follow_ups": ["What products do you offer?", "Tell me about yoga mats", "How can I help you today?"]
+                    "follow_ups": ["What products do you offer?", "Tell me about yoga mats", "How can I help you today?"],
+                    "inline_buttons": []
                 }
             else:
                 # We have CPF/CNPJ - fetch orders and show options
@@ -1033,7 +1091,8 @@ def chat_endpoint(request: ChatRequest):
                     conversation_state[session_key]['awaiting_search_param'] = False
                     
                     total_count = len(orders)
-                    resp_text = f"I found **{total_count} orders** for you! How would you like to view them?\n\n<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"1️⃣ Show my last 3 recent orders\"; document.getElementById(\"send-button\").click();'>1️⃣ Show my last 3 recent orders</button>\n<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"2️⃣ Search by order date or order ID\"; document.getElementById(\"send-button\").click();'>2️⃣ Search by order date or order ID</button>\n\nPlease choose an option!"
+                    order_buttons = ["1️⃣ Show my last 3 recent orders", "2️⃣ Search by order date or order ID"]
+                    resp_text = f"I found **{total_count} orders** for you! How would you like to view them?"
                     message_id = db.save_chat_message(request.message, resp_text)
                     
                     return {
@@ -1041,7 +1100,8 @@ def chat_endpoint(request: ChatRequest):
                         "products": [],
                         "orders": [],
                         "message_id": message_id,
-                        "follow_ups": ["1️⃣ Show my last 3 recent orders", "2️⃣ Search by order date or order ID"]
+                        "follow_ups": [], # Already in inline buttons
+                        "inline_buttons": order_buttons
                     }
                 else:
                     resp_text = f"I couldn't find any orders for CPF/CNPJ: {current_cpf_cnpj}. Please verify the number and try again."
@@ -1051,7 +1111,8 @@ def chat_endpoint(request: ChatRequest):
                         "products": [],
                         "orders": [],
                         "message_id": message_id,
-                        "follow_ups": ["Try another CPF/CNPJ", "What products do you offer?", "Tell me about yoga mats"]
+                        "follow_ups": ["Try another CPF/CNPJ", "What products do you offer?", "Tell me about yoga mats"],
+                        "inline_buttons": []
                     }
         
 
@@ -1079,7 +1140,8 @@ def chat_endpoint(request: ChatRequest):
                     
                     # Ask user what they want to do
                     total_count = len(orders)
-                    resp_text = f"Great! I found **{total_count} orders** for CPF/CNPJ: {cpf_cnpj}.\n\nHow would you like to view them?\n\n<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"1️⃣ Show my last 3 recent orders\"; document.getElementById(\"send-button\").click();'>1️⃣ Show my last 3 recent orders</button>\n<button class='chat-inline-btn' onclick='document.getElementById(\"user-input\").value=\"2️⃣ Search by order date or order ID\"; document.getElementById(\"send-button\").click();'>2️⃣ Search by order date or order ID</button>\n\nPlease choose an option!"
+                    order_buttons = ["1️⃣ Show my last 3 recent orders", "2️⃣ Search by order date or order ID"]
+                    resp_text = f"Great! I found **{total_count} orders** for CPF/CNPJ: {cpf_cnpj}.\n\nHow would you like to view them?"
                     message_id = db.save_chat_message(request.message, resp_text)
                     
                     return {
@@ -1087,7 +1149,8 @@ def chat_endpoint(request: ChatRequest):
                         "products": [],
                         "orders": [],
                         "message_id": message_id,
-                        "follow_ups": ["1️⃣ Show my last 3 recent orders", "2️⃣ Search by order date or order ID"]
+                        "follow_ups": [], # Already in inline buttons
+                        "inline_buttons": order_buttons
                     }
                 else:
                     # No orders found or API error
@@ -1098,7 +1161,8 @@ def chat_endpoint(request: ChatRequest):
                         "products": [],
                         "orders": [],
                         "message_id": message_id,
-                        "follow_ups": ["Try another CPF/CNPJ", "What products do you offer?", "Tell me about yoga mats"]
+                        "follow_ups": ["Try another CPF/CNPJ", "What products do you offer?", "Tell me about yoga mats"],
+                        "inline_buttons": []
                     }
         # --- End TinyERP Integration ---
         
@@ -1139,7 +1203,8 @@ def chat_endpoint(request: ChatRequest):
                         "products": [],
                         "orders": [],
                         "message_id": message_id,
-                        "follow_ups": []
+                        "follow_ups": [],
+                        "inline_buttons": []
                     }
                 elif is_providing_profile:
                     # Try to extract gender explicitly for better context
@@ -1176,13 +1241,18 @@ def chat_endpoint(request: ChatRequest):
         if requested_colors_for_llm:
             try:
                 color_lines = []
-                max_products = 20
-                for title_lower, variants in list(product_variants.items())[:max_products]:
+                all_available_labels = []  # Collect ALL variant labels for fallback
+                # Scan ALL products (no cap) to ensure we don't miss yoga mats or other items
+                for title_lower, variants in product_variants.items():
                     matching = []
                     for v in variants:
                         v_colors = set(v.get("colors") or [])
                         if v_colors & requested_colors_for_llm:
                             matching.append(v)
+                        # Collect available labels for this product (for alternative suggestions)
+                        lbl = v.get("variant_label")
+                        if lbl:
+                            all_available_labels.append((title_lower, lbl))
                     if not matching:
                         continue
 
@@ -1190,18 +1260,35 @@ def chat_endpoint(request: ChatRequest):
                     labels = ", ".join(f"'{v.get('variant_label')}'" for v in matching)
                     color_lines.append(f"- {human_title}: allowed variants for this query -> {labels}")
 
+                color_names = ", ".join(sorted(list(requested_colors_for_llm)))
                 if color_lines:
-                    color_names = ", ".join(sorted(list(requested_colors_for_llm)))
                     color_note = (
-                        f"System Note: The user explicitly requested the following color(s) for this query: {color_names}. "
-                        "You MUST only recommend product variants whose color matches these canonical colors, "
-                        "based on the mapping below, and you MUST NOT mention other color options or say they are available in this response.\n" 
-                        "Only use the listed variants for color-sensitive suggestions. If no suitable variant exists, say that color is not available and do not invent it.\n" 
-                        + "Relevant color-constrained variants for this query:\n" 
+                        f"System Note: The user explicitly requested the following color(s): {color_names}. "
+                        "Based on the product catalog, the following variants match that color. "
+                        "Recommend ONLY these variants for the color-sensitive part of your answer. "
+                        "Do NOT say a color is unavailable unless the retrieved context also confirms it is not available.\n"
+                        "IMPORTANT: The retrieved context from the knowledge base is the authoritative source — "
+                        "if the context mentions additional colors or variants not listed here, trust the context as well.\n"
+                        + "Matching color variants in catalog:\n"
                         + "\n".join(color_lines)
                         + "\n\n"
                     )
                     system_context = color_note + system_context
+                else:
+                    # No local variant matched the requested color — guide the LLM to check
+                    # the retrieved context (Qdrant) before concluding unavailability
+                    color_note = (
+                        f"System Note: The user is asking about color(s): {color_names}. "
+                        "The quick local catalog lookup did not find an exact color match for this query. "
+                        "However, BEFORE saying the color is unavailable, you MUST carefully check the "
+                        "retrieved product context below for any mention of this color or similar shades. "
+                        "If the context shows the product IS available in that color (or a similar shade), "
+                        "tell the user about it and show them what IS available. "
+                        "Only say the color is unavailable if the retrieved context also does not mention it. "
+                        "In that case, politely suggest the closest available colors from the context.\n\n"
+                    )
+                    system_context = color_note + system_context
+                    print(f"[COLOR FILTER] No local variant found for colors: {color_names}. Sending guidance note to LLM.")
             except Exception as e:
                 print(f"Color context build error: {e}")
 
@@ -1234,18 +1321,8 @@ def chat_endpoint(request: ChatRequest):
             
         resp_text = str(response)
         
-        # Parse Follow-ups
-        follow_ups = []
-        if "### FOLLOW-UPS:" in resp_text:
-            parts = resp_text.split("### FOLLOW-UPS:")
-            resp_text = parts[0].strip()
-            follow_ups_raw = parts[-1].strip().split("\n")
-            for line in follow_ups_raw:
-                line = line.strip()
-                if line.startswith("- "):
-                    follow_ups.append(line[2:].strip())
-                elif line.startswith("* "):
-                    follow_ups.append(line[2:].strip())
+        # Parse Follow-ups using the robust helper
+        resp_text, follow_ups = clean_and_extract_follow_ups(resp_text)
         
         # Save to DB
         message_id = db.save_chat_message(request.message, resp_text)
@@ -1320,10 +1397,14 @@ def chat_endpoint(request: ChatRequest):
 
                     if title and title in product_lookup and title not in seen_titles:
                         # Extract the core product name (ignoring variants like ' - Blue' or ' / L')
-                        main_part = title.split('-')[0].split('/')[0].strip().lower()
-
-                        # Only add if the core product name is explicitly in the bot's given response
-                        if len(main_part) > 3 and main_part in resp_text.lower():
+                        # Improved keyword-based matching to handle LLM variations (like 'Incenso Indiano' vs 'Incenso Cone')
+                        title_words = [w.lower() for w in title.replace('-', ' ').replace('/', ' ').split() if len(w) > 3]
+                        resp_text_lower = resp_text.lower()
+                        
+                        # Count how many significant words from the product title are in the response
+                        matches = sum(1 for w in title_words if w in resp_text_lower)
+                        
+                        if matches >= 2 or (len(title_words) == 1 and matches == 1):
                             card = pick_card_for_title(title)
                             if card:
                                 products.append(card)
@@ -1332,17 +1413,25 @@ def chat_endpoint(request: ChatRequest):
                     if len(products) >= 3:
                         break
 
-        # Combine LLM follow-ups with our suggested questions if they exist
-        final_follow_ups = list(set(follow_ups + suggested_questions))
-        if len(final_follow_ups) > 5:
-            final_follow_ups = final_follow_ups[:5]
+        # Decide where to show suggested questions:
+        # - "Inline" (inside the bubble) is for the first time a user visits a product URL
+        # - "Follow-up" (bottom pills) is for regular conversation turns
+        
+        final_inline_buttons = []
+        # If it was a pure URL turn, we already returned early above.
+        # This part handles regular turns where a product context is active.
+        # We put suggested questions as navigation pills at the bottom to avoid cluttering the bubble.
+        final_follow_ups_with_suggestions = list(set(follow_ups + suggested_questions))
+        if len(final_follow_ups_with_suggestions) > 5:
+            final_follow_ups_with_suggestions = final_follow_ups_with_suggestions[:5]
 
         return {
             "response": resp_text,
             "products": products,
             "orders": [],  # Empty for regular product queries
             "message_id": message_id,
-            "follow_ups": final_follow_ups
+            "follow_ups": final_follow_ups_with_suggestions,
+            "inline_buttons": [] # Use pills (follow_ups) for regular turns
         }
     except Exception as e:
         print(f"Chat Error: {e}")

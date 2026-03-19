@@ -287,13 +287,11 @@ async function sendMessage() {
         // Update thinking message
         const bubble = aiMsg.querySelector('.bubble');
 
-        // 4. Show Product Cards if available - BEFORE answer is shown (and visually above)
+        // 4. Show Product Cards if available - Show ABOVE the answer
+        let productsContainer = null;
         if (data.products && data.products.length > 0) {
-            const productsContainer = document.createElement('div');
+            productsContainer = document.createElement('div');
             productsContainer.className = 'products-container';
-
-            // Insert cards BEFORE the text bubble
-            aiMsg.insertBefore(productsContainer, bubble);
 
             // Add cards one by one with a small delay
             for (const product of data.products) {
@@ -304,14 +302,12 @@ async function sendMessage() {
             }
         }
 
-        // 5. Show Order Cards if available - BEFORE answer is shown
+        // 5. Show Order Cards if available - Show ABOVE the answer
+        let ordersContainer = null;
         if (data.orders && data.orders.length > 0) {
             console.log('Creating order cards - count:', data.orders.length);
-            const ordersContainer = document.createElement('div');
+            ordersContainer = document.createElement('div');
             ordersContainer.className = 'orders-container';
-
-            // Insert cards BEFORE the text bubble
-            aiMsg.insertBefore(ordersContainer, bubble);
 
             // Add cards one by one with a small delay
             for (const order of data.orders) {
@@ -325,9 +321,46 @@ async function sendMessage() {
             console.log('No orders to display or orders array is empty/null');
         }
 
+        // Insert product/order containers BEFORE the bubble
+        if (productsContainer) {
+            aiMsg.insertBefore(productsContainer, bubble);
+        }
+        if (ordersContainer) {
+            aiMsg.insertBefore(ordersContainer, bubble);
+        }
+
         // Render Markdown Response directly
         // Using marked.parse() ensures proper HTML rendering (including tables) and preserves spaces
         bubble.innerHTML = marked.parse(data.response);
+
+        // Render inline buttons (structured data from backend) as proper DOM elements
+        if (data.inline_buttons && data.inline_buttons.length > 0) {
+            const inlineBtnsContainer = document.createElement('div');
+            inlineBtnsContainer.className = 'inline-buttons-container';
+
+            // Add a label for clarity
+            const label = document.createElement('div');
+            label.className = 'inline-buttons-label';
+            label.textContent = '💡 Suggested Questions:';
+            label.style.fontSize = '0.8rem';
+            label.style.fontWeight = 'bold';
+            label.style.marginBottom = '8px';
+            label.style.color = 'var(--accent-color)';
+            inlineBtnsContainer.appendChild(label);
+
+            data.inline_buttons.forEach(btnText => {
+                const btn = document.createElement('button');
+                btn.className = 'chat-inline-btn';
+                btn.textContent = btnText;
+                btn.onclick = () => {
+                    userInput.value = btnText;
+                    sendMessage();
+                };
+                inlineBtnsContainer.appendChild(btn);
+            });
+
+            bubble.appendChild(inlineBtnsContainer);
+        }
 
         // Add feedback buttons if we have a message ID
         if (data.message_id) {
