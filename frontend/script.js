@@ -7,6 +7,29 @@ const sendButton = document.getElementById('send-button');
 let currentUserId = null;
 let activeProductUrl = null;
 
+// Cookie Helpers
+function setCookie(name, value, days = 7) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "; expires=" + date.toUTCString();
+    document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    document.cookie = name + '=; Max-Age=-99999999; path=/;';
+}
+
 // Mock Product Data (For Demonstration)
 const mockProducts = [
     {
@@ -209,8 +232,19 @@ async function sendMessage() {
     // Scroll to bottom
     scrollToBottom();
 
+    // TESTING: Allow clearing session for easier ID testing
+    if (text.toLowerCase() === 'logout' || text.toLowerCase() === 'exit') {
+        eraseCookie('customer_id');
+        currentUserId = null;
+        chatHistory.appendChild(createMessage("Logged out successfully. Please enter your User ID or Email Address to start over.", 'ai'));
+        scrollToBottom();
+        return;
+    }
+
     // Check if we need to set the User ID, or if the user is explicitly passing one
-    let isLogin = false;
+    // Only default to login flow if we don't have a user ID yet
+    let isLogin = currentUserId ? false : true;
+
     if (text.match(/^cus_[a-zA-Z0-9]+$/)) {
         currentUserId = text;
         isLogin = true;
@@ -218,9 +252,17 @@ async function sendMessage() {
         currentUserId = text;
         isLogin = true;
     } else if (text.match(/cus_[a-zA-Z0-9]+/)) {
-        currentUserId = text.match(/cus_[a-zA-Z0-9]+/)[0];
+        const matched = text.match(/cus_[a-zA-Z0-9]+/)[0];
+        if (matched !== currentUserId) {
+            currentUserId = matched;
+            isLogin = true;
+        }
     } else if (text.match(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/)) {
-        currentUserId = text.match(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/)[0];
+        const matched = text.match(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/)[0];
+        if (matched !== currentUserId) {
+            currentUserId = matched;
+            isLogin = true;
+        }
     }
 
     if (!currentUserId && text) {
@@ -229,6 +271,9 @@ async function sendMessage() {
     }
 
     if (isLogin) {
+        // Store in cookie for persistence
+        setCookie('customer_id', currentUserId, 7);
+
         let displayUser = currentUserId;
         try {
             const res = await fetch(`http://localhost:8005/user/${currentUserId}`);
@@ -462,16 +507,38 @@ userInput.addEventListener('keypress', (e) => {
 });
 
 // Auto-focus input and handle product_url query param
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
     userInput.focus();
 
-    // Proactive: If product_url is in query params, trigger initial message
+    // 1. Check for persisted session in cookies
+    const savedUserId = getCookie('customer_id');
+    if (savedUserId) {
+        console.log("Logged in from cookie:", savedUserId);
+        currentUserId = savedUserId;
+
+        let displayUser = currentUserId;
+        try {
+            const res = await fetch(`http://localhost:8005/user/${currentUserId}`);
+            if (res.ok) {
+                const userData = await res.json();
+                if (userData.name) {
+                    displayUser = userData.name;
+                }
+            }
+            chatHistory.appendChild(createMessage(`Welcome back, ${displayUser}! I've restored your session. How can I assist you today?`, 'ai'));
+            scrollToBottom();
+        } catch (e) {
+            console.error('Error fetching user info on load:', e);
+        }
+    }
+
+    // 2. Proactive: If product_url is in query params, trigger initial message
     const params = new URLSearchParams(window.location.search);
     const pUrl = params.get('product_url');
     if (pUrl && pUrl.startsWith('http')) {
         console.log("Proactive product chat detected:", pUrl);
         // Only trigger if no other messages exist yet
-        if (chatHistory.children.length <= 1) {
+        if (chatHistory.children.length <= (savedUserId ? 2 : 1)) {
             userInput.value = pUrl;
             sendMessage();
         }
