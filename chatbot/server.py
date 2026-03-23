@@ -149,9 +149,13 @@ def build_product_lookup():
                 if calc.get("calculated_amount"):
                     price = f"R$ {calc['calculated_amount']}"
 
+            subtitle_raw = p.get("subtitle") or ""
+            # Simple HTML tag removal for subtitle consistency in UI cards
+            subtitle_clean = re.sub(r'<[^>]+>', '', subtitle_raw).strip() if subtitle_raw else ""
+
             lookup[title] = {
                 "title": title,
-                "subtitle": p.get("subtitle") or "",
+                "subtitle": subtitle_clean,
                 "price": price,
                 "image": p.get("thumbnail") or (p.get("images")[0]["url"] if p.get("images") else "https://via.placeholder.com/200"),
                 "url": base_url,
@@ -1302,7 +1306,7 @@ def chat_endpoint(request: ChatRequest):
                 f"### System Context & Data\n{system_context}\n\n"
                 f"### Behavioral Requirements\n"
                 f"1. **Clarifying Questions**: If the user's query is vague, you MUST ask 2-3 specific counter-questions to narrow down their needs before suggesting products.\n"
-                f"2. **Follow-up Buttons**: You MUST always end your response with exactly 3 clickable follow-up questions under the '### FOLLOW-UPS:' header.\n"
+                f"2. **Follow-up Buttons**: You MUST always end your response with exactly 3 RELEVANT follow-up questions under the '### FOLLOW-UPS:' header. These MUST be directly related to the current product or topic being discussed (e.g., if talking about statues, do not ask about essential oils).\n"
                 f"3. **Format**: Use the professional and Zen Yogateria tone.\n\n"
                 f"### User Question\n{user_message}"
             )
@@ -1312,7 +1316,7 @@ def chat_endpoint(request: ChatRequest):
             final_prompt = (
                 f"### Behavioral Requirements\n"
                 f"1. **Clarifying Questions**: If the user's query is vague, you MUST ask 2-3 specific counter-questions to narrow down their needs before suggesting products.\n"
-                f"2. **Follow-up Buttons**: You MUST always end your response with exactly 3 clickable follow-up questions under the '### FOLLOW-UPS:' header.\n"
+                f"2. **Follow-up Buttons**: You MUST always end your response with exactly 3 RELEVANT follow-up questions under the '### FOLLOW-UPS:' header. These MUST be directly related to the current topic.\n"
                 f"3. **Format**: Use the professional and Zen Yogateria tone.\n\n"
                 f"### User Question\n{user_message}"
             )
@@ -1379,32 +1383,51 @@ def chat_endpoint(request: ChatRequest):
                 print(f"[COLOR PICK] No matching variant colors for '{title}'. Using base card.")
                 return base_info
 
-            # 1. Prioritize products whose exact full titles are in the response
-            for title in product_lookup.keys():
-                if len(title) > 4 and title.lower() in resp_text.lower():
-                    card = pick_card_for_title(title)
-                    if card:
-                        products.append(card)
-                        seen_titles.add(title)
+            # 1. NEW: Extraction from numbered lists in response (most reliable)
+            # Pattern: 1️⃣ **Product Name**, 1. **Product Name**, etc.
+            numbered_matches = re.finditer(r'(?:[1-3]️⃣|\d+\.|\*)\s*\*\*?([^*]+)\*\*?', resp_text)
+            for m in numbered_matches:
+                extracted_title = m.group(1).strip()
+                # Find the best match in our lookup
+                for title in product_lookup.keys():
+                    if extracted_title.lower() == title.lower() or title.lower() in extracted_title.lower():
+                        card = pick_card_for_title(title)
+                        if card and title not in seen_titles:
+                            products.append(card)
+                            seen_titles.add(title)
                 if len(products) >= 3:
                     break
 
-            # 2. Check source nodes, but rigorously ensure the bot actually mentioned the product
+            # 2. Fallback: Prioritize products whose names appear as keywords in the response
+            # We look for long enough strings (ignore small words like "Yoga" or "Mat" by themselves)
+            if len(products) < 3:
+                for title in product_lookup.keys():
+                    if title in seen_titles: continue
+                    # Multi-word names are strong matches. Single words must be at least 6 chars
+                    if ' ' in title or len(title) > 5:
+                        if title.lower() in resp_text.lower():
+                            card = pick_card_for_title(title)
+                            if card:
+                                products.append(card)
+                                seen_titles.add(title)
+                    if len(products) >= 3:
+                        break
+
+            # 2. Strict source node check (only if we still have room and the match is STRONG)
             if len(products) < 3 and hasattr(response, 'source_nodes'):
                 for node in response.source_nodes:
                     metadata = node.node.metadata
                     title = metadata.get('title')
 
                     if title and title in product_lookup and title not in seen_titles:
-                        # Extract the core product name (ignoring variants like ' - Blue' or ' / L')
-                        # Improved keyword-based matching to handle LLM variations (like 'Incenso Indiano' vs 'Incenso Cone')
-                        title_words = [w.lower() for w in title.replace('-', ' ').replace('/', ' ').split() if len(w) > 3]
+                        # Very strict keyword matching for source nodes to avoid over-including
+                        title_words = [w.lower() for w in title.replace('-', ' ').replace('/', ' ').split() if len(w) > 4]
                         resp_text_lower = resp_text.lower()
                         
-                        # Count how many significant words from the product title are in the response
+                        # Must match most of the unique words in the title
                         matches = sum(1 for w in title_words if w in resp_text_lower)
                         
-                        if matches >= 2 or (len(title_words) == 1 and matches == 1):
+                        if len(title_words) > 0 and matches >= len(title_words) * 0.7:
                             card = pick_card_for_title(title)
                             if card:
                                 products.append(card)
@@ -1421,7 +1444,16 @@ def chat_endpoint(request: ChatRequest):
         # If it was a pure URL turn, we already returned early above.
         # This part handles regular turns where a product context is active.
         # We put suggested questions as navigation pills at the bottom to avoid cluttering the bubble.
-        final_follow_ups_with_suggestions = list(set(follow_ups + suggested_questions))
+        final_follow_ups_with_suggestions = []
+        seen_fups = set()
+        # Prioritize LLM generated follow-ups as they are contextually aware
+        # but also include suggested questions if they exist
+        for q in follow_ups + suggested_questions:
+            q_clean = q.strip()
+            if q_clean and q_clean not in seen_fups:
+                final_follow_ups_with_suggestions.append(q_clean)
+                seen_fups.add(q_clean)
+        
         if len(final_follow_ups_with_suggestions) > 5:
             final_follow_ups_with_suggestions = final_follow_ups_with_suggestions[:5]
 

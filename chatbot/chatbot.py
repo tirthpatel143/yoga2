@@ -173,8 +173,8 @@ def setup_chatbot():
         clean_system_prompt = SYSTEM_PROMPT.split("### CONTEXT:")[0].strip()
         enhanced_system_prompt = f"{clean_system_prompt}\n\n{catalog_summary}"
         
-        # Initialize memory buffer — token_limit raised so history has room alongside system prompt
-        memory = ChatMemoryBuffer.from_defaults(token_limit=4000)
+        # Initialize memory buffer — token_limit adjusted to balance history and system prompt/retrieval context
+        memory = ChatMemoryBuffer.from_defaults(token_limit=2500)
 
         # Reranker: fetch 20 candidates from Qdrant, rerank to best 5 before LLM
         reranker = FlagEmbeddingReranker(model="BAAI/bge-reranker-base", top_n=5)
@@ -200,13 +200,33 @@ def setup_chatbot():
                     if self._skip_condense or len(chat_history) == 0:
                         return latest_message
                         
-                    chat_history_str = "\n".join([f"{msg.role.value if hasattr(msg.role, 'value') else msg.role}: {msg.content}" for msg in chat_history])
+                    # Truncate history to avoid 'Request too large' (413) error on Groq (6000 token limit)
+                    # We take the last 8 messages which is more than enough for query condensation.
+                    # We also include a prompt instruction to help with Portuguese document retrieval.
+                    reduced_history = chat_history[-8:] if len(chat_history) > 8 else chat_history
+                    history_str = ""
+                    for msg in reduced_history:
+                        role = msg.role.value if hasattr(msg.role, 'value') else str(msg.role)
+                        history_str += f"{role}: {msg.content}\n"
                     
-                    llm_input = self._condense_prompt_template.format(
-                        chat_history=chat_history_str, question=latest_message
-                    )
+                    condense_prompt = f"""Given the following chat history and a follow up question, rephrase the follow up question to be a standalone question in English.
+                    STRICTLY INCLUDE Portuguese translations for key product terms and colors in parentheses (e.g., 'red yoga mat' -> 'red yoga mat (tapete vermelho)').
+                    This is because the source documents are mostly in Portuguese.
+                    
+                    Chat History:
+                    {history_str}
+                    
+                    Follow Up Input: {latest_message}
+                    Standalone Question:"""
+                    
                     print(f"\n[LLM CALL 1] Condensing Question using Groq (llama-3.1-8b-instant)...")
-                    return str(groq_condenser.complete(llm_input))
+                    try:
+                        return str(groq_condenser.complete(condense_prompt))
+                    except Exception as ge:
+                        print(f"Groq Condensation failed: {ge}. Falling back to default.")
+                        # If Groq fails, we can fall back to the main LLM if possible, 
+                        # but for now just return the latest message to avoid a crash.
+                        return latest_message
                     
                 chat_engine._condense_question = types.MethodType(custom_condense, chat_engine)
             except Exception as e:

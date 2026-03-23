@@ -47,13 +47,16 @@ function createProductCard(product) {
     const card = document.createElement('div');
     card.className = 'product-card';
 
+    // Ensure price is highlighted and subtitle is clean
+    const subtitle = product.subtitle ? `<p class="product-description" style="font-size: 0.75rem; color: #555; margin-bottom: 4px;">${product.subtitle}</p>` : '<p class="product-description" style="visibility: hidden;">No subtitle</p>';
+
     card.innerHTML = `
         <img src="${product.image}" alt="" class="product-image">
         <div class="product-info">
             <h3 class="product-title">${product.title}</h3>
-            ${product.subtitle ? `<p class="product-description" style="font-size: 0.75rem; color: #555; margin-bottom: 4px;">${product.subtitle}</p>` : ''}
+            ${subtitle}
             <span class="product-price">${product.price}</span>
-            ${product.variant_label ? `<span class="product-variant">${product.variant_label}</span>` : ''}
+            ${product.variant_label ? `<span class="product-variant" style="font-size: 0.75rem; color: var(--accent-color); font-weight: 500;">Variant: ${product.variant_label}</span>` : ''}
             <a href="${product.url}" target="_blank" class="view-btn">View Product</a>
         </div>
     `;
